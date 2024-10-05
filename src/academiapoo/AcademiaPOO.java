@@ -4,6 +4,9 @@
  */
 package academiapoo;
 
+import Model.Produto;
+import com.google.gson.Gson;
+
 /**
  *
  * @author caio
@@ -14,7 +17,19 @@ public class AcademiaPOO {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Gson gson = new Gson();
+
+        // Criando um objeto simples
+        Produto produto1 = new Produto("Halteres (par)", 150.00, 101, 20);
+
+        // Convertendo objeto para JSON
+        String json = gson.toJson(produto1);
+        System.out.println("Objeto em JSON: " + json);
+
+        // Convertendo JSON de volta para objeto
+        Produto produtoFromJson = gson.fromJson(json, Produto.class);
+        
+        System.out.println(produtoFromJson);
     }
     
 }
