@@ -32,38 +32,6 @@ public class AreaColaboradores extends Subsistema {
     }
     
     
-    
-    public void incluirColaborador() throws IOException{
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.println("Digite o nome do Colaborador");
-        String nome = scanner.nextLine();
-        
-        System.out.println("Digite o Endereço");
-        String endereco = scanner.nextLine();
-        
-        System.out.println("Digite o Telefone");
-        String telefone = scanner.nextLine();
-        
-        System.out.println("Digite o Email");
-        String email = scanner.nextLine();
-        
-        System.out.println("Digite o CPF");
-        String cpf = scanner.nextLine();
-        
-        System.out.println("Digite o Salario");
-        double salario = scanner.nextDouble();
-        
-        scanner.nextLine();
-        System.out.println("Digite o Login");
-        String login = scanner.nextLine();
-        
-        System.out.println("Digite o Senha");
-        String senha = scanner.nextLine();
-        
-        adicionarBancoDados(nome, endereco, telefone, email, cpf, salario, login, senha);
-    }
-    
     public void editarColaborador(){
         
     }
