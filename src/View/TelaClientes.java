@@ -4,6 +4,7 @@
  */
 package View;
 
+import Model.Cliente;
 import java.util.Scanner;
 
 /**
@@ -40,4 +41,12 @@ public class TelaClientes {
         
     }
     
+    public void modificarCliente(){
+
+    }
+    
+    public void mostrarCliente(Cliente cliente){
+        System.out.printf("Nome: %s%nEndereco: %s%nTelefone: %s%nEmail: %s%n", 
+                cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getEmail());
+    }
 }

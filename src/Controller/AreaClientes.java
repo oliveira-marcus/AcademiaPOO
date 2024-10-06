@@ -34,7 +34,15 @@ public class AreaClientes extends Subsistema {
         }
     }
     
-    public void editarCliente(int id){ // Provavelmente vamos ter que usar sobrecarga nesse
+    public void editarCliente(String nomeAntigo, String nomeNovo){
+        
+    }
+    
+    public void editarCliente(CPF cpfAntigo, CPF cpfNovo){ // Provavelmente vamos ter que usar sobrecarga nesse
+        
+    }
+    
+    public void editarCliente(int idAntigo, int idNovo){
         
     }
     
