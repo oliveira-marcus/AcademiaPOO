@@ -13,13 +13,11 @@ public class Produto {
     private String nome;
     private double preco;
     private int id;
-    private int quantidadeEstoque;
     
-    public Produto(String nome, double preco, int id, int quantidadeEstoque) {
+    public Produto(String nome, double preco, int id) {
         this.nome = nome;
         this.preco = preco;
         this.id = id;
-        this.quantidadeEstoque = quantidadeEstoque;
     }
 
     public String getNome() {
@@ -44,14 +42,6 @@ public class Produto {
 
     public void setId(int id) {
         this.id = id;
-    }
-    
-    public int getQuantidadeEstoque(){
-        return quantidadeEstoque;
-    }
-    
-    public void setQuantidadeEstoque(int quantidadeEstoque){
-        this.quantidadeEstoque = quantidadeEstoque;
     }
     
     @Override

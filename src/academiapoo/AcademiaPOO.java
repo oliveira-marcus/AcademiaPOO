@@ -4,7 +4,7 @@
  */
 package academiapoo;
 
-import Controller.AreaClientes;
+import Controller.AreaEstoque;
 
 /**
  *
@@ -16,23 +16,28 @@ public class AcademiaPOO {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        AreaClientes areaClientes = new AreaClientes();
+        AreaEstoque areaEstoque = new AreaEstoque();
         
-        areaClientes.adicionarCliente("Caio", "Rua dos Bobo, 0", "000000000", "caiobruno@gmail.com", "000.312.000-00", "0000 0000 0000 0000", 100);
-        areaClientes.adicionarCliente("Bruno", "Rua dos Bobo, 0", "005340000", "bruno@gmail.com", "000.000.050-00", "0000 0000 0000 0000", 101);
-        areaClientes.adicionarCliente("Roberto", "Rua dos Bobo, 0", "098706540", "roberto@gmail.com", "000.543.000-00", "0000 0000 0000 0000", 102);
-        areaClientes.adicionarCliente("Tiago", "Rua dos Bobo, 0", "005346100", "tiago@gmail.com", "000.000.000-00", "0000 0000 0000 0000", 103);
-        areaClientes.adicionarCliente("Marcus", "Rua dos Bobo, 0", "050703200", "marcus@gmail.com", "000.000.123-00", "0000 0000 0000 0000", 104);
-        areaClientes.adicionarCliente("Diego", "Rua dos Bobo, 0", "003132100", "diego@gmail.com", "000.678.000-00", "0000 0000 0000 0000", 105);
-        areaClientes.adicionarCliente("Katia", "Rua dos Bobo, 0", "000534000", "katia@gmail.com", "000.543.000-00", "0000 0000 0000 0000", 106);
+        areaEstoque.adicionarProduto("Halteres (par)", 100.0, 100);
+        areaEstoque.adicionarProduto("Corda", 20.0, 101);
+        areaEstoque.adicionarProduto("Barrinha", 10, 102);
+        areaEstoque.adicionarProduto("Whey", 100.0, 103);
+        areaEstoque.adicionarProduto("Creatina", 50.0, 104);
         
-        areaClientes.removerCliente(101);
-        areaClientes.removerCliente(103);
-        areaClientes.removerCliente(105);
+        areaEstoque.alterarQuantidade(101, 20);
+        areaEstoque.alterarQuantidade(102, 50);
+        areaEstoque.alterarQuantidade(103, 15);
+        areaEstoque.alterarQuantidade(104, 20);
         
-        areaClientes.editarCliente(102, 120);
+        areaEstoque.editarProduto(103, "Whey Protein");
+        areaEstoque.editarProduto(103, 105);
         
-        System.out.println(areaClientes.getClientes().get(1).getId());
+        areaEstoque.removerProduto(100);
+        
+        System.out.println(areaEstoque.getEstoque());
+        
+        System.out.println(areaEstoque.getProdutos());
+        
     }
     
 }
