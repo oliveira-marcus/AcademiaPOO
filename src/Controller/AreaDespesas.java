@@ -13,4 +13,8 @@ import java.nio.file.Paths;
  */
 public class AreaDespesas {
     private final Path caminhoDespesas = Paths.get("src/data/despesas.json");
+    
+    public void adicionarDespesa(String nome, String tipo, double valor, String data){
+        
+    }
 }
