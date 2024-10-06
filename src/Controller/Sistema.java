@@ -9,29 +9,29 @@ package Controller;
  * @author caio
  */
 public class Sistema {
-    public final AreaClientes areaClientes = new AreaClientes();
-    public final AreaColaboradores areaColaboradores = new AreaColaboradores();
-    public final AreaEstoque areaEstoque = new AreaEstoque();
-    public final AreaFinanceira areaFinanceira = new AreaFinanceira();
-    public final Agenda agenda = new Agenda();
+    private static final AreaClientes areaClientes = new AreaClientes();
+    private static final AreaColaboradores areaColaboradores = new AreaColaboradores();
+    private static final AreaEstoque areaEstoque = new AreaEstoque();
+    private static final AreaFinanceira areaFinanceira = new AreaFinanceira();
+    private static final Agenda agenda = new Agenda();
 
-    public AreaClientes getAreaClientes() {
+    public static AreaClientes getAreaClientes() {
         return areaClientes;
     }
 
-    public AreaColaboradores getAreaColaboradores() {
+    public static AreaColaboradores getAreaColaboradores() {
         return areaColaboradores;
     }
 
-    public AreaEstoque getAreaEstoque() {
+    public static AreaEstoque getAreaEstoque() {
         return areaEstoque;
     }
 
-    public AreaFinanceira getAreaFinanceira() {
+    public static AreaFinanceira getAreaFinanceira() {
         return areaFinanceira;
     }
 
-    public Agenda getAgenda() {
+    public static Agenda getAgenda() {
         return agenda;
     }
 }

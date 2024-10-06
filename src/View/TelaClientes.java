@@ -4,6 +4,8 @@
  */
 package View;
 
+import Controller.AreaClientes;
+import Controller.Sistema;
 import Model.Cliente;
 import java.util.Scanner;
 
@@ -12,6 +14,7 @@ import java.util.Scanner;
  * @author caio
  */
 public class TelaClientes {
+    private final AreaClientes areaClientes = Sistema.getAreaClientes();
     
     public void exibirMenu(){
         int opcao = 0;
@@ -42,7 +45,30 @@ public class TelaClientes {
     }
     
     public void modificarCliente(){
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o ID do cliente que quer editar: ");
+        int idCliente = scanner.nextInt();
+        System.out.println();
+        
+        Cliente cliente = areaClientes.buscarCliente(idCliente);
+        mostrarCliente(cliente);
+        
+        System.out.println("1 - Nome");
+        System.out.println("2 - CPF");
+        System.out.println("3 - Id");
+        
+        System.out.println("Digite o que deseja alterar: ");
+        int opcao = scanner.nextInt();
+        
+        switch (opcao){
+            case 1 -> {
+            }
+            case 2 -> {
+            }
+            case 3 -> {
+            }
+        }
+        
     }
     
     public void mostrarCliente(Cliente cliente){

@@ -34,16 +34,20 @@ public class AreaClientes extends Subsistema {
         }
     }
     
-    public void editarCliente(String nomeAntigo, String nomeNovo){
+    public void editarCliente(int id, String nomeNovo){
+        Cliente resultado = buscarCliente(id);
         
+        if (resultado != null){
+            resultado.setNome(nomeNovo);
+        }
     }
     
-    public void editarCliente(CPF cpfAntigo, CPF cpfNovo){ // Provavelmente vamos ter que usar sobrecarga nesse
+    public void editarCliente(int id, int idNovo){
+        Cliente resultado = buscarCliente(id);
         
-    }
-    
-    public void editarCliente(int idAntigo, int idNovo){
-        
+        if (resultado != null){
+            resultado.setId(idNovo);
+        }
     }
     
     public Cliente buscarCliente(int id){
