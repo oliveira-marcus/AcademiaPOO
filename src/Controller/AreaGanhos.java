@@ -4,18 +4,13 @@
  */
 package Controller;
 
-import Model.Produto;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author caio
  */
-public class AreaFinanceira extends Subsistema {
+public class AreaGanhos {
     private final Path caminhoGanhos = Paths.get("src/data/ganhos.json");
-    
-    
 }

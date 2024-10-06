@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class AreaClientes extends Subsistema {
     private final Path caminhoClientes = Paths.get("src/data/clientes.json");
-    private List<Cliente> clientes = new ArrayList<>();
+    private final List<Cliente> clientes = new ArrayList<>();
     
     public void adicionarCliente(String nome, String endereco, String telefone, String email, String cpf, String cartaoCredito, int id){
         CPF cpfCliente = new CPF(cpf);

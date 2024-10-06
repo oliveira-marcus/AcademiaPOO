@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class AreaColaboradores extends Subsistema {
     private final Path caminhoColaboradores = Paths.get("src/data/colaboradores.json");
-    private List<Funcionario> colaboradores = new ArrayList<>();
+    private final List<Funcionario> colaboradores = new ArrayList<>();
     
  
     public void adicionarColaborador(String nome, String endereco, String telefone, String email, String cpf, double salario, String login, String senha, String cargo){
