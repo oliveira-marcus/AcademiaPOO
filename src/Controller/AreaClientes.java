@@ -29,7 +29,6 @@ public class AreaClientes extends Subsistema {
         Cliente resultado = buscarCliente(id);
         
         if (resultado != null){
-            System.out.println("Concluido!");
             clientes.remove(resultado);
         }
     }
@@ -56,11 +55,10 @@ public class AreaClientes extends Subsistema {
                 return cliente;
             }
         }
-        System.out.println("O cliente não existe! ");
         return null;
     }
-    
-    public void mostrarClientes(){
-        System.out.println(clientes);
-    }
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }  
 }

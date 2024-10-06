@@ -30,7 +30,9 @@ public class AcademiaPOO {
         areaClientes.removerCliente(103);
         areaClientes.removerCliente(105);
         
-        areaClientes.mostrarClientes();
+        areaClientes.editarCliente(102, 120);
+        
+        System.out.println(areaClientes.getClientes().get(1).getId());
     }
     
 }
