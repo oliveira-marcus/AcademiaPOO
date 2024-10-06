@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
 
 import Model.Administrador;
@@ -44,7 +40,9 @@ public class AreaColaboradores extends Subsistema {
         }
     }
     
-    public void editarColaborador(){}
+    public void editarColaborador(){
+   
+    }
     
     public Funcionario buscarColaborador(String nome){
         for (Funcionario colaborador : colaboradores){
