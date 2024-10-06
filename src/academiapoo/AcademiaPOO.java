@@ -4,8 +4,7 @@
  */
 package academiapoo;
 
-import Model.Produto;
-import com.google.gson.Gson;
+import Controller.AreaClientes;
 
 /**
  *
@@ -17,19 +16,21 @@ public class AcademiaPOO {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Gson gson = new Gson();
-
-        // Criando um objeto simples
-        Produto produto1 = new Produto("Halteres (par)", 150.00, 101, 20);
-
-        // Convertendo objeto para JSON
-        String json = gson.toJson(produto1);
-        System.out.println("Objeto em JSON: " + json);
-
-        // Convertendo JSON de volta para objeto
-        Produto produtoFromJson = gson.fromJson(json, Produto.class);
+        AreaClientes areaClientes = new AreaClientes();
         
-        System.out.println(produtoFromJson);
+        areaClientes.adicionarCliente("Caio", "Rua dos Bobo, 0", "000000000", "caiobruno@gmail.com", "000.312.000-00", "0000 0000 0000 0000", 100);
+        areaClientes.adicionarCliente("Bruno", "Rua dos Bobo, 0", "005340000", "bruno@gmail.com", "000.000.050-00", "0000 0000 0000 0000", 101);
+        areaClientes.adicionarCliente("Roberto", "Rua dos Bobo, 0", "098706540", "roberto@gmail.com", "000.543.000-00", "0000 0000 0000 0000", 102);
+        areaClientes.adicionarCliente("Tiago", "Rua dos Bobo, 0", "005346100", "tiago@gmail.com", "000.000.000-00", "0000 0000 0000 0000", 103);
+        areaClientes.adicionarCliente("Marcus", "Rua dos Bobo, 0", "050703200", "marcus@gmail.com", "000.000.123-00", "0000 0000 0000 0000", 104);
+        areaClientes.adicionarCliente("Diego", "Rua dos Bobo, 0", "003132100", "diego@gmail.com", "000.678.000-00", "0000 0000 0000 0000", 105);
+        areaClientes.adicionarCliente("Katia", "Rua dos Bobo, 0", "000534000", "katia@gmail.com", "000.543.000-00", "0000 0000 0000 0000", 106);
+        
+        areaClientes.removerCliente(101);
+        areaClientes.removerCliente(103);
+        areaClientes.removerCliente(105);
+        
+        areaClientes.mostrarClientes();
     }
     
 }
