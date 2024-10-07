@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Administrador;
 import Model.Funcionario;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -11,11 +12,16 @@ import java.util.List;
  *
  * @author caio
  */
-public class AreaColaboradores implements Subsistema {
-    private final Path caminhoColaboradores = Paths.get("src/data/colaboradores.json");
-    private final List<Funcionario> colaboradores = new ArrayList<>();
+public class AreaColaboradores implements ListManipulator {
+    private final String caminhoColaboradores ="src/data/colaboradores.json";
+    private final List<Funcionario> colaboradores;
     
- 
+    public AreaColaboradores() throws IOException{
+        JsonController<Funcionario> jsonController = new JsonController<>(Funcionario.class);
+        
+        colaboradores = jsonController.readJsonToList(caminhoColaboradores);
+    }
+    
     public void adicionarColaborador(String nome, String endereco, String telefone, String email, String cpf, double salario, String login, String senha, String cargo){
         Funcionario novoFuncionario;
         
@@ -49,5 +55,9 @@ public class AreaColaboradores implements Subsistema {
             }
         }
         return null;
+    }
+
+    public List<Funcionario> getColaboradores() {
+        return colaboradores;
     }
 }

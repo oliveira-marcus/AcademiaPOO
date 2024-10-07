@@ -8,5 +8,5 @@ package Controller;
  *
  * @author caio
  */
-public interface Subsistema {
+public interface ListManipulator {
 }

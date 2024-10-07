@@ -11,7 +11,7 @@ import java.nio.file.Paths;
  *
  * @author caio
  */
-public class AreaDespesas implements Subsistema {
+public class AreaDespesas implements ListManipulator {
     private final Path caminhoDespesas = Paths.get("src/data/despesas.json");
     
     public void adicionarDespesa(String nome, String tipo, double valor, String data){

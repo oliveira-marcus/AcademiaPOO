@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author caio
  */
-public class AreaFinanceira implements Subsistema {
+public class AreaFinanceira implements ListManipulator {
     private final Path caminhoGanhos = Paths.get("src/data/ganhos.json");
     
     

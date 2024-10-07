@@ -4,6 +4,7 @@
  */
 package academiapoo;
 
+import Controller.AreaColaboradores;
 import Controller.JsonController;
 import Model.Funcionario;
 import java.io.IOException;
@@ -22,10 +23,9 @@ public class AcademiaPOO {
     public static void main(String[] args) throws IOException {
         JsonController<Funcionario> jsonController = new JsonController<>(Funcionario.class);
         
-        List<Funcionario> colaboradores = jsonController.readJsonToList("src/data/colaboradores.json");
+        AreaColaboradores areaColaboradores = new AreaColaboradores();
         
-        System.out.println(colaboradores);
-        
+        System.out.println(areaColaboradores.getColaboradores());
     }
     
 }

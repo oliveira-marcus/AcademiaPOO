@@ -6,51 +6,42 @@
     },
     {   "nome":"Esteira Elétrica",
         "preco":3000.0,
-        "id":102,
-        "quantidadeEstoque":10
+        "id":102
     },
     {   "nome":"Colchonete",
         "preco":80.0,
-        "id":103,
-        "quantidadeEstoque":5
+        "id":103
     },
     {   "nome":"Bicicleta Ergométrica",
         "preco":2200.0,
-        "id":104,
-        "quantidadeEstoque":7
+        "id":104
     },
     {   "nome":"Corda de Pular",
         "preco":45.0,
-        "id":105,
-        "quantidadeEstoque":50
+        "id":105
     },
     {   "nome":"Kit de Faixas Elásticas",
         "preco":120.0,
-        "id":106,
-        "quantidadeEstoque":40
+        "id":106
     },
     {   "nome":"Bola de Pilates",
         "preco":100.0,
-        "id":107,
-        "quantidadeEstoque":10
+        "id":107
     },
     {   "nome":"Luvas de Academia",
         "preco":60.0,
-        "id":108,
-        "quantidadeEstoque":30
+        "id":108
     },
     {   "nome":"Barrinha Proteica",
         "preco":12.0,
-        "id":109,
-        "quantidadeEstoque":50
+        "id":109
     },
     {   "nome":"Garrafa de Água",
         "preco":30.0,
-        "id":110,
-        "quantidadeEstoque":50
+        "id":110
     },
     {   "nome":"Whey",
         "preco":100.0,
-        "id":200,
-        "quantidadeEstoque":0}
+        "id":200
+    }
 ]

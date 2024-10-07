@@ -5,9 +5,7 @@
 package Controller;
 
 import Model.Produto;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,12 +14,16 @@ import java.util.Map;
  *
  * @author caio
  */
-public class AreaEstoque implements Subsistema {
-    private final Path caminhoEstoque = Paths.get("src/data/estoque.json");
-    private final Path caminhoProdutos = Paths.get("src/data/produtos.json");
-    private final List<Produto> produtos = new ArrayList<>();
+public class AreaEstoque implements ListManipulator, MapManipulator {
+    private final String caminhoEstoque = "src/data/estoque.json";
+    private final String caminhoProdutos = "src/data/produtos.json";
+    private final List<Produto> produtos;
     private final Map<String, Integer> estoque = new HashMap();
     
+    public AreaEstoque() throws IOException{
+        JsonController<Produto> jsonController = new JsonController<>(Produto.class);
+        produtos = jsonController.readJsonToList(caminhoProdutos);
+    }
     
     public void alterarQuantidade(int id, int quantidade){
         Produto resultado = buscaCatalogo(id);

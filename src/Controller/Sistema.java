@@ -11,14 +11,14 @@ import java.util.List;
  * @author caio
  */
 public class Sistema {
-    private static List<Subsistema> subsistemas;
+    private static List<ListManipulator> subsistemas;
     
-    public Sistema(List<Subsistema> subsistemas){
+    public Sistema(List<ListManipulator> subsistemas){
         Sistema.subsistemas = subsistemas;
     }
     
-    public static <T extends Subsistema> T getSubsistemaPorTipo(Class<T> tipo){
-        for (Subsistema s : subsistemas){
+    public static <T extends ListManipulator> T getSubsistemaPorTipo(Class<T> tipo){
+        for (ListManipulator s : subsistemas){
             if (tipo.isInstance(s)){
                 return tipo.cast(s);
             }
