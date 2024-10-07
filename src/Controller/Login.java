@@ -4,10 +4,30 @@
  */
 package Controller;
 
+import Model.Funcionario;
+import java.io.IOException;
+import java.util.List;
+
 /**
  *
  * @author caio
  */
 public class Login {
+    private final List<Funcionario> usuarios;
     
+    public Login() throws IOException{
+        JsonController<Funcionario> jsonController = new JsonController(Funcionario.class);
+        
+        usuarios = jsonController.readJsonToList("src/data/colaboradores.json");
+    }
+    
+    public Funcionario autenticarUsuario(String login, String senha){
+        for (Funcionario usuario : usuarios){
+            if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)){
+                return usuario;
+            }
+        }
+        
+        return null;
+    }
 }
