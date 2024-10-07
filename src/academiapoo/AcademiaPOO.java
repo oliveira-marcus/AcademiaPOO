@@ -4,7 +4,9 @@
  */
 package academiapoo;
 
-import Controller.AreaEstoque;
+import Controller.JsonController;
+import Model.Funcionario;
+import java.util.List;
 
 /**
  *
@@ -16,27 +18,11 @@ public class AcademiaPOO {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        AreaEstoque areaEstoque = new AreaEstoque();
+        JsonController<Funcionario> jsonController = new JsonController<>(Funcionario.class);
         
-        areaEstoque.adicionarProduto("Halteres (par)", 100.0, 100);
-        areaEstoque.adicionarProduto("Corda", 20.0, 101);
-        areaEstoque.adicionarProduto("Barrinha", 10, 102);
-        areaEstoque.adicionarProduto("Whey", 100.0, 103);
-        areaEstoque.adicionarProduto("Creatina", 50.0, 104);
+        List<Funcionario> colaboradores = jsonController.readJsonToList("src/data/colaboradores.json");
         
-        areaEstoque.alterarQuantidade(101, 20);
-        areaEstoque.alterarQuantidade(102, 50);
-        areaEstoque.alterarQuantidade(103, 15);
-        areaEstoque.alterarQuantidade(104, 20);
-        
-        areaEstoque.editarProduto(103, "Whey Protein");
-        areaEstoque.editarProduto(103, 105);
-        
-        areaEstoque.removerProduto(100);
-        
-        System.out.println(areaEstoque.getEstoque());
-        
-        System.out.println(areaEstoque.getProdutos());
+        System.out.println(colaboradores);
         
     }
     

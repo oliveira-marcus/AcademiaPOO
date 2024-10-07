@@ -11,7 +11,7 @@ package Model;
 public class Administrador extends Funcionario {
     
     
-    public Administrador(String nome, String endereco, String telefone, String email, CPF cpf, double salario, String login, String senha) {
+    public Administrador(String nome, String endereco, String telefone, String email, String cpf, double salario, String login, String senha) {
         super(nome, endereco, telefone, email, cpf, salario, login, senha, "Administrador");
     }
     

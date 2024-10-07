@@ -13,9 +13,9 @@ public abstract class Pessoa {
     private String endereco;
     private String telefone;
     private String email;
-    private CPF cpf;
+    private String cpf;
     
-    public Pessoa(String nome, String endereco, String telefone, String email, CPF cpf){
+    public Pessoa(String nome, String endereco, String telefone, String email, String cpf){
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
@@ -55,11 +55,11 @@ public abstract class Pessoa {
         this.email = email;
     }
 
-    public CPF getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(CPF cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }   
 }

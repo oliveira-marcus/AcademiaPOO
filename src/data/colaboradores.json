@@ -1,3 +1,112 @@
-{
-    "name": "caio"
-}
+[
+    {
+        "nome":"João Silva",
+        "endereco":"Rua A, 123",
+        "telefone":"11987654321",
+        "email":"joao@gmail.com",
+        "cpf":"123.456.789-00",
+        "salario":3000.0,
+        "login":"joaosilva",
+        "senha":"senha123",
+        "cargo":"Instrutor"
+    },
+    {
+        "nome":"Maria Souza",
+        "endereco":"Rua B, 456",
+        "telefone":"11987654322",
+        "email":"maria@gmail.com",
+        "cpf":"234.567.890-01",
+        "salario":3500.0,
+        "login":"mariasouza",
+        "senha":"senha456",
+        "cargo":"Instrutor"
+    },
+    {
+        "nome":"Pedro Almeida",
+        "endereco":"Rua C, 789",
+        "telefone":"11987654323",
+        "email":"pedro@gmail.com",
+        "cpf":"345.678.901-02",
+        "salario":2800.0,
+        "login":"pedroalmeida",
+        "senha":"senha789",
+        "cargo":"Instrutor"
+    },
+    {
+        "nome":"Ana Oliveira",
+        "endereco":"Rua D, 101",
+        "telefone":"11987654324",
+        "email":"ana@gmail.com",
+        "cpf":"456.789.012-03",
+        "salario":4000.0,
+        "login":"anaoliveira",
+        "senha":"senha101",
+        "cargo":"Instrutor"
+    },
+    {
+        "nome":"Lucas Santos",
+        "endereco":"Rua E, 202",
+        "telefone":"11987654325",
+        "email":"lucas@gmail.com",
+        "cpf":"567.890.123-04",
+        "salario":2500.0,
+        "login":"lucassantos",
+        "senha":"senha202",
+        "cargo":"Instrutor"
+    },
+    {
+        "nome":"Fernanda Lima",
+        "endereco":"Rua F, 303",
+        "telefone":"11987654326",
+        "email":"fernanda@gmail.com",
+        "cpf":"678.901.234-05",
+        "salario":3700.0,
+        "login":"fernandalima",
+        "senha":"senha303",
+        "cargo":"Instrutor"
+    },
+    {
+        "nome":"Carlos Mendes",
+        "endereco":"Rua G, 404",
+        "telefone":"11987654327",
+        "email":"carlos@gmail.com",
+        "cpf":"789.012.345-06",
+        "salario":3200.0,
+        "login":"carlosmendes",
+        "senha":"senha404",
+        "cargo":"Instrutor"
+    },
+    {
+        "nome":"Juliana Pereira",
+        "endereco":"Rua H, 505",
+        "telefone":"11987654328",
+        "email":"juliana@gmail.com",
+        "cpf":"890.123.456-07",
+        "salario":4100.0,
+        "login":"julianapereira",
+        "senha":"senha505",
+        "cargo":"Instrutor"
+    },
+    {
+        "nome":"Felipe Costa",
+        "endereco":"Rua I, 606",
+        "telefone":"11987654329",
+        "email":"felipe@gmail.com",
+        "cpf":"901.234.567-08",
+        "salario":2900.0,
+        "login":"felipecosta",
+        "senha":"senha606",
+        "cargo":"Instrutor"
+    },
+    {
+        "nome":"Paula Carvalho",
+        "endereco":"Rua J, 707",
+        "telefone":"11987654330",
+        "email":"paula@gmail.com",
+        "cpf":"012.345.678-09",
+        "salario":3300.0,
+        "login":"paulacarvalho",
+        "senha":"senha707",
+        "cargo":"Instrutor"
+    }
+]
