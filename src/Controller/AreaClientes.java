@@ -1,9 +1,7 @@
 package Controller;
 
 import Model.Cliente;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -11,8 +9,14 @@ import java.util.List;
  * @author caio
  */
 public class AreaClientes implements ListManipulator {
-    private final Path caminhoClientes = Paths.get("src/data/clientes.json");
-    private final List<Cliente> clientes = new ArrayList<>();
+    private final String caminhoClientes = "src/data/clientes.json";
+    private final List<Cliente> clientes;
+    
+    public AreaClientes() throws IOException{
+        JsonController<Cliente> jsonController = new JsonController<>(Cliente.class);
+        
+        clientes = jsonController.readJsonToList(caminhoClientes);
+    }
     
     public void adicionarCliente(String nome, String endereco, String telefone, String email, String cpf, String cartaoCredito, int id){
         Cliente novoCliente = new Cliente(nome, endereco, telefone, email, cpf, cartaoCredito, id);

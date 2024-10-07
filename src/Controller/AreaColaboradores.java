@@ -3,9 +3,6 @@ package Controller;
 import Model.Administrador;
 import Model.Funcionario;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -6,7 +6,6 @@ package Controller;
 
 import Model.Produto;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,11 +17,13 @@ public class AreaEstoque implements ListManipulator, MapManipulator {
     private final String caminhoEstoque = "src/data/estoque.json";
     private final String caminhoProdutos = "src/data/produtos.json";
     private final List<Produto> produtos;
-    private final Map<String, Integer> estoque = new HashMap();
+    private final Map<String, Integer> estoque;
     
     public AreaEstoque() throws IOException{
         JsonController<Produto> jsonController = new JsonController<>(Produto.class);
         produtos = jsonController.readJsonToList(caminhoProdutos);
+        
+        estoque = jsonController.readJsonToMap(caminhoEstoque);
     }
     
     public void alterarQuantidade(int id, int quantidade){
