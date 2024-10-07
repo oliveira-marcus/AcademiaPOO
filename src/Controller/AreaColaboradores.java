@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.Administrador;
-import Model.CPF;
 import Model.Funcionario;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,15 +17,14 @@ public class AreaColaboradores extends Subsistema {
     
  
     public void adicionarColaborador(String nome, String endereco, String telefone, String email, String cpf, double salario, String login, String senha, String cargo){
-        CPF cpfColaborador = new CPF(cpf);
         Funcionario novoFuncionario;
         
         if (cargo.equals("Administrador")){
-            novoFuncionario = new Administrador(nome, endereco, telefone, email, cpfColaborador, salario, login, senha);
+            novoFuncionario = new Administrador(nome, endereco, telefone, email, cpf, salario, login, senha);
         }
         
         else{
-            novoFuncionario = new Funcionario(nome, endereco, telefone, email, cpfColaborador, salario, login, senha, cargo);
+            novoFuncionario = new Funcionario(nome, endereco, telefone, email, cpf, salario, login, senha, cargo);
         }
         
         colaboradores.add(novoFuncionario);

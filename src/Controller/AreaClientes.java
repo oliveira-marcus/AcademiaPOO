@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.CPF;
 import Model.Cliente;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,8 +15,7 @@ public class AreaClientes extends Subsistema {
     private final List<Cliente> clientes = new ArrayList<>();
     
     public void adicionarCliente(String nome, String endereco, String telefone, String email, String cpf, String cartaoCredito, int id){
-        CPF cpfCliente = new CPF(cpf);
-        Cliente novoCliente = new Cliente(nome, endereco, telefone, email, cpfCliente, cartaoCredito, id);
+        Cliente novoCliente = new Cliente(nome, endereco, telefone, email, cpf, cartaoCredito, id);
         clientes.add(novoCliente);
     }
     
