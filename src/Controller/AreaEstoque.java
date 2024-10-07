@@ -16,7 +16,7 @@ import java.util.Map;
  *
  * @author caio
  */
-public class AreaEstoque extends Subsistema {
+public class AreaEstoque implements Subsistema {
     private final Path caminhoEstoque = Paths.get("src/data/estoque.json");
     private final Path caminhoProdutos = Paths.get("src/data/produtos.json");
     private final List<Produto> produtos = new ArrayList<>();

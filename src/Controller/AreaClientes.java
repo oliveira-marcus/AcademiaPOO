@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author caio
  */
-public class AreaClientes extends Subsistema {
+public class AreaClientes implements Subsistema {
     private final Path caminhoClientes = Paths.get("src/data/clientes.json");
     private final List<Cliente> clientes = new ArrayList<>();
     

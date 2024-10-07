@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author caio
  */
-public class AreaFinanceira extends Subsistema {
+public class AreaFinanceira implements Subsistema {
     private final Path caminhoGanhos = Paths.get("src/data/ganhos.json");
     
     

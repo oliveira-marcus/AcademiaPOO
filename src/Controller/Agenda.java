@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author caio
  */
-public class Agenda extends Subsistema {
+public class Agenda implements Subsistema {
     private final Path caminhoAgendamentos = Paths.get("src/data/agendamentos.json");
     private List<Reserva> agendamentos = new ArrayList<>();
     

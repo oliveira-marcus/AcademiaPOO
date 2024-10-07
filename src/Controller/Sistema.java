@@ -4,34 +4,26 @@
  */
 package Controller;
 
+import java.util.List;
+
 /**
  *
  * @author caio
  */
 public class Sistema {
-    private static final AreaClientes areaClientes = new AreaClientes();
-    private static final AreaColaboradores areaColaboradores = new AreaColaboradores();
-    private static final AreaEstoque areaEstoque = new AreaEstoque();
-    private static final AreaFinanceira areaFinanceira = new AreaFinanceira();
-    private static final Agenda agenda = new Agenda();
-
-    public static AreaClientes getAreaClientes() {
-        return areaClientes;
+    private static List<Subsistema> subsistemas;
+    
+    public Sistema(List<Subsistema> subsistemas){
+        Sistema.subsistemas = subsistemas;
     }
-
-    public static AreaColaboradores getAreaColaboradores() {
-        return areaColaboradores;
+    
+    public static <T extends Subsistema> T getSubsistemaPorTipo(Class<T> tipo){
+        for (Subsistema s : subsistemas){
+            if (tipo.isInstance(s)){
+                return tipo.cast(s);
+            }
+        }
+        return null;
     }
-
-    public static AreaEstoque getAreaEstoque() {
-        return areaEstoque;
-    }
-
-    public static AreaFinanceira getAreaFinanceira() {
-        return areaFinanceira;
-    }
-
-    public static Agenda getAgenda() {
-        return agenda;
-    }
+   
 }

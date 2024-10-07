@@ -8,5 +8,5 @@ package Controller;
  *
  * @author caio
  */
-public class Subsistema {
+public interface Subsistema {
 }

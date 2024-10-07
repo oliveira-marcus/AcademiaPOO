@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author caio
  */
-public class AreaColaboradores extends Subsistema {
+public class AreaColaboradores implements Subsistema {
     private final Path caminhoColaboradores = Paths.get("src/data/colaboradores.json");
     private final List<Funcionario> colaboradores = new ArrayList<>();
     
