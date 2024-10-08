@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author caio
  */
-public class AreaFinanceira implements ListManipulator {
+public class AreaFinanceira {
     private final Path caminhoGanhos = Paths.get("src/data/ganhos.json");
     
     

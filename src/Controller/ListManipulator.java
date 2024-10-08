@@ -4,9 +4,12 @@
  */
 package Controller;
 
+import java.io.IOException;
+
 /**
  *
  * @author caio
  */
 public interface ListManipulator {
+    public void salvar() throws IOException;
 }

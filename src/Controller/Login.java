@@ -16,7 +16,7 @@ public class Login {
     private final List<Funcionario> usuarios;
     
     public Login() throws IOException{
-        JsonController<Funcionario> jsonController = new JsonController(Funcionario.class);
+        JsonListController<Funcionario> jsonController = new JsonListController(Funcionario.class);
         
         usuarios = jsonController.readJsonToList("src/data/colaboradores.json");
     }

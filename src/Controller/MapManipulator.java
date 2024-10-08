@@ -4,10 +4,12 @@
  */
 package Controller;
 
+import java.io.IOException;
+
 /**
  *
  * @author caio
  */
 public interface MapManipulator {
-    
+    public void salvar() throws IOException;
 }

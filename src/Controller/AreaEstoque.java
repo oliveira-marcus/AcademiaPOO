@@ -20,10 +20,11 @@ public class AreaEstoque implements ListManipulator, MapManipulator {
     private final Map<String, Integer> estoque;
     
     public AreaEstoque() throws IOException{
-        JsonController<Produto> jsonController = new JsonController<>(Produto.class);
-        produtos = jsonController.readJsonToList(caminhoProdutos);
+        JsonListController<Produto> jsonListController = new JsonListController<>(Produto.class);
+        produtos = jsonListController.readJsonToList(caminhoProdutos);
         
-        estoque = jsonController.readJsonToMap(caminhoEstoque);
+        JsonMapController<String, Integer> jsonMapController = new JsonMapController(String.class, Integer.class);
+        estoque = jsonMapController.readJsonToMap(caminhoEstoque);
     }
     
     public void alterarQuantidade(int id, int quantidade){
@@ -78,6 +79,15 @@ public class AreaEstoque implements ListManipulator, MapManipulator {
         return null;
     }
     
+    @Override
+    public void salvar() throws IOException{
+        JsonListController<Produto> jsonListController = new JsonListController<>(Produto.class);
+        jsonListController.writeListToJsonFile(produtos, caminhoProdutos);
+        
+        JsonMapController<String, Integer> jsonMapController = new JsonMapController(String.class, Integer.class);
+        jsonMapController.writeMapToJson(estoque, caminhoEstoque);
+    }
+    
     public int getQuantidadeEstoque(Produto produto){
         return estoque.get(produto.getNome());
     }
@@ -89,6 +99,4 @@ public class AreaEstoque implements ListManipulator, MapManipulator {
     public Map<String, Integer> getEstoque() {
         return estoque;
     }
-    
-    
 }

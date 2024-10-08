@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Reserva;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -13,5 +14,10 @@ import java.util.List;
 public class Agenda implements ListManipulator {
     private final Path caminhoAgendamentos = Paths.get("src/data/agendamentos.json");
     private List<Reserva> agendamentos = new ArrayList<>();
+    
+    @Override
+    public void salvar() throws IOException{
+        
+    }
     
 }

@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -15,6 +16,11 @@ public class AreaDespesas implements ListManipulator {
     private final Path caminhoDespesas = Paths.get("src/data/despesas.json");
     
     public void adicionarDespesa(String nome, String tipo, double valor, String data){
+        
+    }
+    
+    @Override
+    public void salvar() throws IOException{
         
     }
 }

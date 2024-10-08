@@ -13,7 +13,7 @@ public class AreaClientes implements ListManipulator {
     private final List<Cliente> clientes;
     
     public AreaClientes() throws IOException{
-        JsonController<Cliente> jsonController = new JsonController<>(Cliente.class);
+        JsonListController<Cliente> jsonController = new JsonListController<>(Cliente.class);
         
         clientes = jsonController.readJsonToList(caminhoClientes);
     }
@@ -54,6 +54,12 @@ public class AreaClientes implements ListManipulator {
             }
         }
         return null;
+    }
+    
+    @Override
+    public void salvar() throws IOException{
+        JsonListController<Cliente> jsonController = new JsonListController<>(Cliente.class);
+        jsonController.writeListToJsonFile(clientes, caminhoClientes);
     }
 
     public List<Cliente> getClientes() {

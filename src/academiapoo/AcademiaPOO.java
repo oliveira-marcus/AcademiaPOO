@@ -5,7 +5,7 @@
 package academiapoo;
 
 import Controller.AreaColaboradores;
-import Controller.JsonController;
+import Controller.JsonListController;
 import Model.Funcionario;
 import java.io.IOException;
 import java.util.List;
@@ -21,7 +21,7 @@ public class AcademiaPOO {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        JsonController<Funcionario> jsonController = new JsonController<>(Funcionario.class);
+        JsonListController<Funcionario> jsonController = new JsonListController<>(Funcionario.class);
         
         AreaColaboradores areaColaboradores = new AreaColaboradores();
         

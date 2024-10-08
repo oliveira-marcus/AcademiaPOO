@@ -14,7 +14,7 @@ public class AreaColaboradores implements ListManipulator {
     private final List<Funcionario> colaboradores;
     
     public AreaColaboradores() throws IOException{
-        JsonController<Funcionario> jsonController = new JsonController<>(Funcionario.class);
+        JsonListController<Funcionario> jsonController = new JsonListController<>(Funcionario.class);
         
         colaboradores = jsonController.readJsonToList(caminhoColaboradores);
     }
@@ -52,6 +52,12 @@ public class AreaColaboradores implements ListManipulator {
             }
         }
         return null;
+    }
+    
+    @Override
+    public void salvar() throws IOException{
+        JsonListController<Funcionario> jsonController = new JsonListController<>(Funcionario.class);
+        jsonController.writeListToJsonFile(colaboradores, caminhoColaboradores);
     }
 
     public List<Funcionario> getColaboradores() {
