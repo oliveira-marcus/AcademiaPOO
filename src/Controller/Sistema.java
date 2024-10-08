@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -25,5 +26,10 @@ public class Sistema {
         }
         return null;
     }
-   
+    
+    public static void salvarDados() throws IOException{
+        for (ListManipulator subsistema : subsistemas){
+            subsistema.salvar();
+        }
+    }
 }
