@@ -1,3 +1,20 @@
-{
-    "name": "caio"
-}
+[
+  {
+    "cartaoCredito": "0000 0000 0000 0000",
+    "id": 201,
+    "nome": "Caio",
+    "endereco": "Rua dos bobo, 0",
+    "telefone": "987654321",
+    "email": "caiobruno@gmail.com",
+    "cpf": "123.456.789-10"
+  },
+  {
+    "cartaoCredito": "1111 0000 0000 0000",
+    "id": 101,
+    "nome": "Gordon",
+    "endereco": "Rua A, 0",
+    "telefone": "21347899",
+    "email": "gordon@gmail.com",
+    "cpf": "456.123.908-43"
+  }
+]

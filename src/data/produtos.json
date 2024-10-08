@@ -1,47 +1,67 @@
 [
-    {
-        "nome":"Halteres (par)",
-        "preco":150.0,
-        "id":101
-    },
-    {   "nome":"Esteira Elétrica",
-        "preco":3000.0,
-        "id":102
-    },
-    {   "nome":"Colchonete",
-        "preco":80.0,
-        "id":103
-    },
-    {   "nome":"Bicicleta Ergométrica",
-        "preco":2200.0,
-        "id":104
-    },
-    {   "nome":"Corda de Pular",
-        "preco":45.0,
-        "id":105
-    },
-    {   "nome":"Kit de Faixas Elásticas",
-        "preco":120.0,
-        "id":106
-    },
-    {   "nome":"Bola de Pilates",
-        "preco":100.0,
-        "id":107
-    },
-    {   "nome":"Luvas de Academia",
-        "preco":60.0,
-        "id":108
-    },
-    {   "nome":"Barrinha Proteica",
-        "preco":12.0,
-        "id":109
-    },
-    {   "nome":"Garrafa de Água",
-        "preco":30.0,
-        "id":110
-    },
-    {   "nome":"Whey",
-        "preco":100.0,
-        "id":200
-    }
+  {
+    "nome": "Halteres (par)",
+    "preco": 150.0,
+    "id": 101
+  },
+  {
+    "nome": "Esteira",
+    "preco": 3000.0,
+    "id": 102
+  },
+  {
+    "nome": "Colchonete",
+    "preco": 80.0,
+    "id": 103
+  },
+  {
+    "nome": "Bicicleta Ergométrica",
+    "preco": 2200.0,
+    "id": 104
+  },
+  {
+    "nome": "Corda de Pular",
+    "preco": 45.0,
+    "id": 105
+  },
+  {
+    "nome": "Kit de Faixas Elásticas",
+    "preco": 120.0,
+    "id": 106
+  },
+  {
+    "nome": "Bola de Pilates",
+    "preco": 100.0,
+    "id": 107
+  },
+  {
+    "nome": "Luvas de Academia",
+    "preco": 60.0,
+    "id": 108
+  },
+  {
+    "nome": "Barrinha Proteica",
+    "preco": 12.0,
+    "id": 109
+  },
+  {
+    "nome": "Garrafa de Água",
+    "preco": 30.0,
+    "id": 110
+  },
+  {
+    "nome": "Whey",
+    "preco": 100.0,
+    "id": 200
+  },
+  {
+    "nome": "Elastico",
+    "preco": 30.0,
+    "id": 210
+  },
+  {
+    "nome": "Argola",
+    "preco": 100.0,
+    "id": 211
+  }
 ]
