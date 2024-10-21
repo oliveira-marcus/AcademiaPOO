@@ -31,20 +31,28 @@ public class AreaClientes implements ListManipulator {
         }
     }
     
-    public void editarCliente(int id, String nomeNovo){
+    public void editarEndereco(int id, String enderecoNovo){
         Cliente resultado = buscarCliente(id);
         
-        if (resultado != null){
-            resultado.setNome(nomeNovo);
-        }
+        resultado.setEndereco(enderecoNovo);
     }
     
-    public void editarCliente(int id, int idNovo){
+    public void editarEmail(int id, String emailNovo){
         Cliente resultado = buscarCliente(id);
         
-        if (resultado != null){
-            resultado.setId(idNovo);
-        }
+        resultado.setEmail(emailNovo);
+    }
+    
+    public void editarTelefone(int id, String telefoneNovo){
+        Cliente resultado = buscarCliente(id);
+        
+        resultado.setTelefone(telefoneNovo);
+    }
+    
+    public void editarCartao(int id, String cartaoNovo){
+        Cliente resultado = buscarCliente(id);
+        
+        resultado.setCartaoCredito(cartaoNovo);
     }
     
     public Cliente buscarCliente(int id){

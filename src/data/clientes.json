@@ -5,16 +5,16 @@
     "nome": "Caio",
     "endereco": "Rua dos bobo, 0",
     "telefone": "987654321",
-    "email": "caiobruno@gmail.com",
+    "email": "cainbgl@gmail.com",
     "cpf": "123.456.789-10"
   },
   {
-    "cartaoCredito": "1111 0000 0000 0000",
-    "id": 101,
-    "nome": "Gordon",
-    "endereco": "Rua A, 0",
-    "telefone": "21347899",
-    "email": "gordon@gmail.com",
-    "cpf": "456.123.908-43"
+    "cartaoCredito": "1111 0000 3333 1444",
+    "id": 780,
+    "nome": "Patrick",
+    "endereco": "Fenda do Biquini",
+    "telefone": "00001111",
+    "email": "patrickestrela@gmail.com",
+    "cpf": "111.222.111-31"
   }
 ]

@@ -4,12 +4,10 @@
  */
 package academiapoo;
 
-import Controller.Agenda;
 import Controller.AreaClientes;
-import Controller.AreaColaboradores;
-import Controller.AreaEstoque;
 import Controller.ListManipulator;
 import Controller.Sistema;
+import View.TelaClientes;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,15 +26,12 @@ public class AcademiaPOO {
         List<ListManipulator> subsistemas = new ArrayList<>();
         
         subsistemas.add(new AreaClientes());
-        subsistemas.add(new AreaColaboradores());
-        subsistemas.add(new AreaEstoque());
-        subsistemas.add(new Agenda());
         
         Sistema sistema = new Sistema(subsistemas);
         
-        Agenda agenda = Sistema.getSubsistemaPorTipo(Agenda.class);
+        TelaClientes telaClientes = new TelaClientes();
         
-        agenda.adicionarAgendamento(1, 101, "Musculação", 0, "Caio Bruno", "11 10 2024 10 0");
+        telaClientes.exibirMenu();
  
         Sistema.salvarDados();
     }
