@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,7 +31,16 @@ public class JsonListController<T> {
     public List<T> readJsonToList(String caminhoArquivo) throws IOException {
         String jsonString = Files.readString(Paths.get(caminhoArquivo));
         Type listType = TypeToken.getParameterized(List.class, tipoClasse).getType();
-        return gson.fromJson(jsonString, listType);
+        
+        var list = gson.fromJson(jsonString, listType);
+        
+        if (list != null){
+            return gson.fromJson(jsonString, listType);
+        }
+        
+        else{
+            return new ArrayList<>();
+        }
     }
     
     public void writeListToJsonFile(List<T> objetos, String caminhoArquivo) throws IOException {

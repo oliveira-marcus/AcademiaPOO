@@ -4,29 +4,39 @@
  */
 package Model;
 
-import java.time.LocalTime;
+import java.util.Calendar;
 
 /**
  *
  * @author caio
  */
-public class Reserva {
-    
+public class Agendamento {
+    private int id;
     private String  estadoReserva;
     private Cliente cliente;
-    private Aula tipoAula;
+    private String tipoAula;
     private double precoAula;
     private Funcionario instrutor;
-    private LocalTime horario;
+    public Calendar dataHorario;
     
-    public Reserva(String estadoReserva, Cliente cliente, Aula tipoAula, double precoAula, Funcionario instrutor) {
+    public Agendamento(int id, String estadoReserva, Cliente cliente, String tipoAula, double precoAula, Funcionario instrutor, Calendar dataHorario) {
+        this.id = id;
         this.estadoReserva = estadoReserva;
-        this.cliente = cliente;
+        this.cliente = cliente;  
         this.tipoAula = tipoAula;
         this.precoAula = precoAula;
         this.instrutor = instrutor;
+        this.dataHorario = dataHorario;
     }
-
+    
+    public int getId(){
+        return id;
+    }
+    
+    public void setId(int id){
+        this.id = id;
+    }
+    
     public String getEstadoReserva() {
         return estadoReserva;
     }
@@ -43,11 +53,11 @@ public class Reserva {
         this.cliente = cliente;
     }
 
-    public Aula getTipoAula() {
+    public String getTipoAula() {
         return tipoAula;
     }
 
-    public void setTipoAula(Aula tipoAula) {
+    public void setTipoAula(String tipoAula) {
         this.tipoAula = tipoAula;
     }
 
@@ -67,9 +77,16 @@ public class Reserva {
         this.instrutor = instrutor;
     }
     
+    public Calendar getDataHorario(){
+        return dataHorario;
+    }
+    
+    public void setDataHorario(Calendar horario){
+        this.dataHorario = horario;
+    }
+    
     @Override
     public String toString() {
         return this.estadoReserva + ", Reserva feita por " + this.cliente.getNome();
     }
 }
-

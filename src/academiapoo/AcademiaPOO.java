@@ -4,7 +4,9 @@
  */
 package academiapoo;
 
+import Controller.Agenda;
 import Controller.AreaClientes;
+import Controller.AreaColaboradores;
 import Controller.AreaEstoque;
 import Controller.ListManipulator;
 import Controller.Sistema;
@@ -26,18 +28,16 @@ public class AcademiaPOO {
         List<ListManipulator> subsistemas = new ArrayList<>();
         
         subsistemas.add(new AreaClientes());
-//        subsistemas.add(new AreaColaboradores());
+        subsistemas.add(new AreaColaboradores());
         subsistemas.add(new AreaEstoque());
+        subsistemas.add(new Agenda());
         
         Sistema sistema = new Sistema(subsistemas);
         
-        AreaClientes areaClientes = Sistema.getSubsistemaPorTipo(AreaClientes.class);
-        AreaEstoque areaEstoque = Sistema.getSubsistemaPorTipo(AreaEstoque.class);
+        Agenda agenda = Sistema.getSubsistemaPorTipo(Agenda.class);
         
-        areaClientes.adicionarCliente("Bob Esponja", "Fenda do Biquini, 10", "912345678", "bobesponja@gmail.com", "987.654.321-21", "1111 2222 3333 4444", 777);
-        
-        areaEstoque.adicionarProduto("Colete", 150, 231);
-        
+        agenda.adicionarAgendamento(1, 101, "Musculação", 0, "Caio Bruno", "11 10 2024 10 0");
+ 
         Sistema.salvarDados();
     }
     
