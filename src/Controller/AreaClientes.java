@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author caio
  */
-public class AreaClientes implements ListManipulator {
+public class AreaClientes implements Manipulator {
     private final String caminhoClientes = "src/data/clientes.json";
     private final List<Cliente> clientes;
     

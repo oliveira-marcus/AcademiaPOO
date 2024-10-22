@@ -5,12 +5,12 @@
 package academiapoo;
 
 import Controller.AreaClientes;
-import Controller.ListManipulator;
 import Controller.Sistema;
 import View.TelaClientes;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import Controller.Manipulator;
 
 /**
  *
@@ -23,7 +23,7 @@ public class AcademiaPOO {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        List<ListManipulator> subsistemas = new ArrayList<>();
+        List<Manipulator> subsistemas = new ArrayList<>();
         
         subsistemas.add(new AreaClientes());
         

@@ -13,7 +13,7 @@ import java.util.Map;
  *
  * @author caio
  */
-public class AreaEstoque implements ListManipulator, MapManipulator {
+public class AreaEstoque implements Manipulator{
     private final String caminhoEstoque = "src/data/estoque.json";
     private final String caminhoProdutos = "src/data/produtos.json";
     private final List<Produto> produtos;

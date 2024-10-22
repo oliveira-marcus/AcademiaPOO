@@ -12,7 +12,7 @@ import java.nio.file.Paths;
  *
  * @author caio
  */
-public class AreaGanhos implements ListManipulator {
+public class AreaGanhos implements Manipulator {
     private final Path caminhoGanhos = Paths.get("src/data/ganhos.json");
     
     @Override

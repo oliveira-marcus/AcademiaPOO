@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author caio
  */
-public class AreaColaboradores implements ListManipulator {
+public class AreaColaboradores implements Manipulator {
     private final String caminhoColaboradores ="src/data/colaboradores.json";
     private final List<Funcionario> colaboradores;
     

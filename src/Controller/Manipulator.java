@@ -10,6 +10,6 @@ import java.io.IOException;
  *
  * @author caio
  */
-public interface MapManipulator {
+public interface Manipulator {
     public void salvar() throws IOException;
 }

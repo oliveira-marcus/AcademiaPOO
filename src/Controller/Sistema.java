@@ -12,14 +12,14 @@ import java.util.List;
  * @author caio
  */
 public class Sistema {
-    private static List<ListManipulator> subsistemas;
+    private static List<Manipulator> manipuladores;
     
-    public Sistema(List<ListManipulator> subsistemas){
-        Sistema.subsistemas = subsistemas;
+    public Sistema(List<Manipulator> manipuladores){
+        Sistema.manipuladores = manipuladores;
     }
     
-    public static <T extends ListManipulator> T getSubsistemaPorTipo(Class<T> tipo){
-        for (ListManipulator s : subsistemas){
+    public static <T extends Manipulator> T getSubsistemaPorTipo(Class<T> tipo){
+        for (Manipulator s : manipuladores){
             if (tipo.isInstance(s)){
                 return tipo.cast(s);
             }
@@ -28,8 +28,8 @@ public class Sistema {
     }
     
     public static void salvarDados() throws IOException{
-        for (ListManipulator subsistema : subsistemas){
-            subsistema.salvar();
+        for (Manipulator manipulador : manipuladores){
+            manipulador.salvar();
         }
     }
 }

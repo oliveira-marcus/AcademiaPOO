@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author caio
  */
-public class Agenda implements ListManipulator {
+public class Agenda implements Manipulator {
     private final String caminhoAgendamentos = "src/data/agendamentos.json";
     private List<Agendamento> agendamentos = new ArrayList<>();
     
