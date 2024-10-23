@@ -4,13 +4,16 @@
  */
 package academiapoo;
 
+import Controller.Agenda;
 import Controller.AreaClientes;
+import Controller.AreaColaboradores;
 import Controller.Sistema;
-import View.TelaClientes;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import Controller.Manipulator;
+import Model.CompAgendamDataHorarioCresc;
+import java.util.Collections;
 
 /**
  *
@@ -23,15 +26,21 @@ public class AcademiaPOO {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        List<Manipulator> subsistemas = new ArrayList<>();
+        List<Manipulator> manipuladores = new ArrayList<>();
         
-        subsistemas.add(new AreaClientes());
+        manipuladores.add(new Agenda());
+        manipuladores.add(new AreaClientes());
+        manipuladores.add(new AreaColaboradores());
         
-        Sistema sistema = new Sistema(subsistemas);
+        Sistema sistema = new Sistema(manipuladores);
         
-        TelaClientes telaClientes = new TelaClientes();
+        Agenda agenda = Sistema.getSubsistemaPorTipo(Agenda.class);
         
-        telaClientes.exibirMenu();
+        System.out.println(agenda.getAgendamentos());
+        
+        Collections.sort(agenda.getAgendamentos(), new CompAgendamDataHorarioCresc());
+        
+        System.out.println(agenda.getAgendamentos());
  
         Sistema.salvarDados();
     }

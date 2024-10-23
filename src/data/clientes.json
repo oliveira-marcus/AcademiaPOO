@@ -1,14 +1,5 @@
 [
   {
-    "cartaoCredito": "0000 0000 0000 0000",
-    "id": 201,
-    "nome": "Caio",
-    "endereco": "Rua dos bobo, 0",
-    "telefone": "987654321",
-    "email": "cainbgl@gmail.com",
-    "cpf": "123.456.789-10"
-  },
-  {
     "cartaoCredito": "1111 0000 3333 1444",
     "id": 780,
     "nome": "Patrick",
@@ -16,5 +7,14 @@
     "telefone": "00001111",
     "email": "patrickestrela@gmail.com",
     "cpf": "111.222.111-31"
+  },
+  {
+    "cartaoCredito": "0000 0000 0000 0000",
+    "id": 201,
+    "nome": "Caio",
+    "endereco": "Rua dos bobo, 0",
+    "telefone": "987654321",
+    "email": "cainbgl@gmail.com",
+    "cpf": "123.456.789-10"
   }
 ]

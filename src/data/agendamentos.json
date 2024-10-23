@@ -1,36 +1,70 @@
 [
   {
-    "id": 1,
+    "id": 201,
     "estadoReserva": "FEITA",
     "cliente": {
-      "cartaoCredito": "1111 0000 0000 0000",
-      "id": 101,
-      "nome": "Gordon",
-      "endereco": "Rua A, 0",
-      "telefone": "21347899",
-      "email": "gordon@gmail.com",
-      "cpf": "456.123.908-43"
+      "cartaoCredito": "1111 0000 3333 1444",
+      "id": 780,
+      "nome": "Patrick",
+      "endereco": "Fenda do Biquini",
+      "telefone": "00001111",
+      "email": "patrickestrela@gmail.com",
+      "cpf": "111.222.111-31"
     },
-    "tipoAula": "Musculação",
-    "precoAula": 0.0,
+    "tipoAula": "Pilates",
+    "precoAula": 60.0,
     "instrutor": {
-      "salario": 5000.0,
-      "login": "caiobruno",
-      "senha": "senha900",
+      "salario": 4100.0,
+      "login": "julianapereira",
+      "senha": "senha505",
       "cargo": "Instrutor",
-      "nome": "Caio Bruno",
-      "endereco": "Rua dos Bobo, 0",
-      "telefone": "90591234",
-      "email": "liborioestudo@gmail.com",
-      "cpf": "123.654.765-92"
+      "nome": "Juliana Pereira",
+      "endereco": "Rua H, 505",
+      "telefone": "11987654328",
+      "email": "juliana@gmail.com",
+      "cpf": "890.123.456-07"
     },
     "dataHorario": {
       "year": 2024,
-      "month": 10,
-      "dayOfMonth": 11,
-      "hourOfDay": 10,
+      "month": 11,
+      "dayOfMonth": 24,
+      "hourOfDay": 23,
       "minute": 0,
-      "second": 42
+      "second": 25
+    }
+  },
+  {
+    "id": 200,
+    "estadoReserva": "FEITA",
+    "cliente": {
+      "cartaoCredito": "0000 0000 0000 0000",
+      "id": 201,
+      "nome": "Caio",
+      "endereco": "Rua dos bobo, 0",
+      "telefone": "987654321",
+      "email": "cainbgl@gmail.com",
+      "cpf": "123.456.789-10"
+    },
+    "tipoAula": "Musculação",
+    "precoAula": 50.0,
+    "instrutor": {
+      "salario": 3200.0,
+      "login": "carlosmendes",
+      "senha": "senha404",
+      "cargo": "Instrutor",
+      "nome": "Carlos Mendes",
+      "endereco": "Rua G, 404",
+      "telefone": "11987654327",
+      "email": "carlos@gmail.com",
+      "cpf": "789.012.345-06"
+    },
+    "dataHorario": {
+      "year": 2024,
+      "month": 11,
+      "dayOfMonth": 24,
+      "hourOfDay": 23,
+      "minute": 10,
+      "second": 25
     }
   }
 ]

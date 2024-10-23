@@ -91,4 +91,8 @@ public class Agenda implements Manipulator {
         JsonListController<Agendamento> jsonController = new JsonListController<>(Agendamento.class);
         jsonController.writeListToJsonFile(agendamentos, caminhoAgendamentos);
     }
+    
+    public List<Agendamento> getAgendamentos() {
+        return agendamentos;
+    }
 }
