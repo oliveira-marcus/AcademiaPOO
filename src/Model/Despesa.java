@@ -4,7 +4,7 @@
  */
 package Model;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  *
@@ -14,13 +14,15 @@ public class Despesa {
     private String nome;
     private String tipo;
     private double valor;
-    private Date data;
+    private Calendar data;
+    private int id;
     
-    public Despesa(String nome, String tipo, double valor, Date data){
+    public Despesa(String nome, String tipo, double valor, Calendar data, int id){
         this.nome = nome;
         this.tipo = tipo;
         this.valor = valor;
         this.data = data;
+        this.id = id;
     }
 
     public String getNome() {
@@ -47,11 +49,19 @@ public class Despesa {
         this.valor = valor;
     }
 
-    public Date getData() {
+    public Calendar getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(Calendar data) {
         this.data = data;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

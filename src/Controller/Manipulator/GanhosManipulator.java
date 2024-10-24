@@ -21,6 +21,8 @@ public class GanhosManipulator extends ListManipulator<Ganho, Integer> {
         
     }
     
+    public editar
+    
     @Override
     public void remover(Ganho ganho){
         
