@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Controller.Manipulator.Manipulator;
 import java.io.IOException;
 import java.util.List;
 

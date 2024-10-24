@@ -2,21 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller;
+package Controller.Manipulator;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  *
  * @author caio
  */
-public class AreaGanhos extends Manipulator {
-    private final Path caminhoGanhos = Paths.get("src/data/ganhos.json");
-    
-    @Override
+public abstract class Manipulator {
     public void salvar() throws IOException{
         
-    }
+    };
 }

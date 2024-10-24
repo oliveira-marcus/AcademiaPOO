@@ -4,7 +4,7 @@
  */
 package View;
 
-import Controller.AreaClientes;
+import Controller.Manipulator.ClientesManipulator;
 import Controller.Sistema;
 import Model.Cliente;
 import java.util.Scanner;
@@ -14,7 +14,7 @@ import java.util.Scanner;
  * @author caio
  */
 public class TelaClientes {
-    private final AreaClientes areaClientes = Sistema.getSubsistemaPorTipo(AreaClientes.class);
+    private final ClientesManipulator areaClientes = Sistema.getSubsistemaPorTipo(ClientesManipulator.class);
     
     public void exibirMenu(){
         int opcao = 0;

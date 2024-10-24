@@ -1,5 +1,6 @@
-package Controller;
+package Controller.Manipulator;
 
+import Controller.JsonController.JsonListController;
 import Model.Cliente;
 import java.io.IOException;
 import java.util.List;
@@ -8,11 +9,11 @@ import java.util.List;
  *
  * @author caio
  */
-public class AreaClientes extends Manipulator {
+public class ClientesManipulator extends Manipulator {
     private final String caminhoClientes = "src/data/clientes.json";
     private final List<Cliente> clientes;
     
-    public AreaClientes() throws IOException{
+    public ClientesManipulator() throws IOException{
         JsonListController<Cliente> jsonController = new JsonListController<>(Cliente.class);
         
         clientes = jsonController.readJsonToList(caminhoClientes);

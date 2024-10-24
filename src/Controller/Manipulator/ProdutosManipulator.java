@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller;
+package Controller.Manipulator;
 
+import Controller.JsonController.JsonListController;
+import Controller.Sistema;
 import Model.Produto;
 import java.io.IOException;
 import java.util.List;
@@ -12,12 +14,12 @@ import java.util.List;
  *
  * @author caio
  */
-public class AreaProduto extends Manipulator{
-    private final AreaEstoque areaEstoque = Sistema.getSubsistemaPorTipo(AreaEstoque.class);
+public class ProdutosManipulator extends Manipulator{
+    private final EstoqueManipulator areaEstoque = Sistema.getSubsistemaPorTipo(EstoqueManipulator.class);
     private final String caminhoProdutos = "src/data/produtos.json";
     private final List<Produto> produtos;
     
-    public AreaProduto() throws IOException{
+    public ProdutosManipulator() throws IOException{
         JsonListController<Produto> jsonListController = new JsonListController<>(Produto.class);
         produtos = jsonListController.readJsonToList(caminhoProdutos);
     }

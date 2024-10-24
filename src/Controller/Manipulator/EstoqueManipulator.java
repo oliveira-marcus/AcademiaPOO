@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller;
+package Controller.Manipulator;
 
+import Controller.JsonController.JsonMapController;
+import Controller.Sistema;
 import Model.Produto;
 import java.io.IOException;
 import java.util.Map;
@@ -13,17 +15,17 @@ import java.util.Map;
  * @author caio
  */
 
-public class AreaEstoque extends Manipulator{
+public class EstoqueManipulator extends Manipulator{
     private final String caminhoEstoque = "src/data/estoque.json";
     private final Map<String, Integer> estoque;
     
-    public AreaEstoque() throws IOException{
+    public EstoqueManipulator() throws IOException{
         JsonMapController<String, Integer> jsonMapController = new JsonMapController(String.class, Integer.class);
         estoque = jsonMapController.readJsonToMap(caminhoEstoque);
     }
     
     public void alterarQuantidade(int id, int quantidade){
-        AreaProduto areaProduto = Sistema.getSubsistemaPorTipo(AreaProduto.class);
+        ProdutosManipulator areaProduto = Sistema.getSubsistemaPorTipo(ProdutosManipulator.class);
         Produto resultado = areaProduto.buscaCatalogo(id);
         int quantidadeNova = estoque.get(resultado.getNome()) + quantidade;
         estoque.put(resultado.getNome(), quantidadeNova);

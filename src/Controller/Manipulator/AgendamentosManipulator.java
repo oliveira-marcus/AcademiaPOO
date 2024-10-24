@@ -1,5 +1,7 @@
-package Controller;
+package Controller.Manipulator;
 
+import Controller.JsonController.JsonListController;
+import Controller.Sistema;
 import Model.Agendamento;
 import Model.Cliente;
 import Model.Funcionario;
@@ -12,11 +14,11 @@ import java.util.List;
  *
  * @author caio
  */
-public class Agenda extends Manipulator {
+public class AgendamentosManipulator extends Manipulator {
     private final String caminhoAgendamentos = "src/data/agendamentos.json";
     private List<Agendamento> agendamentos = new ArrayList<>();
     
-    public Agenda() throws IOException{
+    public AgendamentosManipulator() throws IOException{
         JsonListController<Agendamento> jsonController = new JsonListController<>(Agendamento.class);
         
         agendamentos = jsonController.readJsonToList(caminhoAgendamentos);
@@ -24,11 +26,11 @@ public class Agenda extends Manipulator {
     
     public void adicionarAgendamento(int id, int idCliente, String tipoAula, double precoAula, String nomeInstrutor, String dataHorarioStr){
         // faz a busca do Cliente
-        AreaClientes areaClientes = Sistema.getSubsistemaPorTipo(AreaClientes.class);
+        ClientesManipulator areaClientes = Sistema.getSubsistemaPorTipo(ClientesManipulator.class);
         Cliente cliente = areaClientes.buscarCliente(idCliente);
         
         // faz a busca do Colaborador
-        AreaColaboradores areaColaboradores = Sistema.getSubsistemaPorTipo(AreaColaboradores.class);
+        ColaboradoresManipulator areaColaboradores = Sistema.getSubsistemaPorTipo(ColaboradoresManipulator.class);
         Funcionario instrutor = areaColaboradores.buscarColaborador(nomeInstrutor);
         
         Calendar dataHorario = formatarHorario(dataHorarioStr);
