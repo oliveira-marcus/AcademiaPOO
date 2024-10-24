@@ -6,6 +6,7 @@ package Controller.Manipulator;
 
 import Model.Despesa;
 import java.io.IOException;
+import java.util.Calendar;
 
 /**
  *
@@ -18,16 +19,37 @@ public class DespesasManipulator extends ListManipulator<Despesa, Integer> {
     
     @Override
     public void adicionar(Despesa novaDespesa){
-        
+        super.adicionar(novaDespesa);
+    }
+    
+    public void editarNome(Despesa despesa, String novoNome){
+        despesa.setNome(novoNome);
+    }
+    
+    public void editarTipo(Despesa despesa, String novoTipo){
+        despesa.setTipo(novoTipo);
+    }
+    
+    public void editarValor(Despesa despesa, double novoValor){
+        despesa.setValor(novoValor);
+    }
+    
+    public void editarData(Despesa despesa, Calendar novaData){
+        despesa.setData(novaData);
     }
     
     @Override
     public void remover(Despesa despesa){
-        
+        super.remover(despesa);
     }
     
     @Override
     public Despesa buscar(Integer id){
+        for(Despesa despesa :this.getLista()){
+            if (despesa.getId() == id){
+                return despesa;
+            }
+        }
         return null;
     }
     

@@ -6,6 +6,7 @@ package Controller.Manipulator;
 
 import Model.Ganho;
 import java.io.IOException;
+import java.util.Calendar;
 
 /**
  *
@@ -18,18 +19,37 @@ public class GanhosManipulator extends ListManipulator<Ganho, Integer> {
 
     @Override
     public void adicionar(Ganho ganho){
-        
+        super.adicionar(ganho);
     }
     
-    public editar
+    public void editarNome(Ganho ganho, String novoNome){
+        ganho.setNome(novoNome);
+    }
     
+    public void editarTipo(Ganho ganho, String novoTipo){
+        ganho.setTipo(novoTipo);
+    }
+    
+    public void editarValor(Ganho ganho, double novoValor){
+        ganho.setValor(novoValor);
+    }
+    
+    public void editarData(Ganho ganho, Calendar novaData){
+        ganho.setData(novaData);
+    }
+
     @Override
     public void remover(Ganho ganho){
-        
+        super.remover(ganho);
     }
     
     @Override
     public Ganho buscar(Integer id){
+        for (Ganho ganho : this.getLista()){
+            if (ganho.getId() == id){
+                return ganho;
+            }
+        }
         return null;
     }
     
