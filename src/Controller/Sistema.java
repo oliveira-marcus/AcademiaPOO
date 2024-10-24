@@ -6,6 +6,7 @@ package Controller;
 
 import Controller.Manipulator.Manipulator;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,10 +14,14 @@ import java.util.List;
  * @author caio
  */
 public class Sistema {
-    private static List<Manipulator> manipuladores;
+    private static List<Manipulator> manipuladores = new ArrayList<>();
     
     public Sistema(List<Manipulator> manipuladores){
         Sistema.manipuladores = manipuladores;
+    }
+    
+    public static void adicionarManipulador(Manipulator manipulador){
+        manipuladores.add(manipulador);
     }
     
     public static <T extends Manipulator> T getSubsistemaPorTipo(Class<T> tipo){

@@ -1,63 +1,54 @@
 package Controller.Manipulator;
 
-import Controller.JsonController.JsonListController;
 import Model.Cliente;
 import java.io.IOException;
-import java.util.List;
 
 /**
  *
  * @author caio
  */
-public class ClientesManipulator extends Manipulator {
-    private final String caminhoClientes = "src/data/clientes.json";
-    private final List<Cliente> clientes;
-    
-    public ClientesManipulator() throws IOException{
-        JsonListController<Cliente> jsonController = new JsonListController<>(Cliente.class);
-        
-        clientes = jsonController.readJsonToList(caminhoClientes);
+public final class ClientesManipulator extends ListManipulator<Cliente, Integer> {  
+    public ClientesManipulator(String caminho, Class<Cliente> classe) throws IOException{
+        super(caminho, classe);
     }
     
-    public void adicionarCliente(String nome, String endereco, String telefone, String email, String cpf, String cartaoCredito, int id){
-        Cliente novoCliente = new Cliente(nome, endereco, telefone, email, cpf, cartaoCredito, id);
-        clientes.add(novoCliente);
+    @Override
+    public void adicionar(Cliente novoCliente){
+        super.adicionar(novoCliente);
     }
     
-    public void removerCliente(int id){
-        Cliente resultado = buscarCliente(id);
-        
-        if (resultado != null){
-            clientes.remove(resultado);
-        }
+    @Override
+    public void remover(Cliente cliente){
+        super.remover(cliente);
     }
     
     public void editarEndereco(int id, String enderecoNovo){
-        Cliente resultado = buscarCliente(id);
+        Cliente resultado = buscar(id);
         
         resultado.setEndereco(enderecoNovo);
     }
     
     public void editarEmail(int id, String emailNovo){
-        Cliente resultado = buscarCliente(id);
+        Cliente resultado = buscar(id);
         
         resultado.setEmail(emailNovo);
     }
     
     public void editarTelefone(int id, String telefoneNovo){
-        Cliente resultado = buscarCliente(id);
+        Cliente resultado = buscar(id);
         
         resultado.setTelefone(telefoneNovo);
     }
     
     public void editarCartao(int id, String cartaoNovo){
-        Cliente resultado = buscarCliente(id);
+        Cliente resultado = buscar(id);
         
         resultado.setCartaoCredito(cartaoNovo);
     }
     
-    public Cliente buscarCliente(int id){
-        for (Cliente cliente : clientes){
+    @Override
+    public Cliente buscar(Integer id){
+        for (Cliente cliente : this.getLista()){
             if (cliente.getId() == id){
                 return cliente;
             }
@@ -67,11 +58,7 @@ public class ClientesManipulator extends Manipulator {
     
     @Override
     public void salvar() throws IOException{
-        JsonListController<Cliente> jsonController = new JsonListController<>(Cliente.class);
-        jsonController.writeListToJsonFile(clientes, caminhoClientes);
+        super.salvar();
     }
 
-    public List<Cliente> getClientes() {
-        return clientes;
-    }  
 }

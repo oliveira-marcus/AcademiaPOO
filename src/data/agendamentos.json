@@ -1,5 +1,39 @@
 [
   {
+    "id": 200,
+    "estadoReserva": "FEITA",
+    "cliente": {
+      "cartaoCredito": "0000 0000 0000 0000",
+      "id": 201,
+      "nome": "Caio",
+      "endereco": "Rua dos bobo, 0",
+      "telefone": "987654321",
+      "email": "cainbgl@gmail.com",
+      "cpf": "123.456.789-10"
+    },
+    "tipoAula": "Musculação",
+    "precoAula": 50.0,
+    "instrutor": {
+      "salario": 3200.0,
+      "login": "carlosmendes",
+      "senha": "senha404",
+      "cargo": "Instrutor",
+      "nome": "Carlos Mendes",
+      "endereco": "Rua G, 404",
+      "telefone": "11987654327",
+      "email": "carlos@gmail.com",
+      "cpf": "789.012.345-06"
+    },
+    "dataHorario": {
+      "year": 2024,
+      "month": 11,
+      "dayOfMonth": 23,
+      "hourOfDay": 23,
+      "minute": 10,
+      "second": 25
+    }
+  },
+  {
     "id": 201,
     "estadoReserva": "FEITA",
     "cliente": {
@@ -30,40 +64,6 @@
       "dayOfMonth": 24,
       "hourOfDay": 23,
       "minute": 0,
-      "second": 25
-    }
-  },
-  {
-    "id": 200,
-    "estadoReserva": "FEITA",
-    "cliente": {
-      "cartaoCredito": "0000 0000 0000 0000",
-      "id": 201,
-      "nome": "Caio",
-      "endereco": "Rua dos bobo, 0",
-      "telefone": "987654321",
-      "email": "cainbgl@gmail.com",
-      "cpf": "123.456.789-10"
-    },
-    "tipoAula": "Musculação",
-    "precoAula": 50.0,
-    "instrutor": {
-      "salario": 3200.0,
-      "login": "carlosmendes",
-      "senha": "senha404",
-      "cargo": "Instrutor",
-      "nome": "Carlos Mendes",
-      "endereco": "Rua G, 404",
-      "telefone": "11987654327",
-      "email": "carlos@gmail.com",
-      "cpf": "789.012.345-06"
-    },
-    "dataHorario": {
-      "year": 2024,
-      "month": 11,
-      "dayOfMonth": 24,
-      "hourOfDay": 23,
-      "minute": 10,
       "second": 25
     }
   }

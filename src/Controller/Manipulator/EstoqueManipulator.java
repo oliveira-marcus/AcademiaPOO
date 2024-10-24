@@ -15,27 +15,30 @@ import java.util.Map;
  * @author caio
  */
 
-public class EstoqueManipulator extends Manipulator{
+public class EstoqueManipulator extends Manipulator<String>{
     private final String caminhoEstoque = "src/data/estoque.json";
     private final Map<String, Integer> estoque;
     
-    public EstoqueManipulator() throws IOException{
+    public EstoqueManipulator(String caminho) throws IOException{
+        super(caminho);
         JsonMapController<String, Integer> jsonMapController = new JsonMapController(String.class, Integer.class);
         estoque = jsonMapController.readJsonToMap(caminhoEstoque);
     }
     
     public void alterarQuantidade(int id, int quantidade){
         ProdutosManipulator areaProduto = Sistema.getSubsistemaPorTipo(ProdutosManipulator.class);
-        Produto resultado = areaProduto.buscaCatalogo(id);
+        Produto resultado = areaProduto.buscar(id);
         int quantidadeNova = estoque.get(resultado.getNome()) + quantidade;
         estoque.put(resultado.getNome(), quantidadeNova);
     }
     
-    public void adicionarProduto(String nome, int quantidade){
-        estoque.put(nome, quantidade);
+    @Override
+    public void adicionar(String nome){
+        estoque.put(nome, 0);
     }
     
-    public void removerProduto(String nome){
+    @Override
+    public void remover(String nome){
         estoque.remove(nome);
     }
     

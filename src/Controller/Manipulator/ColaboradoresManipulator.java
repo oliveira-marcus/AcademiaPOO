@@ -1,53 +1,34 @@
 package Controller.Manipulator;
 
-import Controller.JsonController.JsonListController;
-import Model.Administrador;
 import Model.Funcionario;
 import java.io.IOException;
-import java.util.List;
 
 /**
  *
  * @author caio
  */
-public class ColaboradoresManipulator extends Manipulator {
-    private final String caminhoColaboradores ="src/data/colaboradores.json";
-    private final List<Funcionario> colaboradores;
-    
-    public ColaboradoresManipulator() throws IOException{
-        JsonListController<Funcionario> jsonController = new JsonListController<>(Funcionario.class);
-        
-        colaboradores = jsonController.readJsonToList(caminhoColaboradores);
+public class ColaboradoresManipulator extends ListManipulator<Funcionario, String> {
+    public ColaboradoresManipulator(String caminho, Class<Funcionario> classe) throws IOException{
+        super(caminho, classe);
     }
     
-    public void adicionarColaborador(String nome, String endereco, String telefone, String email, String cpf, double salario, String login, String senha, String cargo){
-        Funcionario novoFuncionario;
-        
-        if (cargo.equals("Administrador")){
-            novoFuncionario = new Administrador(nome, endereco, telefone, email, cpf, salario, login, senha);
-        }
-        
-        else{
-            novoFuncionario = new Funcionario(nome, endereco, telefone, email, cpf, salario, login, senha, cargo);
-        }
-        
-        colaboradores.add(novoFuncionario);
+    @Override
+    public void adicionar(Funcionario novoFuncionario){
+        super.adicionar(novoFuncionario);
     }
     
-    public void removerColaborador(String nome){
-        Funcionario resultado = buscarColaborador(nome);
-        
-        if (resultado != null){
-            colaboradores.remove(resultado);
-        }
+    @Override
+    public void remover(Funcionario funcionario){
+        super.remover(funcionario);
     }
     
     public void editarColaborador(){
    
     }
     
-    public Funcionario buscarColaborador(String nome){
-        for (Funcionario colaborador : colaboradores){
+    @Override
+    public Funcionario buscar(String nome){
+        for (Funcionario colaborador : this.getLista()){
             if (colaborador.getNome().equals(nome)){
                 return colaborador;
             }
@@ -57,11 +38,6 @@ public class ColaboradoresManipulator extends Manipulator {
     
     @Override
     public void salvar() throws IOException{
-        JsonListController<Funcionario> jsonController = new JsonListController<>(Funcionario.class);
-        jsonController.writeListToJsonFile(colaboradores, caminhoColaboradores);
-    }
-
-    public List<Funcionario> getColaboradores() {
-        return colaboradores;
+        super.salvar();
     }
 }

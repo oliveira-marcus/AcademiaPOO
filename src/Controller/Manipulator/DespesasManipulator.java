@@ -4,19 +4,31 @@
  */
 package Controller.Manipulator;
 
+import Model.Despesa;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  *
  * @author caio
  */
-public class DespesasManipulator extends Manipulator {
-    private final Path caminhoDespesas = Paths.get("src/data/despesas.json");
+public class DespesasManipulator extends ListManipulator<Despesa, Integer> {
+    public DespesasManipulator(String caminho, Class<Despesa> classe) throws IOException{
+        super(caminho, classe);
+    }
     
-    public void adicionarDespesa(String nome, String tipo, double valor, String data){
+    @Override
+    public void adicionar(Despesa novaDespesa){
         
+    }
+    
+    @Override
+    public void remover(Despesa despesa){
+        
+    }
+    
+    @Override
+    public Despesa buscar(Integer id){
+        return null;
     }
     
     @Override

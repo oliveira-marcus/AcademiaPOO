@@ -4,76 +4,62 @@
  */
 package Controller.Manipulator;
 
-import Controller.JsonController.JsonListController;
 import Controller.Sistema;
 import Model.Produto;
 import java.io.IOException;
-import java.util.List;
 
 /**
  *
  * @author caio
  */
-public class ProdutosManipulator extends Manipulator{
+public class ProdutosManipulator extends ListManipulator<Produto, Integer>{
     private final EstoqueManipulator areaEstoque = Sistema.getSubsistemaPorTipo(EstoqueManipulator.class);
-    private final String caminhoProdutos = "src/data/produtos.json";
-    private final List<Produto> produtos;
     
-    public ProdutosManipulator() throws IOException{
-        JsonListController<Produto> jsonListController = new JsonListController<>(Produto.class);
-        produtos = jsonListController.readJsonToList(caminhoProdutos);
+    public ProdutosManipulator(String caminho, Class<Produto> classe) throws IOException{
+        super(caminho, classe);
     }
     
-    public void adicionarProduto(String nome, double preco, int id){
-        Produto novoProduto = new Produto(nome, preco, id);
-        produtos.add(novoProduto);
-        areaEstoque.adicionarProduto(nome, 0);
+    @Override
+    public void adicionar(Produto novoProduto){
+        super.adicionar(novoProduto);
+        areaEstoque.adicionar(novoProduto.getNome());
     }
     
-    public void removerProduto(int id){
-        Produto resultado = buscaCatalogo(id);
-        if (areaEstoque.getQuantidadeEstoque(resultado.getNome()) == 0) {
-            produtos.remove(resultado);
-            areaEstoque.removerProduto(resultado.getNome());
+    @Override
+    public void remover(Produto produto){
+        if (areaEstoque.getQuantidadeEstoque(produto.getNome()) == 0) {
+            super.remover(produto);
+            areaEstoque.remover(produto.getNome());
         }
         
     }
     
     public void editarProduto(int id, String nomeNovo){
-        Produto resultado = buscaCatalogo(id);
+        Produto resultado = buscar(id);
         String nomeAntigo = resultado.getNome();
         areaEstoque.editarProduto(nomeAntigo, nomeNovo);
         resultado.setNome(nomeNovo);
     }
     
     public void editarProduto(int id, double precoNovo){
-        Produto resultado = buscaCatalogo(id);
+        Produto resultado = buscar(id);
         resultado.setPreco(precoNovo);
     }
     
     public void editarProduto(int id, int idNovo){
-        Produto resultado = buscaCatalogo(id);        
+        Produto resultado = buscar(id);        
         resultado.setId(idNovo);
     }  
     
-    public Produto buscaCatalogo(int id){
-        for (Produto produto : produtos){
+    @Override
+    public Produto buscar(Integer id){
+        for (Produto produto : this.getLista()){
             if (produto.getId() == id){
                 return produto;
             }
         }
         
         return null;
-    }
-    
-    @Override
-    public void salvar() throws IOException{
-        JsonListController<Produto> jsonListController = new JsonListController<>(Produto.class);
-        jsonListController.writeListToJsonFile(produtos, caminhoProdutos);
-    }
-    
-    public List<Produto> getProdutos() {
-        return produtos;
     }
 }
 

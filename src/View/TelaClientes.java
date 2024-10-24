@@ -72,7 +72,7 @@ public class TelaClientes {
         System.out.println("Digite o ID do cliente: ");
         int id = scanner.nextInt();
 
-        areaClientes.adicionarCliente(nome, endereco, fone, email, cpf, cartao, id);
+        areaClientes.adicionar(new Cliente(nome, endereco, fone, email, cpf, cartao, id));
     }
     
     public void modificarCliente(){
@@ -82,7 +82,7 @@ public class TelaClientes {
         scanner.nextLine();
         System.out.println();
         
-        Cliente cliente = areaClientes.buscarCliente(idCliente);
+        Cliente cliente = areaClientes.buscar(idCliente);
         mostrarCliente(cliente);
         
         System.out.println("1 - Endereço");
@@ -130,14 +130,14 @@ public class TelaClientes {
         scanner.nextLine();
         System.out.println();
         
-        Cliente cliente = areaClientes.buscarCliente(idCliente);
+        Cliente cliente = areaClientes.buscar(idCliente);
         mostrarCliente(cliente);
         
         System.out.println("Tem certeza que quer remover o Cliente? [S, N] ");
         String resposta = scanner.nextLine();
         
         if (resposta.equals("S")){
-            areaClientes.removerCliente(idCliente);
+            areaClientes.remover(cliente);
         }      
     }
     

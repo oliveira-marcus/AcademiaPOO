@@ -4,16 +4,32 @@
  */
 package Controller.Manipulator;
 
+import Model.Ganho;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  *
  * @author caio
  */
-public class GanhosManipulator extends Manipulator {
-    private final Path caminhoGanhos = Paths.get("src/data/ganhos.json");
+public class GanhosManipulator extends ListManipulator<Ganho, Integer> {
+    public GanhosManipulator(String caminho, Class<Ganho> classe) throws IOException{
+        super(caminho, classe);
+    }
+
+    @Override
+    public void adicionar(Ganho ganho){
+        
+    }
+    
+    @Override
+    public void remover(Ganho ganho){
+        
+    }
+    
+    @Override
+    public Ganho buscar(Integer id){
+        return null;
+    }
     
     @Override
     public void salvar() throws IOException{
