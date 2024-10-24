@@ -12,7 +12,7 @@ import java.nio.file.Paths;
  *
  * @author caio
  */
-public class AreaDespesas implements Manipulator {
+public class AreaDespesas extends Manipulator {
     private final Path caminhoDespesas = Paths.get("src/data/despesas.json");
     
     public void adicionarDespesa(String nome, String tipo, double valor, String data){

@@ -10,6 +10,8 @@ import java.io.IOException;
  *
  * @author caio
  */
-public interface Manipulator {
-    public void salvar() throws IOException;
+public abstract class Manipulator {
+    public void salvar() throws IOException{
+        
+    };
 }
