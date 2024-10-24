@@ -19,11 +19,11 @@ public class Agendamento {
     private Funcionario instrutor;
     public Calendar dataHorario;
     
-    public Agendamento(int id, String estadoReserva, Cliente cliente, String tipoAula, double precoAula, Funcionario instrutor, Calendar dataHorario) {
+    public Agendamento(int id, String estadoReserva, Cliente cliente, String sala, double precoAula, Funcionario instrutor, Calendar dataHorario) {
         this.id = id;
         this.estadoReserva = estadoReserva;
         this.cliente = cliente;  
-        this.sala = tipoAula;
+        this.sala = sala;
         this.precoAula = precoAula;
         this.instrutor = instrutor;
         this.dataHorario = dataHorario;
@@ -53,12 +53,12 @@ public class Agendamento {
         this.cliente = cliente;
     }
 
-    public String getTipoAula() {
+    public String getSala() {
         return sala;
     }
 
-    public void setTipoAula(String tipoAula) {
-        this.sala = tipoAula;
+    public void setSala(String sala) {
+        this.sala = sala;
     }
 
     public double getPrecoAula() {
