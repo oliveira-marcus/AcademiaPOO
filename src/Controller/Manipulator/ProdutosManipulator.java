@@ -17,12 +17,14 @@ public class ProdutosManipulator extends ListManipulator<Produto, Integer>{
     
     public ProdutosManipulator(String caminho, Class<Produto> classe) throws IOException{
         super(caminho, classe);
+        Sistema.setQuantProdutosCatalogo(this.getLista().size());
     }
     
     @Override
     public void adicionar(Produto novoProduto){
         super.adicionar(novoProduto);
         areaEstoque.adicionar(novoProduto.getNome());
+        Sistema.setQuantProdutosCatalogo(Sistema.getQuantProdutosCatalogo() + 1);
     }
     
     @Override

@@ -14,11 +14,11 @@ import java.util.List;
  * @author caio
  */
 public class Sistema {
-    private static List<Manipulator> manipuladores = new ArrayList<>();
+    private final static List<Manipulator> manipuladores = new ArrayList<>();
+    private static int quantClientesPriv = 0;
+    protected static int quantClientesProtec = 0;
     
-    public Sistema(List<Manipulator> manipuladores){
-        Sistema.manipuladores = manipuladores;
-    }
+    private static int quantProdutosCatalogo = 0;
     
     public static void adicionarManipulador(Manipulator manipulador){
         manipuladores.add(manipulador);
@@ -37,5 +37,21 @@ public class Sistema {
         for (Manipulator manipulador : manipuladores){
             manipulador.salvar();
         }
+    }
+
+    public static int getQuantClientesPriv() {
+        return quantClientesPriv;
+    }
+
+    public static void setQuantClientesPriv(int quantClientesPriv) {
+        Sistema.quantClientesPriv = quantClientesPriv;
+    }
+
+    public static int getQuantProdutosCatalogo() {
+        return quantProdutosCatalogo;
+    }
+
+    public static void setQuantProdutosCatalogo(int quantProdutosCatalogo) {
+        Sistema.quantProdutosCatalogo = quantProdutosCatalogo;
     }
 }

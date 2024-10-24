@@ -1,5 +1,6 @@
 package Controller.Manipulator;
 
+import Controller.Sistema;
 import Model.Cliente;
 import java.io.IOException;
 
@@ -10,11 +11,13 @@ import java.io.IOException;
 public final class ClientesManipulator extends ListManipulator<Cliente, Integer> {  
     public ClientesManipulator(String caminho, Class<Cliente> classe) throws IOException{
         super(caminho, classe);
+        Sistema.setQuantClientesPriv(this.getLista().size());
     }
     
     @Override
     public void adicionar(Cliente novoCliente){
         super.adicionar(novoCliente);
+        Sistema.setQuantClientesPriv(Sistema.getQuantClientesPriv() + 1);
     }
     
     @Override
