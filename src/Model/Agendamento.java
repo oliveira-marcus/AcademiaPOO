@@ -12,9 +12,9 @@ import java.util.Calendar;
  */
 public class Agendamento {
     private int id;
-    private String  estadoReserva;
+    private String estadoReserva;
     private Cliente cliente;
-    private String tipoAula;
+    private String sala;
     private double precoAula;
     private Funcionario instrutor;
     public Calendar dataHorario;
@@ -23,7 +23,7 @@ public class Agendamento {
         this.id = id;
         this.estadoReserva = estadoReserva;
         this.cliente = cliente;  
-        this.tipoAula = tipoAula;
+        this.sala = tipoAula;
         this.precoAula = precoAula;
         this.instrutor = instrutor;
         this.dataHorario = dataHorario;
@@ -54,11 +54,11 @@ public class Agendamento {
     }
 
     public String getTipoAula() {
-        return tipoAula;
+        return sala;
     }
 
     public void setTipoAula(String tipoAula) {
-        this.tipoAula = tipoAula;
+        this.sala = tipoAula;
     }
 
     public double getPrecoAula() {
