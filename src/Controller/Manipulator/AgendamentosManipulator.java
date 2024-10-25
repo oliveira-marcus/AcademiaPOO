@@ -18,11 +18,11 @@ public class AgendamentosManipulator extends ListManipulator<Agendamento, Intege
     
     public Agendamento construirAgendamento(int id, int idCliente, String sala, double precoAula, String nomeInstrutor, String dataHorarioStr){
         // faz a busca do Cliente
-        ClientesManipulator areaClientes = Sistema.getSubsistemaPorTipo(ClientesManipulator.class);
+        ClientesManipulator areaClientes = Sistema.getManipuladorPorTipo(ClientesManipulator.class);
         Cliente cliente = areaClientes.buscar(idCliente);
         
         // faz a busca do Colaborador
-        ColaboradoresManipulator areaColaboradores = Sistema.getSubsistemaPorTipo(ColaboradoresManipulator.class);
+        ColaboradoresManipulator areaColaboradores = Sistema.getManipuladorPorTipo(ColaboradoresManipulator.class);
         Funcionario instrutor = areaColaboradores.buscar(nomeInstrutor);
         
         Calendar dataHorario = formatarHorario(dataHorarioStr);

@@ -15,37 +15,30 @@ import java.util.List;
  * @param <E>
  */
 public abstract class ListManipulator<T, E> extends Manipulator<T> {
-    private List<T> lista;
-    private final JsonListController<T> jsonController;
-    
     public ListManipulator(String caminho, Class<T> classe) throws IOException{
         super(caminho);
-        jsonController = new JsonListController<>(classe);
-        lista = this.jsonController.read(this.getCaminho());
+        this.setJsonController(new JsonListController<>(classe));
+        this.setColecao(this.getJsonController().read(this.getCaminho()));
     }
     
     @Override
     public void adicionar(T elem){
-        lista.add(elem);
+        super.adicionar(elem);
     }
     
     @Override
     public void remover(T elem){
-        lista.remove(elem);
+        super.remover(elem);
     }
     
     @Override
     public void salvar() throws IOException{
-        jsonController.write(lista, this.getCaminho());
+        jsonController.write(this.getColecao(), this.getCaminho());
     };
     
     public abstract T buscar(E identificador);
-
-    public List<T> getLista() {
-        return lista;
-    }
-
-    public void setLista(List<T> lista) {
-        this.lista = lista;
+    
+    public List<T> getLista(){
+        return (List<T>)this.getColecao();
     }
 }

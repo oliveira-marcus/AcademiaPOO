@@ -4,7 +4,9 @@
  */
 package Controller.Manipulator;
 
+import Controller.JsonController.JsonCollectionController;
 import java.io.IOException;
+import java.util.Collection;
 
 /**
  *
@@ -13,14 +15,20 @@ import java.io.IOException;
  */
 public abstract class Manipulator<T> {
     private String caminho;
+    Collection <T> colecao;
+    JsonCollectionController jsonController;
     
     public Manipulator(String caminho){
         this.caminho = caminho;
     }
     
-    public abstract void adicionar(T elem);
+    public void adicionar(T elem){
+        colecao.add(elem);
+    }
     
-    public abstract void remover(T elem);
+    public void remover(T elem){
+        colecao.remove(elem);
+    }
     
     public abstract void salvar() throws IOException;
 
@@ -30,5 +38,21 @@ public abstract class Manipulator<T> {
 
     public void setCaminho(String caminho) {
         this.caminho = caminho;
+    }
+
+    public Collection<T> getColecao() {
+        return colecao;
+    }
+
+    public void setColecao(Collection<T> colecao) {
+        this.colecao = colecao;
+    }
+
+    public JsonCollectionController getJsonController() {
+        return jsonController;
+    }
+
+    public void setJsonController(JsonCollectionController jsonController) {
+        this.jsonController = jsonController;
     }
 }

@@ -13,6 +13,7 @@ import java.util.Collection;
  * @param <T>
  */
 public interface JsonCollectionController<T> {
+    
     public Collection<T> read(String caminhoArquivo) throws IOException;
     
     public void write(Collection<T> colecao, String caminhoArquivo) throws IOException;

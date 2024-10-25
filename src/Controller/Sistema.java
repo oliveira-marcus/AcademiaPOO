@@ -5,6 +5,7 @@
 package Controller;
 
 import Controller.Manipulator.Manipulator;
+import Controller.Manipulator.MapManipulator;
 import Model.Sala;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.List;
  */
 public class Sistema {
     private final static List<Manipulator> manipuladores = new ArrayList<>();
+    private final static List<MapManipulator> manipuladoresMap = new ArrayList<>();
     private static int quantClientesPriv = 0;
     protected static int quantClientesProtec = 0;
     private static int quantProdutosCatalogo = 0;
@@ -30,8 +32,21 @@ public class Sistema {
         manipuladores.add(manipulador);
     }
     
-    public static <T extends Manipulator> T getSubsistemaPorTipo(Class<T> tipo){
+    public static void adicionarManipuladorMap(MapManipulator manipuladorMap){
+        manipuladoresMap.add(manipuladorMap);
+    }
+    
+    public static <T extends Manipulator> T getManipuladorPorTipo(Class<T> tipo){
         for (Manipulator s : manipuladores){
+            if (tipo.isInstance(s)){
+                return tipo.cast(s);
+            }
+        }
+        return null;
+    }
+    
+    public static <T extends MapManipulator> T getManipuladorMapPorTipo(Class<T> tipo){
+        for (MapManipulator s : manipuladoresMap){
             if (tipo.isInstance(s)){
                 return tipo.cast(s);
             }

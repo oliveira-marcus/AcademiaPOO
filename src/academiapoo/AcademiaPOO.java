@@ -10,9 +10,6 @@ import Controller.Manipulator.ColaboradoresManipulator;
 import Controller.Manipulator.EstoqueManipulator;
 import Controller.Sistema;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import Controller.Manipulator.Manipulator;
 import Controller.Manipulator.ProdutosManipulator;
 import Model.Agendamento;
 import Model.Cliente;
@@ -35,16 +32,16 @@ public class AcademiaPOO {
         Sistema.adicionarManipulador(new AgendamentosManipulator("src/data/agendamentos.json", Agendamento.class));
         Sistema.adicionarManipulador(new ClientesManipulator("src/data/clientes.json", Cliente.class));
         Sistema.adicionarManipulador(new ColaboradoresManipulator("src/data/colaboradores.json", Funcionario.class));
-        Sistema.adicionarManipulador(new EstoqueManipulator("src/data/colaboradores.json"));
+        Sistema.adicionarManipuladorMap(new EstoqueManipulator("src/data/colaboradores.json"));
         Sistema.adicionarManipulador(new ProdutosManipulator("src/data/produtos.json", Produto.class));
         
-        AgendamentosManipulator agenda = Sistema.getSubsistemaPorTipo(AgendamentosManipulator.class);
+        AgendamentosManipulator agenda = Sistema.getManipuladorPorTipo(AgendamentosManipulator.class);
         
-        System.out.println(agenda.getLista());
+        System.out.println(agenda.getColecao());
         
         Collections.sort(agenda.getLista(), new CompAgendamDataHorarioCresc());
         
-        System.out.println(agenda.getLista());
+        System.out.println(agenda.getColecao());
  
         Sistema.salvarDados();
     }

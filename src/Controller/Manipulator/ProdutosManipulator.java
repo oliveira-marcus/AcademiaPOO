@@ -13,7 +13,7 @@ import java.io.IOException;
  * @author caio
  */
 public class ProdutosManipulator extends ListManipulator<Produto, Integer>{
-    private final EstoqueManipulator areaEstoque = Sistema.getSubsistemaPorTipo(EstoqueManipulator.class);
+    private final EstoqueManipulator areaEstoque = Sistema.getManipuladorMapPorTipo(EstoqueManipulator.class);
     
     public ProdutosManipulator(String caminho, Class<Produto> classe) throws IOException{
         super(caminho, classe);

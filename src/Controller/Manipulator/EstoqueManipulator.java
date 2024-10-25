@@ -15,7 +15,7 @@ import java.util.Map;
  * @author caio
  */
 
-public class EstoqueManipulator extends Manipulator<String>{
+public class EstoqueManipulator extends MapManipulator<String>{
     private final String caminhoEstoque = "src/data/estoque.json";
     private final Map<String, Integer> estoque;
     
@@ -26,7 +26,7 @@ public class EstoqueManipulator extends Manipulator<String>{
     }
     
     public void alterarQuantidade(int id, int quantidade){
-        ProdutosManipulator areaProduto = Sistema.getSubsistemaPorTipo(ProdutosManipulator.class);
+        ProdutosManipulator areaProduto = Sistema.getManipuladorPorTipo(ProdutosManipulator.class);
         Produto resultado = areaProduto.buscar(id);
         int quantidadeNova = estoque.get(resultado.getNome()) + quantidade;
         estoque.put(resultado.getNome(), quantidadeNova);
