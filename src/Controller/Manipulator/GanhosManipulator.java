@@ -55,6 +55,6 @@ public class GanhosManipulator extends ListManipulator<Ganho, Integer> {
     
     @Override
     public void salvar() throws IOException{
-        
+        super.salvar();
     }
 }

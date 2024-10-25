@@ -55,6 +55,6 @@ public class DespesasManipulator extends ListManipulator<Despesa, Integer> {
     
     @Override
     public void salvar() throws IOException{
-        
+        super.salvar();
     }
 }
