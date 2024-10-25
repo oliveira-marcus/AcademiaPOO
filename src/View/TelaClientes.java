@@ -99,25 +99,25 @@ public class TelaClientes {
                 System.out.println("Digite o novo endereço: ");
                 String endereco = scanner.nextLine();
                 
-                areaClientes.editarEndereco(idCliente, endereco);
+                areaClientes.editarEndereco(cliente, endereco);
             }
             case 2 -> {
                 System.out.println("Digite o novo telefone: ");
                 String telefone = scanner.nextLine();
                 
-                areaClientes.editarTelefone(idCliente, telefone);
+                areaClientes.editarTelefone(cliente, telefone);
             }
             case 3 -> {
                 System.out.println("Digite o novo email: ");
                 String email = scanner.nextLine();
                 
-                areaClientes.editarEmail(idCliente, email);
+                areaClientes.editarEmail(cliente, email);
             }
             case 4 -> {
                 System.out.println("Digite o novo Cartão de Crédito: ");
                 String cartao = scanner.nextLine();
                 
-                areaClientes.editarCartao(idCliente, cartao);
+                areaClientes.editarCartao(cliente, cartao);
             }
         }
         
