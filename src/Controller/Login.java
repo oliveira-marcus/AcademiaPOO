@@ -19,7 +19,7 @@ public class Login {
     public Login() throws IOException{
         JsonListController<Funcionario> jsonController = new JsonListController(Funcionario.class);
         
-        usuarios = jsonController.readJsonToList("src/data/colaboradores.json");
+        usuarios = jsonController.read("src/data/colaboradores.json");
     }
     
     public Funcionario autenticarUsuario(String login, String senha){

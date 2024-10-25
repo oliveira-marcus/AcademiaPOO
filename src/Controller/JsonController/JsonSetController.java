@@ -11,43 +11,43 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
  * @author caio
  * @param <T>
  */
-public class JsonListController<T> implements JsonCollectionController<T>{
+public class JsonSetController<T> implements JsonCollectionController<T>{
     private final Class<T> tipoClasse;
     private final Gson gson;
 
-    public JsonListController(Class<T> tipoClasse) {
+    public JsonSetController(Class<T> tipoClasse) {
         this.tipoClasse = tipoClasse;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
     
     @Override
-    public List<T> read(String caminhoArquivo) throws IOException {
+    public Set<T> read(String caminhoArquivo) throws IOException {
         String jsonString = Files.readString(Paths.get(caminhoArquivo));
-        Type listType = TypeToken.getParameterized(List.class, tipoClasse).getType();
+        Type setType = TypeToken.getParameterized(Set.class, tipoClasse).getType();
         
-        var list = gson.fromJson(jsonString, listType);
+        var set = gson.fromJson(jsonString, setType);
         
-        if (list != null){
-            return gson.fromJson(jsonString, listType);
+        if (set != null){
+            return gson.fromJson(jsonString, setType);
         }
         
         else{
-            return new ArrayList<>();
+            return new HashSet<>();
         }
     }
     
     @Override
     public void write(Collection<T> colecao, String caminhoArquivo) throws IOException {
-        String jsonString = gson.toJson((List<T>)colecao);
+        String jsonString = gson.toJson((Set<T>)colecao);
         Files.writeString(Paths.get(caminhoArquivo), jsonString);
     }
 }

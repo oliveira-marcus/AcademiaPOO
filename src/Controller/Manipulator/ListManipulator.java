@@ -21,7 +21,7 @@ public abstract class ListManipulator<T, E> extends Manipulator<T> {
     public ListManipulator(String caminho, Class<T> classe) throws IOException{
         super(caminho);
         jsonController = new JsonListController<>(classe);
-        lista = this.jsonController.readJsonToList(this.getCaminho());
+        lista = this.jsonController.read(this.getCaminho());
     }
     
     @Override
@@ -36,7 +36,7 @@ public abstract class ListManipulator<T, E> extends Manipulator<T> {
     
     @Override
     public void salvar() throws IOException{
-        jsonController.writeListToJsonFile(lista, this.getCaminho());
+        jsonController.write(lista, this.getCaminho());
     };
     
     public abstract T buscar(E identificador);
