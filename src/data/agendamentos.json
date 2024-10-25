@@ -11,7 +11,6 @@
       "email": "cainbgl@gmail.com",
       "cpf": "123.456.789-10"
     },
-    "tipoAula": "Musculação",
     "precoAula": 50.0,
     "instrutor": {
       "salario": 3200.0,
@@ -45,7 +44,6 @@
       "email": "patrickestrela@gmail.com",
       "cpf": "111.222.111-31"
     },
-    "tipoAula": "Pilates",
     "precoAula": 60.0,
     "instrutor": {
       "salario": 4100.0,

@@ -13,10 +13,9 @@ import java.io.IOException;
 import Controller.Manipulator.ProdutosManipulator;
 import Model.Agendamento;
 import Model.Cliente;
-import Model.Comparator.CompAgendamDataHorarioCresc;
 import Model.Funcionario;
 import Model.Produto;
-import java.util.Collections;
+import View.TelaClientes;
 
 /**
  *
@@ -35,15 +34,11 @@ public class AcademiaPOO {
         Sistema.adicionarManipuladorMap(new EstoqueManipulator("src/data/colaboradores.json"));
         Sistema.adicionarManipulador(new ProdutosManipulator("src/data/produtos.json", Produto.class));
         
-        AgendamentosManipulator agenda = Sistema.getManipuladorPorTipo(AgendamentosManipulator.class);
+//        AgendamentosManipulator agenda = Sistema.getManipuladorPorTipo(AgendamentosManipulator.class);
+        TelaClientes telaClientes = new TelaClientes();
+        telaClientes.exibirMenu();
         
-        System.out.println(agenda.getColecao());
         
-        Collections.sort(agenda.getLista(), new CompAgendamDataHorarioCresc());
-        
-        System.out.println(agenda.getColecao());
- 
-        Sistema.salvarDados();
     }
     
 }

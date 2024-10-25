@@ -16,5 +16,14 @@
     "telefone": "987654321",
     "email": "cainbgl@gmail.com",
     "cpf": "123.456.789-10"
+  },
+  {
+    "cartaoCredito": "1111 2222 3333 4444",
+    "id": 301,
+    "nome": "Bob Esponja",
+    "endereco": "Fenda do Biquini",
+    "telefone": "11110000",
+    "email": "bobesponja@gmail.com",
+    "cpf": "111.222.333-22"
   }
 ]
