@@ -22,11 +22,13 @@ public abstract class LoggingManipulator<T> extends Manipulator<T>{
     @Override
     public void adicionar(T elem){
         System.out.println("[LOG]: ELEMENTO ADICIONADO");
+        super.adicionar(elem);
     }
     
     @Override
     public void remover(T elem){
         System.out.println("[LOG]: ELEMENTO REMOVIDO");
+        super.remover(elem);
     }
     
     @Override
