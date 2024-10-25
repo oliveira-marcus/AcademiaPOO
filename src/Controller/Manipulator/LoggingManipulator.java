@@ -13,8 +13,8 @@ import java.io.IOException;
  */
 public abstract class LoggingManipulator<T> extends Manipulator<T>{
     
-    public LoggingManipulator(String caminho) {
-        super(caminho);
+    public LoggingManipulator(String caminho, Class<T> classe) throws IOException {
+        super(caminho, classe);
         System.out.println("[LOG]: DADOS LIDOS");
     }
     

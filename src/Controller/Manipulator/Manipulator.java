@@ -18,8 +18,10 @@ public abstract class Manipulator<T> {
     Collection <T> colecao;
     JsonCollectionController jsonController;
     
-    public Manipulator(String caminho){
+    public Manipulator(String caminho, Class<T> classe) throws IOException{
         this.caminho = caminho;
+        jsonController.init(classe);
+        colecao = jsonController.read(caminho);
     }
     
     public void adicionar(T elem){

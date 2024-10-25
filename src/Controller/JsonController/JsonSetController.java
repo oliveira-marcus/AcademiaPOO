@@ -21,10 +21,11 @@ import java.util.Set;
  * @param <T>
  */
 public class JsonSetController<T> implements JsonCollectionController<T>{
-    private final Class<T> tipoClasse;
-    private final Gson gson;
+    private Class<T> tipoClasse;
+    private Gson gson;
 
-    public JsonSetController(Class<T> tipoClasse) {
+    @Override
+    public void init(Class<T> tipoClasse) {
         this.tipoClasse = tipoClasse;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }

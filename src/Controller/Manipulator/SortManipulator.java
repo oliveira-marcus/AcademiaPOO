@@ -4,6 +4,7 @@
  */
 package Controller.Manipulator;
 
+import java.io.IOException;
 import java.util.Comparator;
 
 /**
@@ -12,8 +13,8 @@ import java.util.Comparator;
  * @param <T>
  */
 public abstract class SortManipulator<T> extends Manipulator<T>{
-    public SortManipulator(String caminho) {
-        super(caminho);
+    public SortManipulator(String caminho, Class<T> classe) throws IOException {
+        super(caminho, classe);
     }
     
     public abstract void sort(Comparator<T> comparator);

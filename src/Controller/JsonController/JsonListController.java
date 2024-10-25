@@ -21,10 +21,11 @@ import java.util.List;
  * @param <T>
  */
 public class JsonListController<T> implements JsonCollectionController<T>{
-    private final Class<T> tipoClasse;
-    private final Gson gson;
+    private Class<T> tipoClasse;
+    private Gson gson;
 
-    public JsonListController(Class<T> tipoClasse) {
+    @Override
+    public void init(Class<T> tipoClasse) {
         this.tipoClasse = tipoClasse;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }

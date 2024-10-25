@@ -14,7 +14,7 @@ import java.util.Scanner;
  * @author caio
  */
 public class TelaClientes {
-    private final ClientesManipulator areaClientes = Sistema.getSubsistemaPorTipo(ClientesManipulator.class);
+    private final ClientesManipulator areaClientes = Sistema.getManipuladorPorTipo(ClientesManipulator.class);
     
     public void exibirMenu(){
         int opcao = 0;

@@ -14,6 +14,8 @@ import java.util.Collection;
  */
 public interface JsonCollectionController<T> {
     
+    public void init(Class<T> tipoClasse);
+    
     public Collection<T> read(String caminhoArquivo) throws IOException;
     
     public void write(Collection<T> colecao, String caminhoArquivo) throws IOException;
