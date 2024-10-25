@@ -4,6 +4,7 @@
  */
 package Controller.Manipulator;
 
+import Controller.JsonController.JsonListController;
 import java.io.IOException;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public abstract class ListManipulator<T, E> extends Manipulator<T> {
     public ListManipulator(String caminho, Class<T> classe) throws IOException{
-        super(caminho, classe);
+        super(new JsonListController(), caminho, classe);
     }
     
     @Override

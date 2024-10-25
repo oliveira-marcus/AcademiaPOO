@@ -4,6 +4,7 @@
  */
 package Controller.Manipulator;
 
+import Controller.JsonController.JsonCollectionController;
 import java.io.IOException;
 
 /**
@@ -13,8 +14,8 @@ import java.io.IOException;
  */
 public abstract class LoggingManipulator<T> extends Manipulator<T>{
     
-    public LoggingManipulator(String caminho, Class<T> classe) throws IOException {
-        super(caminho, classe);
+    public LoggingManipulator(JsonCollectionController jsonController, String caminho, Class<T> classe) throws IOException {
+        super(jsonController, caminho, classe);
         System.out.println("[LOG]: DADOS LIDOS");
     }
     

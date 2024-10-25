@@ -4,6 +4,7 @@
  */
 package Controller.Manipulator;
 
+import Controller.JsonController.JsonCollectionController;
 import java.io.IOException;
 import java.util.Comparator;
 
@@ -13,8 +14,8 @@ import java.util.Comparator;
  * @param <T>
  */
 public abstract class SortManipulator<T> extends Manipulator<T>{
-    public SortManipulator(String caminho, Class<T> classe) throws IOException {
-        super(caminho, classe);
+    public SortManipulator(JsonCollectionController jsonController, String caminho, Class<T> classe) throws IOException {
+        super(jsonController, caminho, classe);
     }
     
     public abstract void sort(Comparator<T> comparator);

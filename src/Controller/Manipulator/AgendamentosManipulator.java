@@ -31,11 +31,12 @@ public class AgendamentosManipulator extends ListManipulator<Agendamento, Intege
     }
     
     public Calendar formatarHorario(String dataHorarioString){
-        int dia = Integer.parseInt(dataHorarioString.split(" ")[0]);
-        int mes = Integer.parseInt(dataHorarioString.split(" ")[1]);
-        int ano = Integer.parseInt(dataHorarioString.split(" ")[2]);
-        int hora = Integer.parseInt(dataHorarioString.split(" ")[3]);
-        int minuto = Integer.parseInt(dataHorarioString.split(" ")[4]);
+        String[] dataHorarioStringSplitted = dataHorarioString.split(" ");
+        int dia = Integer.parseInt(dataHorarioStringSplitted[0]);
+        int mes = Integer.parseInt(dataHorarioStringSplitted[1]);
+        int ano = Integer.parseInt(dataHorarioStringSplitted[2]);
+        int hora = Integer.parseInt(dataHorarioStringSplitted[3]);
+        int minuto = Integer.parseInt(dataHorarioStringSplitted[4]);
         
         Calendar dataHorario = Calendar.getInstance();
         dataHorario.set(Calendar.YEAR, ano);
