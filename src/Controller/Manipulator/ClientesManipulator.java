@@ -25,28 +25,20 @@ public final class ClientesManipulator extends ListManipulator<Cliente, Integer>
         super.remover(cliente);
     }
     
-    public void editarEndereco(int id, String enderecoNovo){
-        Cliente resultado = buscar(id);
-        
-        resultado.setEndereco(enderecoNovo);
+    public void editarEndereco(Cliente cliente, String enderecoNovo){
+        cliente.setEndereco(enderecoNovo);
     }
     
-    public void editarEmail(int id, String emailNovo){
-        Cliente resultado = buscar(id);
-        
-        resultado.setEmail(emailNovo);
+    public void editarEmail(Cliente cliente, String emailNovo){       
+        cliente.setEmail(emailNovo);
     }
     
-    public void editarTelefone(int id, String telefoneNovo){
-        Cliente resultado = buscar(id);
-        
-        resultado.setTelefone(telefoneNovo);
+    public void editarTelefone(Cliente cliente, String telefoneNovo){
+        cliente.setTelefone(telefoneNovo);
     }
     
-    public void editarCartao(int id, String cartaoNovo){
-        Cliente resultado = buscar(id);
-        
-        resultado.setCartaoCredito(cartaoNovo);
+    public void editarCartao(Cliente cliente, String cartaoNovo){
+        cliente.setCartaoCredito(cartaoNovo);
     }
     
     @Override

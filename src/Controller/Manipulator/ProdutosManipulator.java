@@ -36,22 +36,15 @@ public class ProdutosManipulator extends ListManipulator<Produto, Integer>{
         
     }
     
-    public void editarProduto(int id, String nomeNovo){
-        Produto resultado = buscar(id);
-        String nomeAntigo = resultado.getNome();
-        areaEstoque.editarProduto(nomeAntigo, nomeNovo);
-        resultado.setNome(nomeNovo);
+    public void editarNome(Produto produto, String nomeNovo){
+        String nomeAntigo = produto.getNome();
+        areaEstoque.editarNome(nomeAntigo, nomeNovo);
+        produto.setNome(nomeNovo);
     }
     
-    public void editarProduto(int id, double precoNovo){
-        Produto resultado = buscar(id);
-        resultado.setPreco(precoNovo);
+    public void editarPreco(Produto produto, double precoNovo){
+        produto.setPreco(precoNovo);
     }
-    
-    public void editarProduto(int id, int idNovo){
-        Produto resultado = buscar(id);        
-        resultado.setId(idNovo);
-    }  
     
     @Override
     public Produto buscar(Integer id){

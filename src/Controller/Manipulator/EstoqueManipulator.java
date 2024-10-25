@@ -25,11 +25,9 @@ public class EstoqueManipulator extends MapManipulator<String>{
         estoque = jsonMapController.readJsonToMap(caminhoEstoque);
     }
     
-    public void alterarQuantidade(int id, int quantidade){
-        ProdutosManipulator areaProduto = Sistema.getManipuladorPorTipo(ProdutosManipulator.class);
-        Produto resultado = areaProduto.buscar(id);
-        int quantidadeNova = estoque.get(resultado.getNome()) + quantidade;
-        estoque.put(resultado.getNome(), quantidadeNova);
+    public void alterarQuantidade(Produto produto, int quantidade){
+        int quantidadeNova = estoque.get(produto.getNome()) + quantidade;
+        estoque.put(produto.getNome(), quantidadeNova);
     }
     
     @Override
@@ -42,7 +40,7 @@ public class EstoqueManipulator extends MapManipulator<String>{
         estoque.remove(nome);
     }
     
-    public void editarProduto(String nomeAntigo, String nomeNovo){
+    public void editarNome(String nomeAntigo, String nomeNovo){
         estoque.put(nomeNovo, estoque.get(nomeAntigo));
         estoque.remove(nomeAntigo);
     }

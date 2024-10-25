@@ -47,21 +47,24 @@ public class AgendamentosManipulator extends ListManipulator<Agendamento, Intege
         
         return dataHorario;
     }
-    
-    public void editarAgendamento(int id, int idNovo){
-        
+
+    public void editarEstadoReserva(Agendamento agendamento, String estadoReserva){
+        agendamento.setEstadoReserva(estadoReserva);
     }
     
-    public void editarAgendamento(int id, String estadoReserva){
-        
+    public void editarSala(Agendamento agendamento, String sala){
+        agendamento.setSala(sala);
     }
     
-    public void editarAgendamento(int id, String nome, String endereco, String telefone, String email, String cpf, String cartaoCredito){
-        
+    public void editarPrecoAula(Agendamento agendamento, double precoAula){
+        agendamento.setPrecoAula(precoAula);
     }
     
-    public void editarAgendamento(int id, double precoAula){
-        
+    public void editarInstrutor(Agendamento agendamento, Funcionario instrutor){
+        agendamento.setInstrutor(instrutor);    }
+    
+    public void editarDataHorario(Agendamento agendamento, Calendar dataHorario){
+        agendamento.setDataHorario(dataHorario);
     }
     
     @Override
