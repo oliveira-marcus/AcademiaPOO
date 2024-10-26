@@ -13,7 +13,6 @@ import View.TelaClientes;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -38,18 +37,32 @@ public class ContasController implements ManipulatorController{
         return new Conta(nome, tipo, valor, data, id);
     }
     
-    public void adicionarVenda(String data, int id, int idCliente, HashMap<Produto, ArrayList<Double>> produtos){
-        Venda novaVenda = validarVenda(data, id, idCliente, produtos);
+    public void adicionarVenda(String data, int id, int idCliente, int[] idProdutos, int[] quantidades){
+        Venda novaVenda = validarVenda(data, id, idCliente, idProdutos, quantidades);
         manipulador.adicionar(novaVenda);
     }
     
-    public Venda validarVenda(String dataStr, int id, int idCliente, HashMap<Produto, ArrayList<Double>> produtos){
+    public Venda validarVenda(String dataStr, int id, int idCliente, int[] idProdutos, int[] quantidades){
         Calendar data = AgendamentosController.formatarHorario(dataStr);
+        
+        // Parte do código para obter os valores unitários de cada produto
+        double[] valoresUnit = new double[idProdutos.length];
+        ProdutoEstoqueController produtosController = Sistema.getManipuladorContrPorTipo(ProdutoEstoqueController.class);
+        
+        for (int i = 0; i < idProdutos.length; i++){
+            Produto produto = produtosController.buscarProduto(idProdutos[i]);
+            valoresUnit[i] = produto.getPreco();
+            i++;
+        }
         
         // Parte do código para calcular o Valor total
         double valor = 0;
         
-        return new Venda(valor, data, id, idCliente, produtos);
+        for (int i = 0; i < valoresUnit.length; i++){
+            valor += valoresUnit[i] * quantidades[i];
+        }
+        
+        return new Venda(valor, data, id, idCliente, idProdutos, quantidades, valoresUnit);
     }
     
     public void gerarBalancoMensal(int mes, int ano){

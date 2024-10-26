@@ -4,9 +4,7 @@
  */
 package Model;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 
 /**
  *
@@ -14,13 +12,16 @@ import java.util.HashMap;
  */
 public class Venda extends Conta{
     public int idCliente;
-    public HashMap<Produto, ArrayList<Double>> produtos;
+    int[] idProdutos;
+    int[] quantidades;
+    double[] valoresUnit;
     
-    public Venda(double valor, Calendar data, int id, int idCliente, HashMap<Produto, ArrayList<Double>> produtos){
+    public Venda(double valor, Calendar data, int id, int idCliente, int[] idProdutos, int[] quantidades, double[] valoresUnit){
         super("Venda", "Ganho", valor, data, id);
         this.idCliente = idCliente;
-        this.produtos = produtos;
-        
+        this.idProdutos = idProdutos;
+        this.quantidades = quantidades;
+        this.valoresUnit = valoresUnit;
     }
     
     public int getIdCliente() {
@@ -31,11 +32,27 @@ public class Venda extends Conta{
         this.idCliente = idCliente;
     }
 
-    public HashMap<Produto, ArrayList<Double>> getProdutos() {
-        return produtos;
+    public int[] getIdProdutos() {
+        return idProdutos;
     }
 
-    public void setProdutos(HashMap<Produto, ArrayList<Double>> produtos) {
-        this.produtos = produtos;
+    public void setIdProdutos(int[] idProdutos) {
+        this.idProdutos = idProdutos;
+    }
+
+    public int[] getQuantidades() {
+        return quantidades;
+    }
+
+    public void setQuantidades(int[] quantidades) {
+        this.quantidades = quantidades;
+    }
+
+    public double[] getValoresUnit() {
+        return valoresUnit;
+    }
+
+    public void setValoresUnit(double[] valoresUnit) {
+        this.valoresUnit = valoresUnit;
     }
 }

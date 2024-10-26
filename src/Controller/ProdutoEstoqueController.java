@@ -71,7 +71,7 @@ public class ProdutoEstoqueController implements ManipulatorController{
         }
     }
     
-    public Produto buscar(Integer id){
+    public Produto buscarProduto(Integer id){
         for (Produto produto : this.manipulador.getColecao()){
             if (produto.getId() == id){
                 return produto;
