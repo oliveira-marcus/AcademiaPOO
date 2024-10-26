@@ -2,8 +2,6 @@ package Controller;
 
 import Controller.Manipulator.Manipulator;
 import Model.Agendamento;
-import Model.Cliente;
-import Model.Funcionario;
 import Model.Sala;
 import View.TelaAgenda;
 import java.io.IOException;
@@ -38,15 +36,15 @@ public class AgendamentosController implements ManipulatorController{
     public Agendamento validarAgendamento(int id, int idCliente, String sala, double precoAula, String nomeInstrutor, String dataHorarioStr){
         // faz a busca do Cliente
         ClientesController areaClientes = Sistema.getManipuladorContrPorTipo(ClientesController.class);
-        Cliente cliente = areaClientes.buscarCliente(idCliente);
+        areaClientes.buscarCliente(idCliente);
         
         // faz a busca do Colaborador
         ColaboradoresController areaColaboradores = Sistema.getManipuladorContrPorTipo(ColaboradoresController.class);
-        Funcionario instrutor = areaColaboradores.buscarColaborador(nomeInstrutor);
+        areaColaboradores.buscarColaborador(nomeInstrutor);
         
         Calendar dataHorario = formatarHorario(dataHorarioStr);
         
-        return new Agendamento(id, "FEITA", cliente, sala, precoAula, instrutor, dataHorario);
+        return new Agendamento(id, "FEITA", idCliente, sala, precoAula, nomeInstrutor, dataHorario);
     }
     
     public void remover(Agendamento agendamento){
@@ -83,8 +81,9 @@ public class AgendamentosController implements ManipulatorController{
         agendamento.setPrecoAula(precoAula);
     }
     
-    public void editarInstrutor(Agendamento agendamento, Funcionario instrutor){
-        agendamento.setInstrutor(instrutor);    }
+    public void editarNomeInstrutor(Agendamento agendamento, String nomeInstrutor){
+        agendamento.setNomeInstrutor(nomeInstrutor);    
+    }
     
     public void editarDataHorario(Agendamento agendamento, Calendar dataHorario){
         agendamento.setDataHorario(dataHorario);

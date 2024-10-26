@@ -13,19 +13,19 @@ import java.util.Calendar;
 public class Agendamento {
     private int id;
     private String estadoReserva;
-    private Cliente cliente;
+    private int idCliente;
     private String sala;
     private double precoAula;
-    private Funcionario instrutor;
+    private String nomeInstrutor;
     public Calendar dataHorario;
     
-    public Agendamento(int id, String estadoReserva, Cliente cliente, String sala, double precoAula, Funcionario instrutor, Calendar dataHorario) {
+    public Agendamento(int id, String estadoReserva, int idCliente, String sala, double precoAula, String nomeInstrutor, Calendar dataHorario) {
         this.id = id;
         this.estadoReserva = estadoReserva;
-        this.cliente = cliente;  
+        this.idCliente = idCliente;  
         this.sala = sala;
         this.precoAula = precoAula;
-        this.instrutor = instrutor;
+        this.nomeInstrutor = nomeInstrutor;
         this.dataHorario = dataHorario;
     }
     
@@ -45,12 +45,12 @@ public class Agendamento {
         this.estadoReserva = estadoReserva;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getSala() {
@@ -69,12 +69,12 @@ public class Agendamento {
         this.precoAula = precoAula;
     }
 
-    public Funcionario getInstrutor() {
-        return instrutor;
+    public String getNomeInstrutor() {
+        return nomeInstrutor;
     }
 
-    public void setInstrutor(Funcionario instrutor) {
-        this.instrutor = instrutor;
+    public void setNomeInstrutor(String nomeInstrutor) {
+        this.nomeInstrutor = nomeInstrutor;
     }
     
     public Calendar getDataHorario(){
@@ -87,6 +87,6 @@ public class Agendamento {
     
     @Override
     public String toString() {
-        return this.estadoReserva + ", Reserva feita por " + this.cliente.getNome();
+        return this.estadoReserva;
     }
 }
