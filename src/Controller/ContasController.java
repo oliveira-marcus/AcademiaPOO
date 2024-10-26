@@ -13,7 +13,9 @@ import View.TelaClientes;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 
@@ -25,6 +27,10 @@ public class ContasController implements ManipulatorController{
     Manipulator<Conta> manipulador;
     TelaClientes telaFinanceira = new TelaClientes();
     Scanner scanner = new Scanner(System.in);
+    
+    public ContasController(Manipulator<Conta> manipulador) throws IOException{
+        this.manipulador = manipulador;
+    }
     
     public void adicionarConta(String nome, String tipo, double valor, String dataStr, int id){
         Conta novaConta = validarConta(nome, tipo, valor, dataStr, id);
@@ -69,8 +75,30 @@ public class ContasController implements ManipulatorController{
 
     }
     
-    public void emitirRelatorioVendasMensal(Calendar mes){
+    public Map<String, double[]> emitirRelatorioVendasMensal(int mes, int ano){
+        Map<String, double[]> vendas = new HashMap<>();
+        List<Venda> vendasMensais = filtrarVendas(buscarGanhosMes(mes, ano));
+        ProdutoEstoqueController produtosController = Sistema.getManipuladorContrPorTipo(ProdutoEstoqueController.class);
         
+        for (Venda venda : vendasMensais){ // Iterando as vendas
+            for (int j = 0; j < venda.getIdProdutos().length; j++){ // Iterando os produtos de cada venda
+                Produto produto = produtosController.buscarProduto(venda.getIdProdutos()[j]);
+                String nomeProduto = produto.getNome();
+                
+                if (vendas.containsKey(nomeProduto) 
+                        && vendas.get(nomeProduto)[2] == venda.getValoresUnit()[j]){ // Caso o produto estiver dento do map e tiver o mesmo valor de Venda, atualizar apenas
+                    vendas.get(nomeProduto)[3] += venda.getQuantidades()[j]; // Atualizando Quantidade Vendida
+                    vendas.get(nomeProduto)[4] += venda.getValoresUnit()[j] * venda.getQuantidades()[j]; // Atualizando Valor Vendido
+                }
+                
+                else{ // Caso o produto não estiver dentro do Map, colocar ele la dentro
+                    vendas.put(nomeProduto, new double[]{venda.getIdProdutos()[j], produto.getPreco(), 
+                        venda.getValoresUnit()[j], venda.getQuantidades()[j], venda.getValoresUnit()[j] * venda.getQuantidades()[j]});
+                }
+            }
+        }
+        
+        return vendas;
     }
     
     public void emitirRelatorioVendasDiario(Calendar dia){
@@ -107,6 +135,17 @@ public class ContasController implements ManipulatorController{
         }
         
         return gastosNoMes;
+    }
+    
+    public List<Venda> filtrarVendas(List<Conta> ganhos){
+        List<Venda> vendas = new ArrayList<>();
+        
+        for (Conta ganho : ganhos){
+            if (ganho instanceof Venda venda){
+                vendas.add(venda);
+            }
+        }
+        return vendas;
     }
     
     @Override

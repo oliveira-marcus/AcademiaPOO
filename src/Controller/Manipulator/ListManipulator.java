@@ -12,9 +12,8 @@ import java.util.List;
  *
  * @author caio
  * @param <T>
- * @param <E>
  */
-public abstract class ListManipulator<T, E> extends Manipulator<T> {
+public class ListManipulator<T> extends Manipulator<T> {
     public ListManipulator(String caminho, Class<T> classe) throws IOException{
         super(new JsonListController(), caminho, classe);
     }
@@ -34,9 +33,8 @@ public abstract class ListManipulator<T, E> extends Manipulator<T> {
         this.getJsonController().write(this.getColecao(), this.getCaminho());
     };
     
-    public abstract T buscar(E identificador);
-    
-    public List<T> getLista(){
-        return (List<T>)this.getColecao();
+    @Override
+    public List<T> getColecao(){
+        return (List<T>)this.colecao;
     }
 }

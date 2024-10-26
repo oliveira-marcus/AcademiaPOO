@@ -83,7 +83,8 @@ public class ProdutoEstoqueController implements ManipulatorController{
     
     @Override
     public void salvar() throws IOException{
-        
+        manipulador.salvar();
+        manipuladorMap.salvar();
     }
     
     public void run(){

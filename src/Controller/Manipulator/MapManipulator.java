@@ -14,14 +14,13 @@ import java.util.Map;
  * @param <K>
  * @param <V>
  */
-public abstract class MapManipulator<K, V> {
+public class MapManipulator<K, V> {
     private String caminho;
     private Map<K, V> map;
     private JsonMapController jsonController;
     
-    public MapManipulator(JsonMapController jsonController, String caminho,
+    public MapManipulator(String caminho,
             Class<K> classeChave, Class<V> classeValor) throws IOException{
-        this.jsonController = jsonController;
         this.caminho = caminho;
         jsonController.init(classeChave, classeValor);
         map = jsonController.read(caminho);
@@ -35,7 +34,9 @@ public abstract class MapManipulator<K, V> {
         map.remove(chave);
     }
     
-    public abstract void salvar() throws IOException;
+    public void salvar() throws IOException{
+        this.getJsonController().write(this.map, this.getCaminho());
+    }
 
     public String getCaminho() {
         return caminho;

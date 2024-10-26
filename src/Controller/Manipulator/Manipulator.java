@@ -15,7 +15,7 @@ import java.util.Collection;
  */
 public abstract class Manipulator<T> {
     private String caminho;
-    private Collection <T> colecao;
+    protected Collection <T> colecao;
     private JsonCollectionController jsonController;
     
     public Manipulator(JsonCollectionController jsonController, String caminho, Class<T> classe) throws IOException{
