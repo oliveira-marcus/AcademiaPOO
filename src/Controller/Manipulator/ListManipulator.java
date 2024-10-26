@@ -31,7 +31,7 @@ public abstract class ListManipulator<T, E> extends Manipulator<T> {
     
     @Override
     public void salvar() throws IOException{
-        jsonController.write(this.getColecao(), this.getCaminho());
+        this.getJsonController().write(this.getColecao(), this.getCaminho());
     };
     
     public abstract T buscar(E identificador);

@@ -4,23 +4,36 @@
  */
 package Controller.Manipulator;
 
+import Controller.JsonController.JsonMapController;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  *
  * @author caio
- * @param <T>
+ * @param <K>
+ * @param <V>
  */
-public abstract class MapManipulator<T> {
+public abstract class MapManipulator<K, V> {
     private String caminho;
+    private Map<K, V> map;
+    private JsonMapController jsonController;
     
-    public MapManipulator(String caminho){
+    public MapManipulator(JsonMapController jsonController, String caminho,
+            Class<K> classeChave, Class<V> classeValor) throws IOException{
+        this.jsonController = jsonController;
         this.caminho = caminho;
+        jsonController.init(classeChave, classeValor);
+        map = jsonController.read(caminho);
     }
     
-    public abstract void adicionar(T elem);
+    public void colocar(K chave, V valor){
+       map.put(chave, valor);
+    }
     
-    public abstract void remover(T elem);
+    public void remover(K chave){
+        map.remove(chave);
+    }
     
     public abstract void salvar() throws IOException;
 
@@ -30,5 +43,21 @@ public abstract class MapManipulator<T> {
 
     public void setCaminho(String caminho) {
         this.caminho = caminho;
+    }
+
+    public Map<K, V> getMap() {
+        return map;
+    }
+
+    public void setMap(Map<K, V> map) {
+        this.map = map;
+    }
+
+    public JsonMapController getJsonController() {
+        return jsonController;
+    }
+
+    public void setJsonController(JsonMapController jsonController) {
+        this.jsonController = jsonController;
     }
 }

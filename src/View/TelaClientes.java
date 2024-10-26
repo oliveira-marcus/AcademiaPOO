@@ -4,8 +4,6 @@
  */
 package View;
 
-import Controller.Manipulator.ClientesManipulator;
-import Controller.Sistema;
 import Model.Cliente;
 import java.util.Scanner;
 
@@ -14,9 +12,9 @@ import java.util.Scanner;
  * @author caio
  */
 public class TelaClientes {
-    private final ClientesManipulator areaClientes = Sistema.getManipuladorPorTipo(ClientesManipulator.class);
+    Scanner scanner = new Scanner(System.in);
     
-    public void exibirMenu(){
+    public int exibirMenu(){
         int opcao = 0;
         
         while (opcao != 4){
@@ -26,119 +24,66 @@ public class TelaClientes {
             System.out.println("4 - Sair");
             System.out.println();
             
-            Scanner scanner = new Scanner(System.in);
             System.out.println("Digite a opcao: ");
-            opcao = scanner.nextInt();
-            scanner.nextLine();
+            return scanner.nextInt();
             
-            switch (opcao){
-                case 1 -> {        
-                    adicionarCliente();
-                }
-              
-                case 2 -> {
-                    modificarCliente();
-                }
-                
-                case 3 -> {
-                    removerCliente();
-                }
-            }
+        }
+        return 4;
+    }
+    
+    public String getNomeCliente(){
+        System.out.println("Digite o nome do cliente: ");
+        return scanner.nextLine();
         }
         
-    }
-    
-    public void adicionarCliente(){
-        Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Digite o nome do cliente: ");
-        String nome = scanner.nextLine();
-
+    public String getEnderecoCliente(){
         System.out.println("Digite o endereço do cliente: ");
-        String endereco = scanner.nextLine();
+        return scanner.nextLine();
+    }
 
+
+    public String getFoneCliente(){
         System.out.println("Digite o telefone do cliente: ");
-        String fone = scanner.nextLine();
+        return scanner.nextLine();
+    }
 
+
+    public String getEmailCliente(){
         System.out.println("Digite o email do cliente: ");
-        String email = scanner.nextLine();
+        return scanner.nextLine();
+    }
 
+
+    public String getCpfCliente(){
         System.out.println("Digite o CPF do cliente: ");
-        String cpf = scanner.nextLine();
+        return scanner.nextLine();
+    }
 
+
+    public String getCartaoCliente(){
         System.out.println("Digite o Cartão de Crédito do cliente: ");
-        String cartao = scanner.nextLine();
-
-        System.out.println("Digite o ID do cliente: ");
-        int id = scanner.nextInt();
-
-        areaClientes.adicionar(new Cliente(nome, endereco, fone, email, cpf, cartao, id));
+        return scanner.nextLine();
     }
     
-    public void modificarCliente(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite o ID do cliente que quer editar: ");
-        int idCliente = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println();
+    public int getIdCliente(){
+        System.out.println("Digite o ID do cliente: ");
+        return scanner.nextInt();
+    }
         
-        Cliente cliente = areaClientes.buscar(idCliente);
-        mostrarCliente(cliente);
-        
+    public int modificarCliente(){       
         System.out.println("1 - Endereço");
         System.out.println("2 - Telefone");
         System.out.println("3 - Email");
         System.out.println("4 - Cartão de Crédito");
         
         System.out.println("Digite o que deseja alterar: ");
-        int opcao = scanner.nextInt();
-        scanner.nextLine();
-        
-        switch (opcao){
-            case 1 -> {
-                System.out.println("Digite o novo endereço: ");
-                String endereco = scanner.nextLine();
-                
-                areaClientes.editarEndereco(cliente, endereco);
-            }
-            case 2 -> {
-                System.out.println("Digite o novo telefone: ");
-                String telefone = scanner.nextLine();
-                
-                areaClientes.editarTelefone(cliente, telefone);
-            }
-            case 3 -> {
-                System.out.println("Digite o novo email: ");
-                String email = scanner.nextLine();
-                
-                areaClientes.editarEmail(cliente, email);
-            }
-            case 4 -> {
-                System.out.println("Digite o novo Cartão de Crédito: ");
-                String cartao = scanner.nextLine();
-                
-                areaClientes.editarCartao(cliente, cartao);
-            }
-        }
-        
+        return scanner.nextInt();
     }
     
-    public void removerCliente(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite o ID do cliente que quer editar: ");
-        int idCliente = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println();
-        
-        Cliente cliente = areaClientes.buscar(idCliente);
-        mostrarCliente(cliente);
-        
+    public String removeConfirmation(){
         System.out.println("Tem certeza que quer remover o Cliente? [S, N] ");
-        String resposta = scanner.nextLine();
-        
-        if (resposta.equals("S")){
-            areaClientes.remover(cliente);
-        }      
+        return scanner.nextLine();     
     }
     
     public void mostrarCliente(Cliente cliente){

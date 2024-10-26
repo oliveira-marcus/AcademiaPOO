@@ -10,14 +10,14 @@ import java.util.Calendar;
  *
  * @author caio
  */
-public class Ganho {
-    private String nome;
-    private String tipo;
+public class Conta {
+    private String nome; // Ganho: Salarios, Fornecedores, Despesa Geral, Despesa Administrativa, Imposto; Ganho: Diaria, Mensalidade, Venda
+    private String tipo; // Ganho ou Gasto
     private double valor;
     private Calendar data;
     private int id;
     
-    public Ganho(String nome, String tipo, double valor, Calendar data, int id){
+    public Conta(String nome, String tipo, double valor, Calendar data, int id){
         this.nome = nome;
         this.tipo = tipo;
         this.valor = valor;
@@ -32,7 +32,7 @@ public class Ganho {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+    
     public String getTipo() {
         return tipo;
     }

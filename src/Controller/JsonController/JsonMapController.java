@@ -21,17 +21,17 @@ import java.util.Map;
  * @param <V>
  */
 public class JsonMapController <K,V> {
-    private final Class<K> tipoClasseChave;
-    private final Class<V> tipoClasseValor;
-    private final Gson gson;
+    private Class<K> tipoClasseChave;
+    private Class<V> tipoClasseValor;
+    private Gson gson;
     
-    public JsonMapController(Class<K> tipoChave, Class<V> tipoValor){
+    public void init(Class<K> tipoChave, Class<V> tipoValor){
         this.tipoClasseChave = tipoChave;
         this.tipoClasseValor = tipoValor;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
     
-    public Map<K, V> readJsonToMap(String caminhoArquivo) throws IOException{
+    public Map<K, V> read(String caminhoArquivo) throws IOException{
         String jsonString = Files.readString(Paths.get(caminhoArquivo));
         Type mapType = TypeToken.getParameterized(Map.class, tipoClasseChave, tipoClasseValor).getType();
         var map = gson.fromJson(jsonString, mapType);
@@ -45,7 +45,7 @@ public class JsonMapController <K,V> {
         }
     }
     
-    public void writeMapToJson(Map<K, V> map, String caminhoArquivo) throws IOException{
+    public void write(Map<K, V> map, String caminhoArquivo) throws IOException{
         String jsonString = gson.toJson(map);
         Files.writeString(Paths.get(caminhoArquivo), jsonString);
     }

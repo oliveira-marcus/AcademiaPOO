@@ -9,5 +9,7 @@ package View;
  * @author caio
  */
 public class TelaAgenda {
-    
+    public int exibirMenu(){
+        return 0;
+    }
 }
