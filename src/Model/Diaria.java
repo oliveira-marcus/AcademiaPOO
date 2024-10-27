@@ -16,6 +16,7 @@ public class Diaria extends Conta{
     public Diaria(double valor, Calendar data, int id, int idAgendamento){
         super("Diaria", "Ganho", valor, data, id);
         this.idAgendamento = idAgendamento;
+        setType("Diaria");
     }
 
     public int getIdAgendamento() {

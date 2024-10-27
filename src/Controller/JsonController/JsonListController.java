@@ -6,6 +6,7 @@ package Controller.JsonController;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -28,6 +29,12 @@ public class JsonListController<T> implements JsonCollectionController<T>{
     public void init(Class<T> tipoClasse) {
         this.tipoClasse = tipoClasse;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
+    }
+
+    @Override
+    public void init(Class<T> tipoClasse, JsonDeserializer deserializer){
+        this.tipoClasse = tipoClasse;
+        this.gson = new GsonBuilder().registerTypeAdapter(tipoClasse, deserializer).setPrettyPrinting().create();
     }
     
     @Override

@@ -11,7 +11,8 @@
       "minute": 51,
       "second": 16
     },
-    "id": 1
+    "id": 1,
+    "type": "Conta"    
   },
   {
     "nome": "Fornecedores",
@@ -25,7 +26,8 @@
       "minute": 51,
       "second": 16
     },
-    "id": 2
+    "id": 2,
+    "type": "Conta"    
   },
   {
     "nome": "Despesa Geral",
@@ -39,7 +41,8 @@
       "minute": 51,
       "second": 16
     },
-    "id": 3
+    "id": 3,
+    "type": "Conta"    
   },
   {
     "nome": "Despesa Administrativa",
@@ -53,7 +56,8 @@
       "minute": 51,
       "second": 16
     },
-    "id": 4
+    "id": 4,
+    "type": "Conta"    
   },
   {
     "nome": "Imposto",
@@ -67,7 +71,8 @@
       "minute": 51,
       "second": 16
     },
-    "id": 5
+    "id": 5,
+    "type": "Conta"    
   },
   {
     "nome": "Mensalidade",
@@ -81,7 +86,8 @@
       "minute": 51,
       "second": 16
     },
-    "id": 7
+    "id": 7,
+    "type": "Conta"
   },
   {
     "nome": "Mensalidade",
@@ -95,7 +101,8 @@
       "minute": 51,
       "second": 16
     },
-    "id": 10
+    "id": 10,
+    "type": "Conta"
   },
   {
     "idCliente": 1,
@@ -122,7 +129,8 @@
       "minute": 18,
       "second": 44
     },
-    "id": 11
+    "id": 11,
+    "type": "Venda"
   },
   {
     "idCliente": 2,
@@ -149,7 +157,8 @@
       "minute": 18,
       "second": 44
     },
-    "id": 12
+    "id": 12,
+    "type": "Venda"
   },
   {
     "idCliente": 3,
@@ -176,7 +185,8 @@
       "minute": 18,
       "second": 44
     },
-    "id": 13
+    "id": 13,
+    "type": "Venda"
   },
   {
     "idCliente": 4,
@@ -203,7 +213,8 @@
       "minute": 18,
       "second": 44
     },
-    "id": 14
+    "id": 14,
+    "type": "Venda"
   },
   {
     "idCliente": 5,
@@ -230,7 +241,8 @@
       "minute": 18,
       "second": 44
     },
-    "id": 15
+    "id": 15,
+    "type": "Venda"
   },
   {
     "idCliente": 6,
@@ -257,7 +269,8 @@
       "minute": 18,
       "second": 44
     },
-    "id": 16
+    "id": 16,
+    "type": "Venda"
   },
   {
     "idCliente": 7,
@@ -284,7 +297,8 @@
       "minute": 18,
       "second": 44
     },
-    "id": 17
+    "id": 17,
+    "type": "Venda"
   },
   {
     "idCliente": 8,
@@ -311,7 +325,8 @@
       "minute": 18,
       "second": 44
     },
-    "id": 18
+    "id": 18,
+    "type": "Venda"
   },
   {
     "idCliente": 9,
@@ -338,7 +353,8 @@
       "minute": 18,
       "second": 44
     },
-    "id": 19
+    "id": 19,
+    "type": "Venda"
   },
   {
     "idCliente": 10,
@@ -365,7 +381,8 @@
       "minute": 18,
       "second": 44
     },
-    "id": 20
+    "id": 20,
+    "type": "Venda"
   },
   {
     "idAgendamento": 1,
@@ -380,7 +397,8 @@
       "minute": 0,
       "second": 42
     },
-    "id": 1
+    "id": 1,
+    "type": "Diaria"
   },
   {
     "idAgendamento": 2,
@@ -395,7 +413,8 @@
       "minute": 0,
       "second": 42
     },
-    "id": 1
+    "id": 1,
+    "type": "Diaria"
   },
   {
     "idAgendamento": 3,
@@ -410,7 +429,8 @@
       "minute": 0,
       "second": 42
     },
-    "id": 1
+    "id": 1,
+    "type": "Diaria"
   },
   {
     "idAgendamento": 4,
@@ -425,7 +445,8 @@
       "minute": 0,
       "second": 42
     },
-    "id": 1
+    "id": 1,
+    "type": "Diaria"
   },
   {
     "idAgendamento": 5,
@@ -440,7 +461,8 @@
       "minute": 0,
       "second": 42
     },
-    "id": 1
+    "id": 1,
+    "type": "Diaria"
   },
   {
     "idAgendamento": 6,
@@ -455,7 +477,8 @@
       "minute": 0,
       "second": 42
     },
-    "id": 1
+    "id": 1,
+    "type": "Diaria"
   },
   {
     "idAgendamento": 7,
@@ -470,7 +493,8 @@
       "minute": 0,
       "second": 42
     },
-    "id": 1
+    "id": 1,
+    "type": "Diaria"
   },
   {
     "idAgendamento": 8,
@@ -485,7 +509,8 @@
       "minute": 0,
       "second": 42
     },
-    "id": 1
+    "id": 1,
+    "type": "Diaria"
   },
   {
     "idAgendamento": 9,
@@ -500,7 +525,8 @@
       "minute": 0,
       "second": 42
     },
-    "id": 1
+    "id": 1,
+    "type": "Diaria"
   },
   {
     "idAgendamento": 10,
@@ -515,6 +541,7 @@
       "minute": 0,
       "second": 42
     },
-    "id": 1
+    "id": 1,
+    "type": "Diaria"
   }
 ]

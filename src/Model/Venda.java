@@ -22,6 +22,7 @@ public class Venda extends Conta{
         this.idProdutos = idProdutos;
         this.quantidades = quantidades;
         this.valoresUnit = valoresUnit;
+        setType("Venda");
     }
     
     public int getIdCliente() {

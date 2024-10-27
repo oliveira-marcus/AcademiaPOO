@@ -5,6 +5,7 @@
 package Controller.Manipulator;
 
 import Controller.JsonController.JsonListController;
+import com.google.gson.JsonDeserializer;
 import java.io.IOException;
 import java.util.List;
 
@@ -16,6 +17,10 @@ import java.util.List;
 public class ListManipulator<T> extends Manipulator<T> {
     public ListManipulator(String caminho, Class<T> classe) throws IOException{
         super(new JsonListController(), caminho, classe);
+    }
+    
+    public ListManipulator(String caminho, Class<T> classe, JsonDeserializer deserializer) throws IOException{
+        super(new JsonListController(), caminho, classe, deserializer);
     }
     
     @Override

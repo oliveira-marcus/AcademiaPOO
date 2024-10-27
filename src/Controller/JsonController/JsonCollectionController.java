@@ -4,6 +4,7 @@
  */
 package Controller.JsonController;
 
+import com.google.gson.JsonDeserializer;
 import java.io.IOException;
 import java.util.Collection;
 
@@ -15,6 +16,8 @@ import java.util.Collection;
 public interface JsonCollectionController<T> {
     
     public void init(Class<T> tipoClasse);
+    
+    public void init(Class<T> tipoClasse, JsonDeserializer deserializer);
     
     public Collection<T> read(String caminhoArquivo) throws IOException;
     

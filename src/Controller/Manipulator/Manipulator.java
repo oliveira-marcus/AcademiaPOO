@@ -5,6 +5,7 @@
 package Controller.Manipulator;
 
 import Controller.JsonController.JsonCollectionController;
+import com.google.gson.JsonDeserializer;
 import java.io.IOException;
 import java.util.Collection;
 
@@ -22,6 +23,13 @@ public abstract class Manipulator<T> {
         this.jsonController = jsonController;
         this.caminho = caminho;
         jsonController.init(classe);
+        colecao = jsonController.read(caminho);
+    }
+    
+    public Manipulator(JsonCollectionController jsonController, String caminho, Class<T> classe, JsonDeserializer deserializer) throws IOException{
+        this.jsonController = jsonController;
+        this.caminho = caminho;
+        jsonController.init(classe, deserializer);
         colecao = jsonController.read(caminho);
     }
     

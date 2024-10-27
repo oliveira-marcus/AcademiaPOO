@@ -16,6 +16,7 @@ public class Conta {
     private double valor;
     private Calendar data;
     private int id;
+    private String type = "Conta";
     
     public Conta(String nome, String tipo, double valor, Calendar data, int id){
         this.nome = nome;
@@ -64,5 +65,12 @@ public class Conta {
     public void setId(int id) {
         this.id = id;
     }
-    
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }    
 }

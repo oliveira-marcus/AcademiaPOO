@@ -113,7 +113,7 @@ public class ContasController implements ManipulatorController{
             int mesGanho = ganho.getData().get(Calendar.MONTH);
             int anoGanho = ganho.getData().get(Calendar.YEAR);
             
-            if (mesGanho == mes - 1 && anoGanho == ano - 1){
+            if (mesGanho + 1== mes && anoGanho == ano){
                 ganhosNoMes.add(ganho);
             } 
         }
@@ -129,7 +129,7 @@ public class ContasController implements ManipulatorController{
             int mesGasto = gasto.getData().get(Calendar.MONTH);
             int anoGasto = gasto.getData().get(Calendar.YEAR);
             
-            if (mesGasto == mes - 1 && anoGasto == ano - 1){
+            if (mesGasto + 1== mes && anoGasto == ano){
                 gastosNoMes.add(gasto);
             } 
         }
@@ -155,5 +155,13 @@ public class ContasController implements ManipulatorController{
     
     public void run(){
         
+    }
+
+    public Manipulator<Conta> getManipulador() {
+        return manipulador;
+    }
+
+    public void setManipulador(Manipulator<Conta> manipulador) {
+        this.manipulador = manipulador;
     }
 }
