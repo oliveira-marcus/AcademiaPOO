@@ -17,7 +17,7 @@ import java.util.Map;
 public class MapManipulator<K, V> {
     private String caminho;
     private Map<K, V> map;
-    private JsonMapController jsonController;
+    private JsonMapController jsonController = new JsonMapController();
     
     public MapManipulator(String caminho,
             Class<K> classeChave, Class<V> classeValor) throws IOException{

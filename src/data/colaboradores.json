@@ -1,10 +1,10 @@
 [
   {
     "salario": 3000.0,
-    "login": "joaosilva",
+    "login": "joaopedro",
     "senha": "senha123",
     "cargo": "Instrutor",
-    "nome": "João Silva",
+    "nome": "João Pedro",
     "endereco": "Rua A, 123",
     "telefone": "11987654321",
     "email": "joao@gmail.com",
@@ -12,10 +12,10 @@
   },
   {
     "salario": 3500.0,
-    "login": "mariasouza",
+    "login": "mariaeduarda",
     "senha": "senha456",
     "cargo": "Instrutor",
-    "nome": "Maria Souza",
+    "nome": "Maria Eduarda",
     "endereco": "Rua B, 456",
     "telefone": "11987654322",
     "email": "maria@gmail.com",
@@ -56,10 +56,10 @@
   },
   {
     "salario": 3700.0,
-    "login": "fernandalima",
+    "login": "fernandadossantos",
     "senha": "senha303",
     "cargo": "Instrutor",
-    "nome": "Fernanda Lima",
+    "nome": "Fernanda dos Santos",
     "endereco": "Rua F, 303",
     "telefone": "11987654326",
     "email": "fernanda@gmail.com",

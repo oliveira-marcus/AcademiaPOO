@@ -1,0 +1,520 @@
+[
+  {
+    "nome": "Salarios",
+    "tipo": "Gasto",
+    "valor": 5000.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 10,
+      "hourOfDay": 10,
+      "minute": 51,
+      "second": 16
+    },
+    "id": 1
+  },
+  {
+    "nome": "Fornecedores",
+    "tipo": "Gasto",
+    "valor": 3500.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 12,
+      "hourOfDay": 10,
+      "minute": 51,
+      "second": 16
+    },
+    "id": 2
+  },
+  {
+    "nome": "Despesa Geral",
+    "tipo": "Gasto",
+    "valor": 1200.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 15,
+      "hourOfDay": 10,
+      "minute": 51,
+      "second": 16
+    },
+    "id": 3
+  },
+  {
+    "nome": "Despesa Administrativa",
+    "tipo": "Gasto",
+    "valor": 800.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 18,
+      "hourOfDay": 10,
+      "minute": 51,
+      "second": 16
+    },
+    "id": 4
+  },
+  {
+    "nome": "Imposto",
+    "tipo": "Gasto",
+    "valor": 1500.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 20,
+      "hourOfDay": 10,
+      "minute": 51,
+      "second": 16
+    },
+    "id": 5
+  },
+  {
+    "nome": "Mensalidade",
+    "tipo": "Ganho",
+    "valor": 2500.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 25,
+      "hourOfDay": 10,
+      "minute": 51,
+      "second": 16
+    },
+    "id": 7
+  },
+  {
+    "nome": "Mensalidade",
+    "tipo": "Ganho",
+    "valor": 3000.0,
+    "data": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 1,
+      "hourOfDay": 10,
+      "minute": 51,
+      "second": 16
+    },
+    "id": 10
+  },
+  {
+    "idCliente": 1,
+    "idProdutos": [
+      102,
+      103
+    ],
+    "quantidades": [
+      2,
+      1
+    ],
+    "valoresUnit": [
+      3000.0,
+      80.0
+    ],
+    "nome": "Venda",
+    "tipo": "Ganho",
+    "valor": 6080.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 21,
+      "hourOfDay": 11,
+      "minute": 18,
+      "second": 44
+    },
+    "id": 11
+  },
+  {
+    "idCliente": 2,
+    "idProdutos": [
+      103,
+      104
+    ],
+    "quantidades": [
+      2,
+      1
+    ],
+    "valoresUnit": [
+      80.0,
+      2200.0
+    ],
+    "nome": "Venda",
+    "tipo": "Ganho",
+    "valor": 2360.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 22,
+      "hourOfDay": 11,
+      "minute": 18,
+      "second": 44
+    },
+    "id": 12
+  },
+  {
+    "idCliente": 3,
+    "idProdutos": [
+      104,
+      105
+    ],
+    "quantidades": [
+      2,
+      1
+    ],
+    "valoresUnit": [
+      2200.0,
+      45.0
+    ],
+    "nome": "Venda",
+    "tipo": "Ganho",
+    "valor": 4445.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 23,
+      "hourOfDay": 11,
+      "minute": 18,
+      "second": 44
+    },
+    "id": 13
+  },
+  {
+    "idCliente": 4,
+    "idProdutos": [
+      105,
+      106
+    ],
+    "quantidades": [
+      2,
+      1
+    ],
+    "valoresUnit": [
+      45.0,
+      120.0
+    ],
+    "nome": "Venda",
+    "tipo": "Ganho",
+    "valor": 210.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 24,
+      "hourOfDay": 11,
+      "minute": 18,
+      "second": 44
+    },
+    "id": 14
+  },
+  {
+    "idCliente": 5,
+    "idProdutos": [
+      106,
+      107
+    ],
+    "quantidades": [
+      2,
+      1
+    ],
+    "valoresUnit": [
+      120.0,
+      100.0
+    ],
+    "nome": "Venda",
+    "tipo": "Ganho",
+    "valor": 340.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 25,
+      "hourOfDay": 11,
+      "minute": 18,
+      "second": 44
+    },
+    "id": 15
+  },
+  {
+    "idCliente": 6,
+    "idProdutos": [
+      107,
+      108
+    ],
+    "quantidades": [
+      2,
+      1
+    ],
+    "valoresUnit": [
+      100.0,
+      60.0
+    ],
+    "nome": "Venda",
+    "tipo": "Ganho",
+    "valor": 260.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 26,
+      "hourOfDay": 11,
+      "minute": 18,
+      "second": 44
+    },
+    "id": 16
+  },
+  {
+    "idCliente": 7,
+    "idProdutos": [
+      108,
+      109
+    ],
+    "quantidades": [
+      2,
+      1
+    ],
+    "valoresUnit": [
+      60.0,
+      12.0
+    ],
+    "nome": "Venda",
+    "tipo": "Ganho",
+    "valor": 132.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 27,
+      "hourOfDay": 11,
+      "minute": 18,
+      "second": 44
+    },
+    "id": 17
+  },
+  {
+    "idCliente": 8,
+    "idProdutos": [
+      109,
+      110
+    ],
+    "quantidades": [
+      2,
+      1
+    ],
+    "valoresUnit": [
+      12.0,
+      30.0
+    ],
+    "nome": "Venda",
+    "tipo": "Ganho",
+    "valor": 54.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 28,
+      "hourOfDay": 11,
+      "minute": 18,
+      "second": 44
+    },
+    "id": 18
+  },
+  {
+    "idCliente": 9,
+    "idProdutos": [
+      110,
+      200
+    ],
+    "quantidades": [
+      2,
+      1
+    ],
+    "valoresUnit": [
+      30.0,
+      100.0
+    ],
+    "nome": "Venda",
+    "tipo": "Ganho",
+    "valor": 160.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 29,
+      "hourOfDay": 11,
+      "minute": 18,
+      "second": 44
+    },
+    "id": 19
+  },
+  {
+    "idCliente": 10,
+    "idProdutos": [
+      200,
+      210
+    ],
+    "quantidades": [
+      2,
+      1
+    ],
+    "valoresUnit": [
+      100.0,
+      30.0
+    ],
+    "nome": "Venda",
+    "tipo": "Ganho",
+    "valor": 230.0,
+    "data": {
+      "year": 2024,
+      "month": 9,
+      "dayOfMonth": 30,
+      "hourOfDay": 11,
+      "minute": 18,
+      "second": 44
+    },
+    "id": 20
+  },
+  {
+    "idAgendamento": 1,
+    "nome": "Diaria",
+    "tipo": "Ganho",
+    "valor": 50.0,
+    "data": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 10,
+      "hourOfDay": 10,
+      "minute": 0,
+      "second": 42
+    },
+    "id": 1
+  },
+  {
+    "idAgendamento": 2,
+    "nome": "Diaria",
+    "tipo": "Ganho",
+    "valor": 70.0,
+    "data": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 11,
+      "hourOfDay": 12,
+      "minute": 0,
+      "second": 42
+    },
+    "id": 1
+  },
+  {
+    "idAgendamento": 3,
+    "nome": "Diaria",
+    "tipo": "Ganho",
+    "valor": 40.0,
+    "data": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 12,
+      "hourOfDay": 8,
+      "minute": 0,
+      "second": 42
+    },
+    "id": 1
+  },
+  {
+    "idAgendamento": 4,
+    "nome": "Diaria",
+    "tipo": "Ganho",
+    "valor": 60.0,
+    "data": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 13,
+      "hourOfDay": 15,
+      "minute": 0,
+      "second": 42
+    },
+    "id": 1
+  },
+  {
+    "idAgendamento": 5,
+    "nome": "Diaria",
+    "tipo": "Ganho",
+    "valor": 50.0,
+    "data": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 10,
+      "hourOfDay": 10,
+      "minute": 0,
+      "second": 42
+    },
+    "id": 1
+  },
+  {
+    "idAgendamento": 6,
+    "nome": "Diaria",
+    "tipo": "Ganho",
+    "valor": 35.0,
+    "data": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 11,
+      "hourOfDay": 12,
+      "minute": 0,
+      "second": 42
+    },
+    "id": 1
+  },
+  {
+    "idAgendamento": 7,
+    "nome": "Diaria",
+    "tipo": "Ganho",
+    "valor": 80.0,
+    "data": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 12,
+      "hourOfDay": 8,
+      "minute": 0,
+      "second": 42
+    },
+    "id": 1
+  },
+  {
+    "idAgendamento": 8,
+    "nome": "Diaria",
+    "tipo": "Ganho",
+    "valor": 60.0,
+    "data": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 13,
+      "hourOfDay": 15,
+      "minute": 0,
+      "second": 42
+    },
+    "id": 1
+  },
+  {
+    "idAgendamento": 9,
+    "nome": "Diaria",
+    "tipo": "Ganho",
+    "valor": 25.0,
+    "data": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 10,
+      "hourOfDay": 10,
+      "minute": 0,
+      "second": 42
+    },
+    "id": 1
+  },
+  {
+    "idAgendamento": 10,
+    "nome": "Diaria",
+    "tipo": "Ganho",
+    "valor": 70.0,
+    "data": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 14,
+      "hourOfDay": 16,
+      "minute": 0,
+      "second": 42
+    },
+    "id": 1
+  }
+]

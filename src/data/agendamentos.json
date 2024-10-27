@@ -1,68 +1,162 @@
 [
   {
-    "id": 200,
+    "id": 1,
     "estadoReserva": "FEITA",
-    "cliente": {
-      "cartaoCredito": "0000 0000 0000 0000",
-      "id": 201,
-      "nome": "Caio",
-      "endereco": "Rua dos bobo, 0",
-      "telefone": "987654321",
-      "email": "cainbgl@gmail.com",
-      "cpf": "123.456.789-10"
-    },
+    "idCliente": 1,
+    "sala": "Musculação",
     "precoAula": 50.0,
-    "instrutor": {
-      "salario": 3200.0,
-      "login": "carlosmendes",
-      "senha": "senha404",
-      "cargo": "Instrutor",
-      "nome": "Carlos Mendes",
-      "endereco": "Rua G, 404",
-      "telefone": "11987654327",
-      "email": "carlos@gmail.com",
-      "cpf": "789.012.345-06"
-    },
+    "nomeInstrutor": "João Pedro",
     "dataHorario": {
       "year": 2024,
-      "month": 11,
-      "dayOfMonth": 23,
-      "hourOfDay": 23,
-      "minute": 10,
-      "second": 25
+      "month": 10,
+      "dayOfMonth": 10,
+      "hourOfDay": 10,
+      "minute": 0,
+      "second": 27
     }
   },
   {
-    "id": 201,
-    "estadoReserva": "FEITA",
-    "cliente": {
-      "cartaoCredito": "1111 0000 3333 1444",
-      "id": 780,
-      "nome": "Patrick",
-      "endereco": "Fenda do Biquini",
-      "telefone": "00001111",
-      "email": "patrickestrela@gmail.com",
-      "cpf": "111.222.111-31"
-    },
-    "precoAula": 60.0,
-    "instrutor": {
-      "salario": 4100.0,
-      "login": "julianapereira",
-      "senha": "senha505",
-      "cargo": "Instrutor",
-      "nome": "Juliana Pereira",
-      "endereco": "Rua H, 505",
-      "telefone": "11987654328",
-      "email": "juliana@gmail.com",
-      "cpf": "890.123.456-07"
-    },
+    "id": 2,
+    "estadoReserva": "CONFIRMADA",
+    "idCliente": 2,
+    "sala": "Pilates",
+    "precoAula": 70.0,
+    "nomeInstrutor": "Maria Eduarda",
     "dataHorario": {
       "year": 2024,
-      "month": 11,
-      "dayOfMonth": 24,
-      "hourOfDay": 23,
+      "month": 10,
+      "dayOfMonth": 11,
+      "hourOfDay": 12,
       "minute": 0,
-      "second": 25
+      "second": 27
+    }
+  },
+  {
+    "id": 3,
+    "estadoReserva": "CANCELADA",
+    "idCliente": 3,
+    "sala": "Spinning",
+    "precoAula": 80.0,
+    "nomeInstrutor": "Pedro Almeida",
+    "dataHorario": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 12,
+      "hourOfDay": 8,
+      "minute": 0,
+      "second": 27
+    }
+  },
+  {
+    "id": 4,
+    "estadoReserva": "FEITA",
+    "idCliente": 4,
+    "sala": "FitDance",
+    "precoAula": 60.0,
+    "nomeInstrutor": "Ana Oliveira",
+    "dataHorario": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 13,
+      "hourOfDay": 15,
+      "minute": 0,
+      "second": 27
+    }
+  },
+  {
+    "id": 5,
+    "estadoReserva": "CONFIRMADA",
+    "idCliente": 5,
+    "sala": "Musculação",
+    "precoAula": 50.0,
+    "nomeInstrutor": "Caio Bruno",
+    "dataHorario": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 10,
+      "hourOfDay": 10,
+      "minute": 0,
+      "second": 27
+    }
+  },
+  {
+    "id": 6,
+    "estadoReserva": "CANCELADA",
+    "idCliente": 6,
+    "sala": "Pilates",
+    "precoAula": 70.0,
+    "nomeInstrutor": "João Pedro",
+    "dataHorario": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 11,
+      "hourOfDay": 12,
+      "minute": 0,
+      "second": 27
+    }
+  },
+  {
+    "id": 7,
+    "estadoReserva": "FEITA",
+    "idCliente": 7,
+    "sala": "Spinning",
+    "precoAula": 80.0,
+    "nomeInstrutor": "Maria Eduarda",
+    "dataHorario": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 12,
+      "hourOfDay": 8,
+      "minute": 0,
+      "second": 27
+    }
+  },
+  {
+    "id": 8,
+    "estadoReserva": "CONFIRMADA",
+    "idCliente": 8,
+    "sala": "FitDance",
+    "precoAula": 60.0,
+    "nomeInstrutor": "Pedro Almeida",
+    "dataHorario": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 13,
+      "hourOfDay": 15,
+      "minute": 0,
+      "second": 27
+    }
+  },
+  {
+    "id": 9,
+    "estadoReserva": "CANCELADA",
+    "idCliente": 9,
+    "sala": "Musculação",
+    "precoAula": 50.0,
+    "nomeInstrutor": "Ana Oliveira",
+    "dataHorario": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 10,
+      "hourOfDay": 10,
+      "minute": 0,
+      "second": 27
+    }
+  },
+  {
+    "id": 10,
+    "estadoReserva": "FEITA",
+    "idCliente": 10,
+    "sala": "Pilates",
+    "precoAula": 70.0,
+    "nomeInstrutor": "Caio Bruno",
+    "dataHorario": {
+      "year": 2024,
+      "month": 10,
+      "dayOfMonth": 14,
+      "hourOfDay": 16,
+      "minute": 0,
+      "second": 27
     }
   }
 ]

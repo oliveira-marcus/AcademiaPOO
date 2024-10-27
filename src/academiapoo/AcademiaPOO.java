@@ -33,9 +33,9 @@ public class AcademiaPOO {
         Sistema.adicionarManipuladorContr(new ColaboradoresController(new ListManipulator("src/data/colaboradores.json", Funcionario.class)));
         Sistema.adicionarManipuladorContr(new AgendamentosController(new ListManipulator("src/data/agendamentos.json", Agendamento.class)));
         Sistema.adicionarManipuladorContr(new ProdutoEstoqueController(new ListManipulator("src/data/produtos.json", Agendamento.class),
-        new MapManipulator("estoque.json", String.class, Integer.class)));
-        Sistema.adicionarManipuladorContr(new ContasController(new ListManipulator("src/data/agendamentos.json", Conta.class)));
-        
+        new MapManipulator("src/data/estoque.json", String.class, Integer.class)));
+        Sistema.adicionarManipuladorContr(new ContasController(new ListManipulator("src/data/contas.json", Conta.class)));
+
         ContasController contasController = Sistema.getManipuladorContrPorTipo(ContasController.class);
     }
 }
