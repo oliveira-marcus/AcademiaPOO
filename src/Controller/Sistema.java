@@ -77,6 +77,6 @@ public class Sistema {
     }
     
     public void run(){
-        
+        login.run();
     }
 }

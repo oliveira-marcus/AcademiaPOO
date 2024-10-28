@@ -35,6 +35,7 @@ public class AcademiaPOO {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
+        Sistema sistema = new Sistema("src/data/colaboradores.json");
         Sistema.adicionarManipuladorContr(new ClientesController(new ListManipulator("src/data/clientes.json", Cliente.class)));
         Sistema.adicionarManipuladorContr(new ColaboradoresController(new ListManipulator("src/data/colaboradores.json", Funcionario.class)));
         Sistema.adicionarManipuladorContr(new AgendamentosController(new ListManipulator("src/data/agendamentos.json", Agendamento.class)));
@@ -47,24 +48,6 @@ public class AcademiaPOO {
         deserializer.registerContaType("Diaria", Diaria.class);
         Sistema.adicionarManipuladorContr(new ContasController(new ListManipulator("src/data/contas.json", Conta.class, deserializer)));
         
-        
-        ContasController contasController = Sistema.getManipuladorContrPorTipo(ContasController.class);
-        
-        Map<String, Double> balanco;
-        balanco = contasController.gerarBalancoMensal(contasController.buscarContasMes(10, 2024));
-        
-        System.out.println(balanco);
-        
-//        Map<String, double[]> relatorioOutubro;
-//        relatorioOutubro = contasController.emitirRelatorioVendas(contasController.filtrarVendas(contasController.buscarContasDia(22,10, 2024)));
-//        
-//        for (String key : relatorioOutubro.keySet()){
-//            System.out.printf(key + " ");
-//            
-//            for(double valor : relatorioOutubro.get(key)){
-//                System.out.printf(valor + " ");
-//            }
-//            System.out.println();
-//        }
+        sistema.run();
     }
 }

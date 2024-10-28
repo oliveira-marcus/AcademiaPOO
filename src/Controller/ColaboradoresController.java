@@ -25,8 +25,6 @@ public class ColaboradoresController implements ManipulatorController{
     }
     
     public Funcionario validarFuncionario(String nome, String endereco, String telefone, String email, String cpf, double salario, String login, String senha, String cargo){
-        // Posso fazer a logica de Administrador aqui
-        
         return new Funcionario(nome, endereco, telefone, email, cpf, salario, login, senha, cargo);
     }
     

@@ -6,6 +6,7 @@ package Controller;
 
 import Controller.JsonController.JsonListController;
 import Model.Funcionario;
+import View.TelaLogin;
 import java.io.IOException;
 import java.util.List;
 
@@ -14,11 +15,13 @@ import java.util.List;
  * @author caio
  */
 public class Login {
+    private final TelaLogin telaLogin = new TelaLogin();
     private final List<Funcionario> usuarios;
     private Funcionario funcLogado;
-    JsonListController<Funcionario> jsonController;
+    private JsonListController<Funcionario> jsonController;
     
     public Login(String caminho) throws IOException{
+        jsonController = new JsonListController();
         jsonController.init(Funcionario.class);
         
         usuarios = jsonController.read(caminho);
@@ -40,5 +43,22 @@ public class Login {
 
     public void setFuncLogado(Funcionario funcLogado) {
         this.funcLogado = funcLogado;
+    }
+    
+    public void run(){
+        boolean canExit = false;
+        while (!canExit){
+            String login = telaLogin.getUserLogin();
+            String senha = telaLogin.getUserSenha();
+        
+            autenticarUsuario(login, senha);
+            
+            if (funcLogado != null){
+                canExit = true;
+            }
+            else{
+                telaLogin.displayErroLogin();
+            }
+        }
     }
 }
