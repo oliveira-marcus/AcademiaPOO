@@ -4,10 +4,11 @@
  */
 package Controller;
 
-import Controller.Login;
+import View.TelaInicial;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -20,6 +21,7 @@ public class Sistema {
     private static int quantProdutosCatalogo = 0;
     private Catraca catraca = new Catraca();
     private Login login;
+    private TelaInicial telaInicial = new TelaInicial();
     
     public static void adicionarManipuladorContr(ManipulatorController manipulador){
         manipuladoresController.add(manipulador);
@@ -78,5 +80,29 @@ public class Sistema {
     
     public void run(){
         login.run();
+        int opcao = 0;
+        
+        while(opcao != 6){
+            opcao = telaInicial.exibirMenu();
+        
+            switch(opcao){
+                case 1 -> {
+                    getManipuladorContrPorTipo(ClientesController.class).run();
+                }
+                case 2 -> {
+                    getManipuladorContrPorTipo(ColaboradoresController.class).run();
+                }
+                case 3 -> {
+                    getManipuladorContrPorTipo(ProdutoEstoqueController.class).run();
+                }
+                case 4 -> {
+                    getManipuladorContrPorTipo(AgendamentosController.class).run();
+                }
+                case 5 -> {
+                    getManipuladorContrPorTipo(ContasController.class).run();
+                }
+            }
+        }
+        
     }
 }

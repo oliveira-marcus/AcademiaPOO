@@ -1,11 +1,9 @@
 package Controller;
 
 import Controller.Manipulator.Manipulator;
-import Controller.Sistema;
 import Model.Cliente;
 import View.TelaClientes;
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  *
@@ -14,7 +12,6 @@ import java.util.Scanner;
 public final class ClientesController implements ManipulatorController{  
     Manipulator<Cliente> manipulador;
     TelaClientes telaClientes = new TelaClientes();
-    Scanner scanner = new Scanner(System.in);
     
     public ClientesController(Manipulator<Cliente> manipulador) throws IOException{
         this.manipulador = manipulador;
@@ -81,7 +78,6 @@ public final class ClientesController implements ManipulatorController{
         
         while(opcao != 4){
             opcao = telaClientes.exibirMenu();
-            scanner.nextLine();
         
             switch (opcao){
                 case 1 -> {
