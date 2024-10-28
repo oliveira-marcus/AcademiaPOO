@@ -26,4 +26,8 @@ public class TelaLogin {
     public void displayErroLogin(){
         System.out.println("Erro ao fazer o Login. Tente Novamente!");
     }
+    
+    public void displayLoginSuccess(){
+        System.out.println("LOGIN CONCLUIDO!");
+    }
 }

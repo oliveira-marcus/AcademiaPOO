@@ -25,7 +25,9 @@ public class TelaClientes {
             System.out.println();
             
             System.out.println("Digite a opcao: ");
-            return scanner.nextInt();
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+            return opcao;
             
         }
         return 4;
@@ -68,7 +70,9 @@ public class TelaClientes {
     
     public int getIdCliente(){
         System.out.println("Digite o ID do cliente: ");
-        return scanner.nextInt();
+        int idCliente = scanner.nextInt();
+        scanner.nextLine();
+        return idCliente;
     }
         
     public int modificarCliente(){       
@@ -78,7 +82,9 @@ public class TelaClientes {
         System.out.println("4 - Cartão de Crédito");
         
         System.out.println("Digite o que deseja alterar: ");
-        return scanner.nextInt();
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+        return opcao;
     }
     
     public String removeConfirmation(){
@@ -89,5 +95,9 @@ public class TelaClientes {
     public void mostrarCliente(Cliente cliente){
         System.out.printf("Nome: %s%nEndereco: %s%nTelefone: %s%nEmail: %s%n", 
                 cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getEmail());
+    }
+    
+    public void displayNomeInvalido(){
+        System.out.println("O nome que voce digitou e invalido! ");
     }
 }

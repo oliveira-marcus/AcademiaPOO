@@ -19,20 +19,58 @@ public final class ClientesController implements ManipulatorController{
     }
     
     
-    public void adicionarCliente(String nome, String endereco, String fone, String email, String cpf, String cartao, int id ){
+    public void adicionarCliente(){
+        String nome = telaClientes.getNomeCliente();
+        String endereco = telaClientes.getEnderecoCliente();
+        String fone = telaClientes.getFoneCliente();
+        String email = telaClientes.getEmailCliente();
+        String cpf = telaClientes.getCpfCliente();
+        String cartao = telaClientes.getCartaoCliente();
+        int id = telaClientes.getIdCliente();
         
-        // Posso colocar alguma validação de dados antes de construir o objeto. Exemplo: verificar se o Nome é válido
-        Cliente novoCliente = validarCliente(nome, endereco, fone, email, cpf, cartao, id);
+        
+        Cliente novoCliente = new Cliente(nome, endereco, fone, email, cpf, cartao, id);
         manipulador.adicionar(novoCliente);
         Sistema.setQuantClientesPriv(Sistema.getQuantClientesPriv() + 1);
     }
     
-    public Cliente validarCliente(String nome, String endereco, String fone, String email, String cpf, String cartao, int id){
-        return new Cliente(nome, endereco, fone, email, cpf, cartao, id);
+    public void removerCliente(){
+        int id = telaClientes.getIdCliente();
+        Cliente cliente = buscarCliente(id);
+        telaClientes.mostrarCliente(cliente);
+        String opcaoConfirmacao = telaClientes.removeConfirmation();
+
+        if (opcaoConfirmacao.equals("S")){
+            manipulador.remover(cliente);
+        }
     }
     
-    public void removerCliente(Cliente cliente){
-        manipulador.remover(cliente);
+    public void editarCliente(){
+        int id = telaClientes.getIdCliente();
+        Cliente cliente = buscarCliente(id);
+        telaClientes.mostrarCliente(cliente);
+        System.out.println();
+        int opcaoModificacao = telaClientes.modificarCliente();
+
+        switch(opcaoModificacao){
+            case 1 -> {
+                String novoEndereco = telaClientes.getEnderecoCliente();
+                editarEndereco(cliente, novoEndereco);
+
+            }
+            case 2 -> {
+                String novoFone = telaClientes.getFoneCliente();
+                editarTelefone(cliente, novoFone);
+            }
+            case 3 -> {
+                String novoEmail = telaClientes.getEmailCliente();
+                editarEmail(cliente, novoEmail);
+            }
+            case 4 -> {
+                String novoCartao = telaClientes.getCartaoCliente();
+                editarCartao(cliente, novoCartao);
+            }
+        }
     }
     
     public void editarEndereco(Cliente cliente, String enderecoNovo){
@@ -78,35 +116,16 @@ public final class ClientesController implements ManipulatorController{
         
         while(opcao != 4){
             opcao = telaClientes.exibirMenu();
-        
+            
             switch (opcao){
                 case 1 -> {
-                    String nome = telaClientes.getNomeCliente();
-                    String endereco = telaClientes.getEnderecoCliente();
-                    String fone = telaClientes.getFoneCliente();
-                    String email = telaClientes.getEmailCliente();
-                    String cpf = telaClientes.getCpfCliente();
-                    String cartao = telaClientes.getCartaoCliente();
-                    int id = telaClientes.getIdCliente();
-
-                    adicionarCliente(nome, endereco, fone, email, cpf, cartao,id);
+                    adicionarCliente();
                 }
                 case 2 -> {
-                    int id = telaClientes.getIdCliente();
-                    Cliente cliente = buscarCliente(id);
-                    telaClientes.mostrarCliente(cliente);
-                    System.out.println();
-                    int opcaoModificacao = telaClientes.modificarCliente();
+                    editarCliente();
                 }
                 case 3 -> {
-                    int id = telaClientes.getIdCliente();
-                    Cliente cliente = buscarCliente(id);
-                    telaClientes.mostrarCliente(cliente);
-                    String opcaoConfirmacao = telaClientes.removeConfirmation();
-                    
-                    if (opcaoConfirmacao.equals("S")){
-                        removerCliente(cliente);
-                    }
+                    removerCliente();
                 }
             }
         }

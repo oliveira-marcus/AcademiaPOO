@@ -55,6 +55,7 @@ public class Login {
             
             if (funcLogado != null){
                 canExit = true;
+                telaLogin.displayLoginSuccess();
             }
             else{
                 telaLogin.displayErroLogin();

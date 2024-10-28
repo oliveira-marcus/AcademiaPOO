@@ -78,7 +78,7 @@ public class Sistema {
         this.login = login;
     }
     
-    public void run(){
+    public void run() throws IOException{
         login.run();
         int opcao = 0;
         
@@ -103,6 +103,6 @@ public class Sistema {
                 }
             }
         }
-        
+        Sistema.salvarDados();
     }
 }
