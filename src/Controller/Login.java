@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Controller.JsonController.JsonListController;
 import Model.Funcionario;
 import java.io.IOException;
 import java.util.List;
@@ -13,21 +14,31 @@ import java.util.List;
  * @author caio
  */
 public class Login {
-//    private final List<Funcionario> usuarios;
+    private final List<Funcionario> usuarios;
+    private Funcionario funcLogado;
+    JsonListController<Funcionario> jsonController;
+    
+    public Login(String caminho) throws IOException{
+        jsonController.init(Funcionario.class);
+        
+        usuarios = jsonController.read(caminho);
+    }
 //    
-//    public Login() throws IOException{
-//        JsonListController<Funcionario> jsonController = new JsonListController(Funcionario.class);
-//        
-//        usuarios = jsonController.read("src/data/colaboradores.json");
-//    }
-//    
-//    public Funcionario autenticarUsuario(String login, String senha){
-//        for (Funcionario usuario : usuarios){
-//            if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)){
-//                return usuario;
-//            }
-//        }
-//        
-//        return null;
-//    }
+    public Funcionario autenticarUsuario(String login, String senha){
+        for (Funcionario usuario : usuarios){
+            if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)){
+                this.funcLogado = usuario;
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    public Funcionario getFuncLogado() {
+        return funcLogado;
+    }
+
+    public void setFuncLogado(Funcionario funcLogado) {
+        this.funcLogado = funcLogado;
+    }
 }

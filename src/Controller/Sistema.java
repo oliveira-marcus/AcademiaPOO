@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Controller.Login;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class Sistema {
     protected static int quantClientesProtec = 0;
     private static int quantProdutosCatalogo = 0;
     private Catraca catraca = new Catraca();
+    private Login login;
     
     public static void adicionarManipuladorContr(ManipulatorController manipulador){
         manipuladoresController.add(manipulador);
@@ -54,12 +56,24 @@ public class Sistema {
         Sistema.quantProdutosCatalogo = quantProdutosCatalogo;
     }
 
+    public Sistema(String caminhoLogin) throws IOException {
+        this.login = new Login(caminhoLogin);
+    }
+
     public Catraca getCatraca() {
         return catraca;
     }
 
     public void setCatraca(Catraca catraca) {
         this.catraca = catraca;
+    }
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
     }
     
     public void run(){
