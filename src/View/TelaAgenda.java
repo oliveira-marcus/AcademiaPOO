@@ -68,8 +68,13 @@ public class TelaAgenda {
     }
     
     public String getDataHorarioAgendamento(){
-        System.out.println("Digite o Horário no Formato ANO MES DIA HORA MINUTO");
+        System.out.println("Digite o Horário: [DD MM AAAA HH MM]");
         return scanner.nextLine();
+    }
+    
+    public int getIdDiaria(){
+        System.out.println("Digite o Id da diária a ser criada");
+        return scanner.nextInt();
     }
     
     public int modificarAgendamento(){
@@ -91,5 +96,9 @@ public class TelaAgenda {
                 agendamento.getIdCliente(), agendamento.getSala(),
                 agendamento.getPrecoAula(), agendamento.getNomeInstrutor(),
                 agendamento.getDataHorario());
+    }
+    
+    public void displayMsgNovaDiaria(){
+        System.out.println("Uma nova Conta DIÁRIA será criada");
     }
 }

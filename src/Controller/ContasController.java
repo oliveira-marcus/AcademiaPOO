@@ -159,6 +159,10 @@ public class ContasController implements ManipulatorController{
         return vendas;
     }
     
+    public void criarDiaria(double valor, Calendar data, int id, int idAgendamento){
+        manipulador.adicionar(new Diaria(valor, data, id, idAgendamento));
+    }
+    
     public void cortarValorDiariaMetade(int idAgendamento){
         ArrayList<Conta> contas = (ArrayList<Conta>)manipulador.getColecao();
         
@@ -173,7 +177,7 @@ public class ContasController implements ManipulatorController{
     
     @Override
     public void salvar() throws IOException{
-    
+        manipulador.salvar();
     }
     
     public void run(){

@@ -29,10 +29,11 @@ public class AgendamentosController implements ManipulatorController{
     public void adicionarAgendamento(){        
         int id = telaAgenda.getIdAgendamento();
         int idCliente = telaAgenda.getIdClienteAgendamento();
-        String sala = salas[telaAgenda.getSalaAgendamento()].getNome();
+        String sala = salas[telaAgenda.getSalaAgendamento() - 1].getNome();
         double precoAula = telaAgenda.getPrecoAulaAgendamento();
         String nomeInstrutor = telaAgenda.getNomeInstrutorAgendamento();
         String dataHorarioStr = telaAgenda.getDataHorarioAgendamento();
+        Calendar dataHorario = formatarHorario(dataHorarioStr);
         
         // faz a busca do Cliente
         ClientesController areaClientes = Sistema.getManipuladorContrPorTipo(ClientesController.class);
@@ -42,10 +43,13 @@ public class AgendamentosController implements ManipulatorController{
         ColaboradoresController areaColaboradores = Sistema.getManipuladorContrPorTipo(ColaboradoresController.class);
         areaColaboradores.buscarColaborador(nomeInstrutor);
         
-        Calendar dataHorario = formatarHorario(dataHorarioStr);
-        
         manipulador.adicionar(new Agendamento(id, "FEITA", idCliente, sala, 
                 precoAula, nomeInstrutor, dataHorario));
+        
+        telaAgenda.displayMsgNovaDiaria();
+        int idDiaria = telaAgenda.getIdDiaria();
+        ContasController contasController = Sistema.getManipuladorContrPorTipo(ContasController.class);
+        contasController.criarDiaria(precoAula, dataHorario, idDiaria, id);
     }
     
     public void confirmarAgendamento(){
@@ -106,7 +110,7 @@ public class AgendamentosController implements ManipulatorController{
         switch(opcaoModificacao){
             case 1 -> {
                 int novaSala = telaAgenda.getSalaAgendamento();
-                editarSala(agendamento, salas[novaSala].getNome());
+                editarSala(agendamento, salas[novaSala - 1].getNome());
                 
                 double novoPrecoAula = telaAgenda.getPrecoAulaAgendamento();
                 editarPrecoAula(agendamento, novoPrecoAula);
@@ -170,7 +174,7 @@ public class AgendamentosController implements ManipulatorController{
         int minuto = Integer.parseInt(dataHorarioStringSplitted[4]);
         
         Calendar dataHorario = Calendar.getInstance();
-        dataHorario.set(ano, mes-1, dia, hora, minuto, 0);
+        dataHorario.set(ano, mes, dia, hora, minuto, 0);
         
         return dataHorario;
     }
