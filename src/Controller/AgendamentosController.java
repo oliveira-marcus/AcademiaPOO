@@ -59,15 +59,15 @@ public class AgendamentosController implements ManipulatorController{
         switch (agendamento.getEstadoReserva()) {
 
             case "CANCELADA" -> {
+                 telaAgenda.displayConfirmarCanceladaError();
             }
 
             case "CONFIRMADA" -> {
+                 telaAgenda.displayJaConfirmadaError();
             }
             default -> agendamento.setEstadoReserva("CONFIRMADA");
         }
-        // telaAgenda.displayConfirmarCanceladaError();
-        // telaAgenda.displayJaConfirmadaError();
-            }
+    }
     
     public void cancelarAgendamento(){
         int id = telaAgenda.getIdAgendamento();
@@ -75,11 +75,11 @@ public class AgendamentosController implements ManipulatorController{
         
         switch (agendamento.getEstadoReserva()) {
             case "CONFIRMADA" -> {
-                // telaAgenda.displayAgoraJaEraError();
+                 telaAgenda.displayCancelarConfirmadaError();
             }
 
             case "CANCELADA" -> {
-                // telaAgenda.displayJaCanceladaError();
+                 telaAgenda.displayJaCanceladaError();
             }
             default -> {
                 Calendar agora = Calendar.getInstance();
@@ -92,6 +92,7 @@ public class AgendamentosController implements ManipulatorController{
                     ContasController contasController = Sistema.getManipuladorContrPorTipo(ContasController.class);
                     contasController.cortarValorDiariaMetade(agendamento.getId());
                     
+                    telaAgenda.displayMsgCancelarDiariaFeita();
                     agendamento.setEstadoReserva("CANCELADA");
                 }
             }
@@ -129,7 +130,7 @@ public class AgendamentosController implements ManipulatorController{
                     editarDataHorario(agendamento, formatarHorario(novaDataHorario));
                 }
                 else{
-                    // telaAgenda.displayAgoraJaEraError();
+                     telaAgenda.displayEditarAtrasadoError();
                 }
                 
             }

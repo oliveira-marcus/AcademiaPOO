@@ -43,12 +43,12 @@ public class TelaAgenda {
     }
     
     public int getSalaAgendamento(){
-        System.out.println("1 - Musculação: Sala com foco em Hipertrofia!");
+        System.out.println("1 - Musculacao: Sala com foco em Hipertrofia!");
         System.out.println("2 - Pilates: Sala com foco em melhorar a Flexibilidade!");
-        System.out.println("3 - Spinning: Sala com foco em melhorar a Resistência");
-        System.out.println("4 - Fit Dance: Sala para exercitar com diversão!");
+        System.out.println("3 - Spinning: Sala com foco em melhorar a Resistencia");
+        System.out.println("4 - Fit Dance: Sala para exercitar com diversao!");
         
-        System.out.println("Qual das Salas será?");
+        System.out.println("Qual das Salas sera?");
         
         int opcao = scanner.nextInt();
         scanner.nextLine();
@@ -68,12 +68,12 @@ public class TelaAgenda {
     }
     
     public String getDataHorarioAgendamento(){
-        System.out.println("Digite o Horário: [DD MM AAAA HH MM]");
+        System.out.println("Digite o Horario: [DD MM AAAA HH MM]");
         return scanner.nextLine();
     }
     
     public int getIdDiaria(){
-        System.out.println("Digite o Id da diária a ser criada");
+        System.out.println("Digite o Id da diaria a ser criada");
         return scanner.nextInt();
     }
     
@@ -100,5 +100,30 @@ public class TelaAgenda {
     
     public void displayMsgNovaDiaria(){
         System.out.println("Uma nova Conta DIÁRIA será criada");
+    }
+    
+    public void displayConfirmarCanceladaError(){
+        System.out.println("Nao e possivel Confimar uma Reserva ja Cancelada");
+    }
+    
+    public void displayJaConfirmadaError(){
+        System.out.println("Esta reserva ja foi Confirmada.");
+    }
+    
+    public void displayJaCanceladaError(){
+        System.out.println("Esta reserva ja foi Cancelada.");
+    }
+    
+    public void displayCancelarConfirmadaError(){
+        System.out.println("Nao e possivel Cancelar uma Reserva ja Confirmada");
+    }
+    
+    public void displayMsgCancelarDiariaFeita(){
+        System.out.println("Este agendamento esta sendo cancelada menos de 72 horas antes da data prevista");
+        System.out.println("Por causa disso, metade do valor sera devolvido ao cliente");
+    }
+    
+    public void displayEditarAtrasadoError(){
+        System.out.println("Não é possível alterar o dia de um Agendamento menos de 72 horas antes da data prevista");
     }
 }
