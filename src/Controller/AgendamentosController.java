@@ -169,7 +169,7 @@ public class AgendamentosController implements ManipulatorController{
     public static Calendar formatarHorario(String dataHorarioString){
         String[] dataHorarioStringSplitted = dataHorarioString.split(" ");
         int dia = Integer.parseInt(dataHorarioStringSplitted[0]);
-        int mes = Integer.parseInt(dataHorarioStringSplitted[1]);  
+        int mes = Integer.parseInt(dataHorarioStringSplitted[1]) - 1;  
         int ano = Integer.parseInt(dataHorarioStringSplitted[2]);
         int hora = Integer.parseInt(dataHorarioStringSplitted[3]);
         int minuto = Integer.parseInt(dataHorarioStringSplitted[4]);
