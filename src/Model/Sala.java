@@ -12,15 +12,11 @@ public class Sala {
     
     private String nome;
     private String descricao;
-    private double precoDiaria;
-    private double precoMensalidade;
     private int capacidade;
     
-    public Sala(String tipo, String descricao, double precoDiaria, double precoMensalidade, int capacidade) {
+    public Sala(String tipo, String descricao, int capacidade) {
         this.nome = tipo;
         this.descricao = descricao;
-        this.precoDiaria = precoDiaria;
-        this.precoMensalidade = precoMensalidade;
         this.capacidade = capacidade;
     }
 
@@ -38,22 +34,6 @@ public class Sala {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public double getPrecoDiaria() {
-        return precoDiaria;
-    }
-
-    public void setPrecoDiaria(double precoDiaria) {
-        this.precoDiaria = precoDiaria;
-    }
-
-    public double getPrecoMensalidade() {
-        return precoMensalidade;
-    }
-
-    public void setPrecoMensalidade(double precoMensalidade) {
-        this.precoMensalidade = precoMensalidade;
     }
 
     public int getCapacidade() {

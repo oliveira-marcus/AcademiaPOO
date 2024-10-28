@@ -7,6 +7,7 @@ package Controller;
 
 import Controller.Manipulator.Manipulator;
 import Model.Conta;
+import Model.Diaria;
 import Model.Produto;
 import Model.Venda;
 import View.TelaClientes;
@@ -130,7 +131,7 @@ public class ContasController implements ManipulatorController{
     
     public List<Conta> buscarContasDia(int dia, int mes, int ano){
         ArrayList<Conta> contas = (ArrayList<Conta>)manipulador.getColecao();
-        List<Conta> contasNoMes = new ArrayList<>();
+        List<Conta> contasNoDia = new ArrayList<>();
         
         for (Conta gasto : contas){
             int diaGasto = gasto.getData().get(Calendar.DAY_OF_MONTH);
@@ -138,22 +139,36 @@ public class ContasController implements ManipulatorController{
             int anoGasto = gasto.getData().get(Calendar.YEAR);
             
             if (diaGasto == dia && mesGasto + 1 == mes && anoGasto == ano){
-                contasNoMes.add(gasto);
+                contasNoDia.add(gasto);
             } 
         }
         
-        return contasNoMes;
+        return contasNoDia;
     }
     
-    public List<Venda> filtrarVendas(List<Conta> ganhos){
+    
+    
+    public List<Venda> filtrarVendas(List<Conta> contas){
         List<Venda> vendas = new ArrayList<>();
         
-        for (Conta ganho : ganhos){
-            if (ganho instanceof Venda venda){
+        for (Conta conta : contas){
+            if (conta instanceof Venda venda){
                 vendas.add(venda);
             }
         }
         return vendas;
+    }
+    
+    public void cortarValorDiariaMetade(int idAgendamento){
+        ArrayList<Conta> contas = (ArrayList<Conta>)manipulador.getColecao();
+        
+        for (Conta conta : contas){
+            if (conta instanceof Diaria diaria){
+                if(diaria.getIdAgendamento() == idAgendamento){
+                    diaria.setValor(diaria.getValor()/2);
+                }
+            }
+        }
     }
     
     @Override

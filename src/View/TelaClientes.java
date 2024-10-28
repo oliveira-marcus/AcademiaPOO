@@ -89,7 +89,7 @@ public class TelaClientes {
     
     public String removeConfirmation(){
         System.out.println("Tem certeza que quer remover o Cliente? [S, N] ");
-        return scanner.nextLine();     
+        return scanner.nextLine();
     }
     
     public void mostrarCliente(Cliente cliente){

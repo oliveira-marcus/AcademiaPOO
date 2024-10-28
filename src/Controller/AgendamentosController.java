@@ -6,7 +6,6 @@ import Model.Sala;
 import View.TelaAgenda;
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.Scanner;
 
 /**
  *
@@ -15,25 +14,26 @@ import java.util.Scanner;
 public class AgendamentosController implements ManipulatorController{   
     Manipulator<Agendamento> manipulador;
     TelaAgenda telaAgenda = new TelaAgenda();
-    Scanner scanner = new Scanner(System.in);
     
     Sala[] salas = new Sala[]{
-        new Sala("Musculação", "Sala com foco em Hipertrofia!", 30.0, 100, 60),
-        new Sala("Pilates", "Sala com foco em melhorar a Flexibilidade!", 40.0, 110, 30),
-        new Sala("Spinning", "Sala com foco em melhorar a Resistencia!", 35, 90, 25),
-        new Sala("Fit Dance", "Sala para exercitar com diversão!", 35.0, 90, 40)
+        new Sala("Musculação", "Sala com foco em Hipertrofia!", 60),
+        new Sala("Pilates", "Sala com foco em melhorar a Flexibilidade!", 30),
+        new Sala("Spinning", "Sala com foco em melhorar a Resistencia!", 25),
+        new Sala("Fit Dance", "Sala para exercitar com diversão!", 40)
     };
     
     public AgendamentosController(Manipulator manipulador) throws IOException{
         this.manipulador = manipulador;
     }
     
-    public void adicionarAgendamento(int id, int idCliente, String sala, double precoAula, String nomeInstrutor, String dataHorarioStr){        
-        Agendamento novoAgendamento = validarAgendamento(id, idCliente, sala, precoAula, nomeInstrutor, dataHorarioStr);
-        manipulador.adicionar(novoAgendamento);
-    }
-    
-    public Agendamento validarAgendamento(int id, int idCliente, String sala, double precoAula, String nomeInstrutor, String dataHorarioStr){
+    public void adicionarAgendamento(){        
+        int id = telaAgenda.getIdAgendamento();
+        int idCliente = telaAgenda.getIdClienteAgendamento();
+        String sala = salas[telaAgenda.getSalaAgendamento()].getNome();
+        double precoAula = telaAgenda.getPrecoAulaAgendamento();
+        String nomeInstrutor = telaAgenda.getNomeInstrutorAgendamento();
+        String dataHorarioStr = telaAgenda.getDataHorarioAgendamento();
+        
         // faz a busca do Cliente
         ClientesController areaClientes = Sistema.getManipuladorContrPorTipo(ClientesController.class);
         areaClientes.buscarCliente(idCliente);
@@ -44,29 +44,92 @@ public class AgendamentosController implements ManipulatorController{
         
         Calendar dataHorario = formatarHorario(dataHorarioStr);
         
-        return new Agendamento(id, "FEITA", idCliente, sala, precoAula, nomeInstrutor, dataHorario);
+        manipulador.adicionar(new Agendamento(id, "FEITA", idCliente, sala, 
+                precoAula, nomeInstrutor, dataHorario));
     }
     
-    public void remover(Agendamento agendamento){
-        this.manipulador.remover(agendamento);
-    }
+    public void confirmarAgendamento(){
+        int id = telaAgenda.getIdAgendamento();
+        Agendamento agendamento = buscarAgendamento(id);
+        
+        switch (agendamento.getEstadoReserva()) {
+
+            case "CANCELADA" -> {
+            }
+
+            case "CONFIRMADA" -> {
+            }
+            default -> agendamento.setEstadoReserva("CONFIRMADA");
+        }
+        // telaAgenda.displayConfirmarCanceladaError();
+        // telaAgenda.displayJaConfirmadaError();
+            }
     
-    public static Calendar formatarHorario(String dataHorarioString){
-        String[] dataHorarioStringSplitted = dataHorarioString.split(" ");
-        int dia = Integer.parseInt(dataHorarioStringSplitted[0]);
-        int mes = Integer.parseInt(dataHorarioStringSplitted[1]);  
-        int ano = Integer.parseInt(dataHorarioStringSplitted[2]);
-        int hora = Integer.parseInt(dataHorarioStringSplitted[3]);
-        int minuto = Integer.parseInt(dataHorarioStringSplitted[4]);
+    public void cancelarAgendamento(){
+        int id = telaAgenda.getIdAgendamento();
+        Agendamento agendamento = buscarAgendamento(id);
         
-        Calendar dataHorario = Calendar.getInstance();
-        dataHorario.set(Calendar.YEAR, ano);
-        dataHorario.set(Calendar.MONTH, mes - 1); // Janeiro é 0 e Dezembro é 11, por isso diminuir 1
-        dataHorario.set(Calendar.DAY_OF_MONTH, dia);
-        dataHorario.set(Calendar.HOUR, hora);
-        dataHorario.set(Calendar.MINUTE, minuto);
+        switch (agendamento.getEstadoReserva()) {
+            case "CONFIRMADA" -> {
+                // telaAgenda.displayAgoraJaEraError();
+            }
+
+            case "CANCELADA" -> {
+                // telaAgenda.displayJaCanceladaError();
+            }
+            default -> {
+                Calendar agora = Calendar.getInstance();
+                Calendar dataLimite = (Calendar) agendamento.getDataHorario().clone();
+                dataLimite.add(Calendar.HOUR_OF_DAY, -72);
+                if (agora.before(dataLimite)){
+                    agendamento.setEstadoReserva("CANCELADA");
+                }
+                else{
+                    ContasController contasController = Sistema.getManipuladorContrPorTipo(ContasController.class);
+                    contasController.cortarValorDiariaMetade(agendamento.getId());
+                    
+                    agendamento.setEstadoReserva("CANCELADA");
+                }
+            }
+        }
         
-        return dataHorario;
+        
+            }
+    
+    public void editarAgendamento(){
+        int id = telaAgenda.getIdAgendamento();
+        Agendamento agendamento = buscarAgendamento(id);
+        telaAgenda.mostrarAgendamento(agendamento);
+        System.out.println();
+        int opcaoModificacao = telaAgenda.modificarAgendamento();
+
+        switch(opcaoModificacao){
+            case 1 -> {
+                int novaSala = telaAgenda.getSalaAgendamento();
+                editarSala(agendamento, salas[novaSala].getNome());
+                
+                double novoPrecoAula = telaAgenda.getPrecoAulaAgendamento();
+                editarPrecoAula(agendamento, novoPrecoAula);
+            }
+            case 2 -> {
+                String novoNomeInstrutor = telaAgenda.getNomeInstrutorAgendamento();
+                editarNomeInstrutor(agendamento, novoNomeInstrutor);
+            }
+            case 3 -> {
+                Calendar agora = Calendar.getInstance();
+                Calendar dataLimite = (Calendar) agendamento.getDataHorario().clone();
+                dataLimite.add(Calendar.HOUR_OF_DAY, -72);
+                
+                if(agora.before(dataLimite)){
+                    String novaDataHorario = telaAgenda.getDataHorarioAgendamento();
+                    editarDataHorario(agendamento, formatarHorario(novaDataHorario));
+                }
+                else{
+                    // telaAgenda.displayAgoraJaEraError();
+                }
+                
+            }
+        }
     }
 
     public void editarEstadoReserva(Agendamento agendamento, String estadoReserva){
@@ -98,6 +161,20 @@ public class AgendamentosController implements ManipulatorController{
         return null;
     }
     
+    public static Calendar formatarHorario(String dataHorarioString){
+        String[] dataHorarioStringSplitted = dataHorarioString.split(" ");
+        int dia = Integer.parseInt(dataHorarioStringSplitted[0]);
+        int mes = Integer.parseInt(dataHorarioStringSplitted[1]);  
+        int ano = Integer.parseInt(dataHorarioStringSplitted[2]);
+        int hora = Integer.parseInt(dataHorarioStringSplitted[3]);
+        int minuto = Integer.parseInt(dataHorarioStringSplitted[4]);
+        
+        Calendar dataHorario = Calendar.getInstance();
+        dataHorario.set(ano, mes-1, dia, hora, minuto, 0);
+        
+        return dataHorario;
+    }
+    
     @Override
     public void salvar() throws IOException{
         this.manipulador.salvar();
@@ -108,6 +185,21 @@ public class AgendamentosController implements ManipulatorController{
         
         while(opcao != 5){
             opcao = telaAgenda.exibirMenu();
+            
+            switch (opcao){
+                case 1 -> {
+                    adicionarAgendamento();
+                }
+                case 2 -> {
+                    confirmarAgendamento();
+                }
+                case 3 -> {
+                    cancelarAgendamento();
+                }
+                case 4 -> {
+                    editarAgendamento();
+                }
+            }
         }
     }
 }
