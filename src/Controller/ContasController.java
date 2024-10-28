@@ -71,16 +71,27 @@ public class ContasController implements ManipulatorController{
         return new Venda(valor, data, id, idCliente, idProdutos, quantidades, valoresUnit);
     }
     
-    public void gerarBalancoMensal(int mes, int ano){
-
+    public Map<String, Double> gerarBalancoMensal(List<Conta> contasPeriodo){
+        Map<String, Double> contasBalanco = new HashMap<>();
+        
+        for (Conta conta : contasPeriodo){
+            if (contasBalanco.containsKey(conta.getNome())){
+                Double quantidadeNova = contasBalanco.get(conta.getNome()) + conta.getValor();
+                contasBalanco.put(conta.getNome(), quantidadeNova);
+            }
+            else{
+                contasBalanco.put(conta.getNome(), conta.getValor());
+            }
+        }
+        
+        return contasBalanco;
     }
     
-    public Map<String, double[]> emitirRelatorioVendasMensal(int mes, int ano){
+    public Map<String, double[]> emitirRelatorioVendas(List<Venda> vendasPeriodo){
         Map<String, double[]> vendas = new HashMap<>();
-        List<Venda> vendasMensais = filtrarVendas(buscarGanhosMes(mes, ano));
         ProdutoEstoqueController produtosController = Sistema.getManipuladorContrPorTipo(ProdutoEstoqueController.class);
         
-        for (Venda venda : vendasMensais){ // Iterando as vendas
+        for (Venda venda : vendasPeriodo){ // Iterando as vendas
             for (int j = 0; j < venda.getIdProdutos().length; j++){ // Iterando os produtos de cada venda
                 Produto produto = produtosController.buscarProduto(venda.getIdProdutos()[j]);
                 String nomeProduto = produto.getNome();
@@ -101,40 +112,37 @@ public class ContasController implements ManipulatorController{
         return vendas;
     }
     
-    public void emitirRelatorioVendasDiario(Calendar dia){
+    public List<Conta> buscarContasMes(int mes, int ano){
+        ArrayList<Conta> contas = (ArrayList<Conta>)manipulador.getColecao();
+        List<Conta> contasNoMes = new ArrayList<>();
         
-    }
-    
-    public List<Conta> buscarGanhosMes(int mes, int ano){
-        ArrayList<Conta> ganhos = (ArrayList<Conta>)manipulador.getColecao();
-        List<Conta> ganhosNoMes = new ArrayList<>();
-        
-        for (Conta ganho : ganhos){
+        for (Conta ganho : contas){
             int mesGanho = ganho.getData().get(Calendar.MONTH);
             int anoGanho = ganho.getData().get(Calendar.YEAR);
             
             if (mesGanho + 1== mes && anoGanho == ano){
-                ganhosNoMes.add(ganho);
+                contasNoMes.add(ganho);
             } 
         }
         
-        return ganhosNoMes;
+        return contasNoMes;
     }
     
-    public List<Conta> buscarGastosMes(int mes, int ano){
-        ArrayList<Conta> gastos = (ArrayList<Conta>)manipulador.getColecao();
-        List<Conta> gastosNoMes = new ArrayList<>();
+    public List<Conta> buscarContasDia(int dia, int mes, int ano){
+        ArrayList<Conta> contas = (ArrayList<Conta>)manipulador.getColecao();
+        List<Conta> contasNoMes = new ArrayList<>();
         
-        for (Conta gasto : gastos){
+        for (Conta gasto : contas){
+            int diaGasto = gasto.getData().get(Calendar.DAY_OF_MONTH);
             int mesGasto = gasto.getData().get(Calendar.MONTH);
             int anoGasto = gasto.getData().get(Calendar.YEAR);
             
-            if (mesGasto + 1== mes && anoGasto == ano){
-                gastosNoMes.add(gasto);
+            if (diaGasto == dia && mesGasto + 1 == mes && anoGasto == ano){
+                contasNoMes.add(gasto);
             } 
         }
         
-        return gastosNoMes;
+        return contasNoMes;
     }
     
     public List<Venda> filtrarVendas(List<Conta> ganhos){

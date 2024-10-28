@@ -50,16 +50,21 @@ public class AcademiaPOO {
         
         ContasController contasController = Sistema.getManipuladorContrPorTipo(ContasController.class);
         
-        Map<String, double[]> relatorioOutubro;
-        relatorioOutubro = contasController.emitirRelatorioVendasMensal(10, 2024);
+        Map<String, Double> balanco;
+        balanco = contasController.gerarBalancoMensal(contasController.buscarContasMes(10, 2024));
         
-        for (String key : relatorioOutubro.keySet()){
-            System.out.printf(key + " ");
-            
-            for(double valor : relatorioOutubro.get(key)){
-                System.out.printf(valor + " ");
-            }
-            System.out.println();
-        }
+        System.out.println(balanco);
+        
+//        Map<String, double[]> relatorioOutubro;
+//        relatorioOutubro = contasController.emitirRelatorioVendas(contasController.filtrarVendas(contasController.buscarContasDia(22,10, 2024)));
+//        
+//        for (String key : relatorioOutubro.keySet()){
+//            System.out.printf(key + " ");
+//            
+//            for(double valor : relatorioOutubro.get(key)){
+//                System.out.printf(valor + " ");
+//            }
+//            System.out.println();
+//        }
     }
 }
