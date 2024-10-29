@@ -8,16 +8,16 @@ package Controller;
 import Controller.Manipulator.Manipulator;
 import Model.Conta;
 import Model.Diaria;
+import Model.Funcionario;
 import Model.Produto;
 import Model.Venda;
-import View.TelaClientes;
+import View.TelaFinanceira;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 
 /**
@@ -26,16 +26,48 @@ import java.util.Scanner;
  */
 public class ContasController implements ManipulatorController{
     Manipulator<Conta> manipulador;
-    TelaClientes telaFinanceira = new TelaClientes();
-    Scanner scanner = new Scanner(System.in);
+    TelaFinanceira telaFinanceira = new TelaFinanceira();
     
     public ContasController(Manipulator<Conta> manipulador) throws IOException{
         this.manipulador = manipulador;
     }
     
-    public void adicionarConta(String nome, String tipo, double valor, String dataStr, int id){
-        Conta novaConta = validarConta(nome, tipo, valor, dataStr, id);
-        manipulador.adicionar(novaConta);
+    public void vender(){
+        List<Integer> idsProduto = new ArrayList<>();
+        List<Integer> quantidadesProduto = new ArrayList<>();
+        List<String> nomesProduto = new ArrayList<>();
+        ProdutoEstoqueController produtosController = Sistema.getManipuladorContrPorTipo(ProdutoEstoqueController.class);
+        
+        int idVenda = telaFinanceira.getIdVenda();
+        int idCliente = telaFinanceira.getIdClienteComprador();
+        int idProduto = -1;
+        
+        while (idProduto != 0){
+            idProduto = telaFinanceira.getIdProdutoVendido();
+            
+            if (idProduto != 0){
+                idsProduto.add(idProduto);
+                String nomeProduto = produtosController.buscarProduto(idProduto).getNome();
+                nomesProduto.add(nomeProduto);
+                
+                int quantidadeProduto = telaFinanceira.getQuantidadeProdutoVendido();
+                quantidadesProduto.add(quantidadeProduto);
+            }
+        }
+        
+        int[] idsProdutoArray = idsProduto.stream().mapToInt(i -> i).toArray();
+        int[] quantidadesProdutoArray = quantidadesProduto.stream().mapToInt(i -> i).toArray();
+        
+        String[] nomesProdutoArray = new String[nomesProduto.size()];
+        nomesProduto.toArray(nomesProdutoArray);
+        
+        Venda novaVenda = construirVenda(Calendar.getInstance(),
+                idVenda, idCliente, idsProdutoArray, quantidadesProdutoArray);
+        
+        manipulador.adicionar(novaVenda);
+        
+        telaFinanceira.exibirExtrato(nomesProdutoArray, quantidadesProdutoArray, 
+                novaVenda.getValoresUnit(), novaVenda.getValor());
     }
     
     public Conta validarConta(String nome, String tipo, double valor, String dataStr, int id){
@@ -45,13 +77,11 @@ public class ContasController implements ManipulatorController{
     }
     
     public void adicionarVenda(String data, int id, int idCliente, int[] idProdutos, int[] quantidades){
-        Venda novaVenda = validarVenda(data, id, idCliente, idProdutos, quantidades);
+        Venda novaVenda = construirVenda(AgendamentosController.formatarHorario(data), id, idCliente, idProdutos, quantidades);
         manipulador.adicionar(novaVenda);
     }
     
-    public Venda validarVenda(String dataStr, int id, int idCliente, int[] idProdutos, int[] quantidades){
-        Calendar data = AgendamentosController.formatarHorario(dataStr);
-        
+    public Venda construirVenda(Calendar data, int id, int idCliente, int[] idProdutos, int[] quantidades){
         // Parte do código para obter os valores unitários de cada produto
         double[] valoresUnit = new double[idProdutos.length];
         ProdutoEstoqueController produtosController = Sistema.getManipuladorContrPorTipo(ProdutoEstoqueController.class);
@@ -59,7 +89,6 @@ public class ContasController implements ManipulatorController{
         for (int i = 0; i < idProdutos.length; i++){
             Produto produto = produtosController.buscarProduto(idProdutos[i]);
             valoresUnit[i] = produto.getPreco();
-            i++;
         }
         
         // Parte do código para calcular o Valor total
@@ -72,7 +101,7 @@ public class ContasController implements ManipulatorController{
         return new Venda(valor, data, id, idCliente, idProdutos, quantidades, valoresUnit);
     }
     
-    public Map<String, Double> gerarBalancoMensal(List<Conta> contasPeriodo){
+    public Map<String, Double> gerarBalanco(List<Conta> contasPeriodo){
         Map<String, Double> contasBalanco = new HashMap<>();
         
         for (Conta conta : contasPeriodo){
@@ -88,7 +117,7 @@ public class ContasController implements ManipulatorController{
         return contasBalanco;
     }
     
-    public Map<String, double[]> emitirRelatorioVendas(List<Venda> vendasPeriodo){
+    public Map<String, double[]> gerarRelatorioVendas(List<Venda> vendasPeriodo){
         Map<String, double[]> vendas = new HashMap<>();
         ProdutoEstoqueController produtosController = Sistema.getManipuladorContrPorTipo(ProdutoEstoqueController.class);
         
@@ -146,8 +175,6 @@ public class ContasController implements ManipulatorController{
         return contasNoDia;
     }
     
-    
-    
     public List<Venda> filtrarVendas(List<Conta> contas){
         List<Venda> vendas = new ArrayList<>();
         
@@ -181,6 +208,42 @@ public class ContasController implements ManipulatorController{
     }
     
     public void run(){
+        Funcionario funcionarioLogado = Sistema.getLogin().getFuncLogado();
+        
+        int opcao = 0;
+        if (funcionarioLogado.getCargo().equals("Administrador")){
+            opcao = telaFinanceira.exibirMenuAdmin();
+            
+            switch(opcao){
+                case 2 ->{
+//                    adicionarConta();
+                }
+                
+                case 3 ->{
+//                    removerConta();
+                }
+                
+                case 4 ->{
+//                    editarConta();
+                }
+                
+                case 5 ->{
+//                    emitirBalanco();
+                }
+                
+                case 6 ->{
+//                    emitirRelatorio();
+                }
+            }
+        }
+        
+        else{
+            opcao = telaFinanceira.exibirMenuFunc();
+        }
+        
+        if (opcao == 1){
+            vender();
+        }
         
     }
 

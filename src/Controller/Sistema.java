@@ -19,9 +19,13 @@ public class Sistema {
     private static int quantClientesPriv = 0;
     protected static int quantClientesProtec = 0;
     private static int quantProdutosCatalogo = 0;
-    private Catraca catraca = new Catraca();
-    private Login login;
-    private final TelaInicial telaInicial = new TelaInicial();
+    private static Catraca catraca = new Catraca();
+    private static Login login;
+    private static final TelaInicial telaInicial = new TelaInicial();
+    
+    public Sistema(String caminhoLogin) throws IOException {
+        login = new Login(caminhoLogin);
+    }
     
     public static void adicionarManipuladorContr(ManipulatorController manipulador){
         manipuladoresController.add(manipulador);
@@ -57,32 +61,20 @@ public class Sistema {
     public static void setQuantProdutosCatalogo(int quantProdutosCatalogo) {
         Sistema.quantProdutosCatalogo = quantProdutosCatalogo;
     }
-
-    public Sistema(String caminhoLogin) throws IOException {
-        this.login = new Login(caminhoLogin);
-    }
-
+    
     public Catraca getCatraca() {
         return catraca;
     }
 
-    public void setCatraca(Catraca catraca) {
-        this.catraca = catraca;
-    }
-
-    public Login getLogin() {
+    public static Login getLogin() {
         return login;
-    }
-
-    public void setLogin(Login login) {
-        this.login = login;
     }
     
     public void run() throws IOException{
         login.run();
         int opcao = 0;
         
-        while(opcao != 7){
+        while(opcao != 8){
             opcao = telaInicial.exibirMenu();
         
             switch(opcao){
@@ -103,6 +95,10 @@ public class Sistema {
                 }
                 case 6 -> {
                     catraca.run();
+                }
+                case 7 -> {
+                    salvarDados();
+                    telaInicial.displayMsgDadosSalvos();
                 }
             }
         }

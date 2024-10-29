@@ -15,7 +15,7 @@
     "id": 103
   },
   {
-    "nome": "Bicicleta Ergométrica",
+    "nome": "Bicicleta Ergometrica",
     "preco": 2200.0,
     "id": 104
   },
@@ -25,7 +25,7 @@
     "id": 105
   },
   {
-    "nome": "Kit de Faixas Elásticas",
+    "nome": "Kit de Faixas Elasticas",
     "preco": 120.0,
     "id": 106
   },
@@ -45,7 +45,7 @@
     "id": 109
   },
   {
-    "nome": "Garrafa de Água",
+    "nome": "Garrafa de Agua",
     "preco": 30.0,
     "id": 110
   },
