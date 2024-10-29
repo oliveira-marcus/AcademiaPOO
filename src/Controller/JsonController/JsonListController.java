@@ -30,7 +30,7 @@ public class JsonListController<T> implements JsonCollectionController<T>{
         this.tipoClasse = tipoClasse;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
-
+    
     @Override
     public void init(Class<T> tipoClasse, JsonDeserializer deserializer){
         this.tipoClasse = tipoClasse;

@@ -40,7 +40,7 @@ public class TelaClientes {
         
         
     public String getEnderecoCliente(){
-        System.out.println("Digite o endereço do cliente: ");
+        System.out.println("Digite o endereco do cliente: ");
         return scanner.nextLine();
     }
 
@@ -64,7 +64,7 @@ public class TelaClientes {
 
 
     public String getCartaoCliente(){
-        System.out.println("Digite o Cartão de Crédito do cliente: ");
+        System.out.println("Digite o Cartao de Credito do cliente: ");
         return scanner.nextLine();
     }
     
@@ -76,10 +76,10 @@ public class TelaClientes {
     }
         
     public int modificarCliente(){       
-        System.out.println("1 - Endereço");
+        System.out.println("1 - Endereco");
         System.out.println("2 - Telefone");
         System.out.println("3 - Email");
-        System.out.println("4 - Cartão de Crédito");
+        System.out.println("4 - Cartao de Credito");
         
         System.out.println("Digite o que deseja alterar: ");
         int opcao = scanner.nextInt();

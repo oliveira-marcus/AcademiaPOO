@@ -41,7 +41,9 @@ public abstract class Manipulator<T> {
         colecao.remove(elem);
     }
     
-    public abstract void salvar() throws IOException;
+    public void salvar() throws IOException{
+        this.getJsonController().write(this.getColecao(), this.getCaminho());
+    };
 
     public String getCaminho() {
         return caminho;

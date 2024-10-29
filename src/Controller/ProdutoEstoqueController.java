@@ -7,9 +7,8 @@ package Controller;
 import Controller.Manipulator.Manipulator;
 import Controller.Manipulator.MapManipulator;
 import Model.Produto;
-import View.TelaClientes;
+import View.TelaEstoque;
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  *
@@ -18,8 +17,7 @@ import java.util.Scanner;
 public class ProdutoEstoqueController implements ManipulatorController{
     Manipulator<Produto> manipulador;
     MapManipulator<String, Integer> manipuladorMap;
-    TelaClientes telaClientes = new TelaClientes();
-    Scanner scanner = new Scanner(System.in);
+    TelaEstoque telaEstoque = new TelaEstoque();
     
     public ProdutoEstoqueController(Manipulator<Produto> manipulador, MapManipulator manipuladorMap) throws IOException{
         this.manipulador = manipulador;
@@ -27,25 +25,64 @@ public class ProdutoEstoqueController implements ManipulatorController{
         Sistema.setQuantProdutosCatalogo(this.manipulador.getColecao().size());
     }
     
-    public void adicionar(String nome, double preco, int id){
-        Produto novoProduto = validarProduto(nome, preco, id);
+    public void adicionarProduto(){
+        String nome = telaEstoque.getNomeProduto();
+        double preco = telaEstoque.getPrecoProduto();
+        int id = telaEstoque.getIdProduto();
+        int quantidade = telaEstoque.getQuantidade();
+        
+        Produto novoProduto  = new Produto(nome, preco, id);
         
         manipulador.adicionar(novoProduto);
-        manipuladorMap.colocar(novoProduto.getNome(), 0);
+        manipuladorMap.colocar(novoProduto.getNome(), quantidade);
         Sistema.setQuantProdutosCatalogo(Sistema.getQuantProdutosCatalogo() + 1);
     }
     
-    public Produto validarProduto(String nome, double preco, int id){
-        return new Produto(nome, preco, id);
-    }
-    
-    public void remover(Produto produto){
+    public void removerProduto(){
+        int id = telaEstoque.getIdProduto();
+        Produto produto = buscarProduto(id);
+        
         if (manipuladorMap.getMap().get(produto.getNome()) == 0) {
-            manipulador.remover(produto);
-            manipuladorMap.remover(produto.getNome());
+            String resposta = telaEstoque.removeConfirmation();
+            
+            if (resposta.equals("S")){
+                manipulador.remover(produto);
+                manipuladorMap.remover(produto.getNome());
+            }
+            else{
+                telaEstoque.displayMsgCancelRemoval();
+            }
         }
         else{
-            // jogar um erro throw
+            telaEstoque.displayProdutoNaoZeradoError();
+        }
+    }
+    
+    public void verificarProduto(){
+        int id = telaEstoque.getIdProduto();
+        Produto produto = buscarProduto(id);
+        
+        telaEstoque.mostrarProduto(produto);
+        int quantidade = manipuladorMap.getMap().get(produto.getNome());
+        telaEstoque.mostrarQuantidadeEstoque(produto.getNome(), quantidade);
+    }
+    
+    public void editarProduto(){
+        int id = telaEstoque.getIdProduto();
+        Produto produto = buscarProduto(id);
+        telaEstoque.mostrarProduto(produto);
+        System.out.println();
+        int opcaoModificacao = telaEstoque.modificarProduto();
+        
+        switch(opcaoModificacao){
+            case 1 -> {
+                String novoNome = telaEstoque.getNomeProduto();
+                editarNome(produto, novoNome);
+            }
+            case 2-> {
+                double novoPreco = telaEstoque.getPrecoProduto();
+                editarPreco(produto, novoPreco);
+            }
         }
     }
     
@@ -60,15 +97,29 @@ public class ProdutoEstoqueController implements ManipulatorController{
         produto.setPreco(precoNovo);
     }
     
-    public void alterarQuantidade(Produto produto, int quantidade){
-        int quantidadeNova = manipuladorMap.getMap().get(produto.getNome()) + quantidade;
+    public void alterarQuantidade(){
+        int id = telaEstoque.getIdProduto();
+        Produto produto = buscarProduto(id);
+        
+        int opcao = telaEstoque.alterarQuantidadeProduto();
+        int quantidade = telaEstoque.getQuantidade();
+        
+        int quantidadeNova = 0;
+        
+        if (opcao == 1){    
+            quantidadeNova = manipuladorMap.getMap().get(produto.getNome()) + quantidade;
+        }
+        else if (opcao == 2){
+            quantidadeNova = manipuladorMap.getMap().get(produto.getNome()) - quantidade;
+        }
         
         if (quantidadeNova >= 0){
             manipuladorMap.colocar(produto.getNome(), quantidadeNova);
         }
         else{
-            // jogar um erro throw aqui
+            telaEstoque.displayQuantidadeDoProdutoMenorDiminuicaoError();
         }
+        
     }
     
     public Produto buscarProduto(Integer id){
@@ -88,7 +139,29 @@ public class ProdutoEstoqueController implements ManipulatorController{
     }
     
     public void run(){
+        int opcao = 0;
         
+        while(opcao != 6){
+            opcao = telaEstoque.exibirMenu();
+            
+            switch  (opcao){
+                case 1 -> {
+                    adicionarProduto();
+                }
+                case 2 -> {
+                    editarProduto();
+                }
+                case 3 -> {
+                    removerProduto();
+                }
+                case 4 -> {
+                    alterarQuantidade();
+                }
+                case 5 -> {
+                    verificarProduto();
+                }
+            }
+        }
     }
 }
 

@@ -15,19 +15,15 @@ public class TelaColaboradores {
     Scanner scanner = new Scanner(System.in);
 
     public int exibirMenu(){
-        int opcao = 0;
-        
-        while(opcao != 5){
-            System.out.println("1 - Incluir Colaborador");
-            System.out.println("2 - Editar Colaborador");
-            System.out.println("3 - Remover Colaborador");
-            System.out.println("4 - Sair");
-            
+        System.out.println("1 - Incluir Colaborador");
+        System.out.println("2 - Editar Colaborador");
+        System.out.println("3 - Remover Colaborador");
+        System.out.println("4 - Sair");
 
-            System.out.println("Digite a opcao: ");
-            opcao = scanner.nextInt();
-            scanner.nextLine();
-        }
+        System.out.println("Digite a opcao: ");
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+
         return opcao;
     }
     
@@ -38,7 +34,7 @@ public class TelaColaboradores {
     }
     
     public String getEnderecoColaborador(){
-        System.out.println("Digite o Endereço");
+        System.out.println("Digite o Endereco");
         String endereco = scanner.nextLine();
         return endereco;
     }   
@@ -89,7 +85,7 @@ public class TelaColaboradores {
     }
     
     public int modificarColaborador(){
-        System.out.println("1 - Endereço");
+        System.out.println("1 - Endereco");
         System.out.println("2 - Telefone");
         System.out.println("3 - Email");
         System.out.println("4 - Login");

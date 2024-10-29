@@ -20,6 +20,7 @@ public class TelaAgenda {
         System.out.println("3 - Cancelar Agendamento");
         System.out.println("4 - Editar Agendamento");
         System.out.println("5 - Sair");
+        System.out.println("Digite a opcao: ");
         
         int opcao = scanner.nextInt();
         scanner.nextLine();
@@ -56,7 +57,7 @@ public class TelaAgenda {
     }
     
     public double getPrecoAulaAgendamento(){
-        System.out.println("Digite o Preço da Aula");
+        System.out.println("Digite o Preco da Aula");
         double opcao = scanner.nextDouble();
         scanner.nextLine();
         return opcao;
@@ -99,7 +100,7 @@ public class TelaAgenda {
     }
     
     public void displayMsgNovaDiaria(){
-        System.out.println("Uma nova Conta DIÁRIA será criada");
+        System.out.println("Uma nova Conta DIARIA sera criada");
     }
     
     public void displayConfirmarCanceladaError(){

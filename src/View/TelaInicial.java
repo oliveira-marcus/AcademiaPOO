@@ -19,7 +19,8 @@ public class TelaInicial {
         System.out.println("3 - Catalogo/Estoque");
         System.out.println("4 - Agendamentos");
         System.out.println("5 - Financeiro");
-        System.out.println("6 - Sair");
+        System.out.println("6 - Catraca");
+        System.out.println("7 - Sair");
         System.out.println("Digite a area que deseja acessar: ");
         
         return scanner.nextInt(); 

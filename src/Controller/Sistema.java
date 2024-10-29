@@ -21,7 +21,7 @@ public class Sistema {
     private static int quantProdutosCatalogo = 0;
     private Catraca catraca = new Catraca();
     private Login login;
-    private TelaInicial telaInicial = new TelaInicial();
+    private final TelaInicial telaInicial = new TelaInicial();
     
     public static void adicionarManipuladorContr(ManipulatorController manipulador){
         manipuladoresController.add(manipulador);
@@ -82,7 +82,7 @@ public class Sistema {
         login.run();
         int opcao = 0;
         
-        while(opcao != 6){
+        while(opcao != 7){
             opcao = telaInicial.exibirMenu();
         
             switch(opcao){
@@ -100,6 +100,9 @@ public class Sistema {
                 }
                 case 5 -> {
                     getManipuladorContrPorTipo(ContasController.class).run();
+                }
+                case 6 -> {
+//                    catraca.run();
                 }
             }
         }
