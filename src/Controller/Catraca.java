@@ -5,6 +5,7 @@
 package Controller;
 
 import Model.Pessoa;
+import View.TelaCatraca;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +17,9 @@ import java.util.List;
 public class Catraca{
     private int numeroPessoasEntrantes = 0;
     private int numeroPessoasSaintes = 0;
- 
     private List<Pessoa> pessoasAtuais;
+    
+    private final TelaCatraca telaCatraca = new TelaCatraca();
     
     public Catraca(){
         pessoasAtuais = new ArrayList<>();
@@ -68,5 +70,23 @@ public class Catraca{
     @Override
     public String toString(){
         return "[" + this.getNumeroPessoasAtuais() + ", " + this.numeroPessoasEntrantes + ", " + this.numeroPessoasSaintes + "]";
+    }
+    
+    public void run(){
+        telaCatraca.exibirPessoasEntrantes(numeroPessoasEntrantes);
+        telaCatraca.exibirPessoasSaintes(numeroPessoasSaintes);
+        
+        String pessoasAtuaisStr = "";
+        
+        for (Pessoa pessoa : pessoasAtuais){
+            pessoasAtuaisStr = pessoasAtuais + pessoa.toString() + "\n";
+        }
+        
+        if (pessoasAtuaisStr.equals("")){
+            telaCatraca.displayMsgAcademiaVazia();
+        }
+        else{
+            telaCatraca.mostrarPessoasAtuais(pessoasAtuaisStr);
+        }
     }
 }

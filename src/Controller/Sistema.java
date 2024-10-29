@@ -102,7 +102,7 @@ public class Sistema {
                     getManipuladorContrPorTipo(ContasController.class).run();
                 }
                 case 6 -> {
-//                    catraca.run();
+                    catraca.run();
                 }
             }
         }
