@@ -38,7 +38,7 @@ public class ContasController implements ManipulatorController{
         List<String> nomesProduto = new ArrayList<>();
         ProdutoEstoqueController produtosController = Sistema.getManipuladorContrPorTipo(ProdutoEstoqueController.class);
         
-        int idVenda = telaFinanceira.getIdVenda();
+        int idVenda = telaFinanceira.getIdConta();
         int idCliente = telaFinanceira.getIdClienteComprador();
         int idProduto = -1;
         
@@ -70,15 +70,72 @@ public class ContasController implements ManipulatorController{
                 novaVenda.getValoresUnit(), novaVenda.getValor());
     }
     
-    public Conta validarConta(String nome, String tipo, double valor, String dataStr, int id){
-        Calendar data = AgendamentosController.formatarHorario(dataStr);
+    
+    public void adicionarConta(){
+        String nome = telaFinanceira.getNomeConta();
+        String tipo = telaFinanceira.getTipoConta();
+        double valor = telaFinanceira.getValorConta();
+        String dataStr = telaFinanceira.getDataConta();
+        int id = telaFinanceira.getIdConta();
         
-        return new Conta(nome, tipo, valor, data, id);
+        Calendar data = AgendamentosController.formatarHorario(dataStr);
+        Conta novaConta = new Conta(nome, tipo, valor, data, id);
+        manipulador.adicionar(novaConta);
     }
     
-    public void adicionarVenda(String data, int id, int idCliente, int[] idProdutos, int[] quantidades){
-        Venda novaVenda = construirVenda(AgendamentosController.formatarHorario(data), id, idCliente, idProdutos, quantidades);
-        manipulador.adicionar(novaVenda);
+    public void removerConta(){
+        int id = telaFinanceira.getIdConta();
+        Conta conta = buscarConta(id);
+        telaFinanceira.mostrarConta(conta);
+        String opcaoConfirmacao = telaFinanceira.removeConfirmation();
+        
+        if (opcaoConfirmacao.equals("S")){
+            manipulador.remover(conta);
+        }
+    }
+    
+    public void editarConta(){
+        int id = telaFinanceira.getIdConta();
+        Conta conta = buscarConta(id);
+        telaFinanceira.mostrarConta(conta);
+        System.out.println();
+        int opcaoModificacao = telaFinanceira.modificarConta();
+        
+        switch(opcaoModificacao){
+            case 1 -> {
+                String novoNome = telaFinanceira.getNomeConta();
+                editarNome(conta, novoNome);
+            }
+            case 2 -> {
+                String novoTipo = telaFinanceira.getTipoConta();
+                editarTipo(conta, novoTipo);
+            }
+            case 3 -> {
+                double novoValor = telaFinanceira.getValorConta();
+                editarValor(conta, novoValor);
+            }
+            case 4 -> {
+                String novaData = telaFinanceira.getDataConta();
+                editarData(conta, 
+                        AgendamentosController.formatarHorario(novaData));
+            }
+        }
+    }
+    
+    public void editarNome(Conta conta, String nomeNovo){
+        conta.setNome(nomeNovo);
+    }
+    
+    public void editarTipo(Conta conta, String tipoNovo){
+        conta.setTipo(tipoNovo);
+    }
+    
+    public void editarValor(Conta conta, double valorNovo){
+        conta.setValor(valorNovo);
+    }
+    
+    public void editarData(Conta conta, Calendar dataNova){
+        conta.setData(dataNova);
     }
     
     public Venda construirVenda(Calendar data, int id, int idCliente, int[] idProdutos, int[] quantidades){
@@ -99,6 +156,38 @@ public class ContasController implements ManipulatorController{
         }
         
         return new Venda(valor, data, id, idCliente, idProdutos, quantidades, valoresUnit);
+    }
+    
+    public void emitirBalanco(){
+        int mes = telaFinanceira.getMes();
+        int ano = telaFinanceira.getAno();
+        
+        Map<String, Double> balanco = gerarBalanco(buscarContasMes(mes, ano));
+        
+//        telaFinanceira.mostrarBalanco(balanco);
+    }
+    
+    public void emitirRelatorio(){
+        int opcaoPeriodo = telaFinanceira.getPeriodo();
+        
+        if (opcaoPeriodo == 1){
+            int dia = telaFinanceira.getDia();
+            int mes = telaFinanceira.getMes();
+            int ano = telaFinanceira.getAno();
+            
+            List<Venda> vendas = filtrarVendas(buscarContasDia(dia, mes, ano));
+            
+//            telaFinanceira.mostrarRelatorio(vendas);
+        }
+        
+        else if (opcaoPeriodo == 2){
+            int mes = telaFinanceira.getMes();
+            int ano = telaFinanceira.getAno();
+            
+            List<Venda> vendas = filtrarVendas(buscarContasMes(mes, ano));
+            
+//            telaFinanceira.mostrarRelatorio(vendas);
+        }
     }
     
     public Map<String, Double> gerarBalanco(List<Conta> contasPeriodo){
@@ -140,6 +229,15 @@ public class ContasController implements ManipulatorController{
         }
         
         return vendas;
+    }
+    
+    public Conta buscarConta(int id){
+        for(Conta conta : this.manipulador.getColecao()){
+            if (conta.getId() == id){
+                return conta;
+            }
+        }
+        return null;
     }
     
     public List<Conta> buscarContasMes(int mes, int ano){
@@ -210,29 +308,29 @@ public class ContasController implements ManipulatorController{
     public void run(){
         Funcionario funcionarioLogado = Sistema.getLogin().getFuncLogado();
         
-        int opcao = 0;
+        int opcao;
         if (funcionarioLogado.getCargo().equals("Administrador")){
             opcao = telaFinanceira.exibirMenuAdmin();
             
             switch(opcao){
                 case 2 ->{
-//                    adicionarConta();
+                    adicionarConta();
                 }
                 
                 case 3 ->{
-//                    removerConta();
+                    removerConta();
                 }
                 
                 case 4 ->{
-//                    editarConta();
+                    editarConta();
                 }
                 
                 case 5 ->{
-//                    emitirBalanco();
+                    emitirBalanco();
                 }
                 
                 case 6 ->{
-//                    emitirRelatorio();
+                    emitirRelatorio();
                 }
             }
         }

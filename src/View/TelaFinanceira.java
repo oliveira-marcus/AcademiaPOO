@@ -4,6 +4,7 @@
  */
 package View;
 
+import Model.Conta;
 import java.util.Scanner;
 
 /**
@@ -41,8 +42,32 @@ public class TelaFinanceira {
         return opcao;
     }
     
-    public int getIdVenda(){
-        System.out.println("Digite o ID da Venda");
+    public String getNomeConta(){
+        System.out.println("Ganho - Nomes Possíveis: Salarios, Fornecedores, Despesa Geral, Despesa Administrativa, Imposto");
+        System.out.println("Ganho Nomes Possíveis: Mensalidade");
+        System.out.println("Digite o nome da Conta: ");
+        return scanner.nextLine();
+    }
+    
+    public String getTipoConta(){
+        System.out.println("Digite o tipo da Conta: [Ganho ou Gasto]");
+        return scanner.nextLine();
+    }
+    
+    public double getValorConta(){
+        System.out.println("Digite o valor da Conta:");
+        double valor = scanner.nextDouble();
+        scanner.nextLine();
+        return valor;
+    }
+    
+    public String getDataConta(){
+        System.out.println("Digite o Horario: [DD MM AAAA HH MM]");
+        return scanner.nextLine();
+    }
+    
+    public int getIdConta(){
+        System.out.println("Digite o ID da Conta");
         
         int idVenda = scanner.nextInt();
         scanner.nextLine();
@@ -77,6 +102,43 @@ public class TelaFinanceira {
         return quantidade;
     }
     
+    public int getMes(){
+        System.out.println("Digite o mes numericamente: ");
+        
+        int mes = scanner.nextInt();
+        scanner.nextLine();
+        
+        return mes;
+    }
+    
+    public int getAno(){
+        System.out.println("Digite o ano: ");
+        
+        int ano = scanner.nextInt();
+        scanner.nextLine();
+        
+        return ano;
+    }
+    
+    public int getDia(){
+        System.out.println("Digite o dia: ");
+        
+        int dia = scanner.nextInt();
+        scanner.nextLine();
+        
+        return dia;
+    }
+    
+    public int getPeriodo(){
+        System.out.println("1 - Diário");
+        System.out.println("2 - Mensal");
+        
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+        
+        return opcao;
+    }
+    
     public void exibirExtrato(String[] nomeProdutos, int[] quantidadeProdutos, double[] valoresUnitarios , double valorTotal){
         System.out.println("EXTRATO:");
         for(int i = 0; i < nomeProdutos.length; i++){
@@ -86,5 +148,31 @@ public class TelaFinanceira {
         }
         
         System.out.printf("VALOR TOTAL: %s%n%n", valorTotal);
+    }
+    
+    public int modificarConta(){
+        System.out.println("1 - Nome");
+        System.out.println("2 - Tipo");
+        System.out.println("3 - Valor");
+        System.out.println("4 - Data");
+        
+        System.out.println("Digite o que deseja Editar: ");
+        int opcao = scanner.nextInt();
+        return opcao;
+    }
+    
+    public String removeConfirmation(){
+        System.out.println("Tem certeza que quer remover a Conta? [S, N] ");
+        return scanner.nextLine();
+    }
+    
+    public void mostrarConta(Conta conta){
+        System.out.printf("Nome: %s%nTipo: %s%n, Valor: %s%n, Data: %s%n, Id: %s%n",
+                conta.getNome(), conta.getTipo(), conta.getValor(), conta.getData(),
+                conta.getId());
+    }
+    
+    public void mostrarBalanco(){
+        
     }
 }
