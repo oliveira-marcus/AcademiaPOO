@@ -5,7 +5,9 @@ import Model.Agendamento;
 import Model.Sala;
 import View.TelaAgenda;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  *
@@ -16,10 +18,10 @@ public class AgendamentosController implements ManipulatorController{
     TelaAgenda telaAgenda = new TelaAgenda();
     
     Sala[] salas = new Sala[]{
-        new Sala("Musculação", "Sala com foco em Hipertrofia!", 60),
+        new Sala("Musculacao", "Sala com foco em Hipertrofia!", 60),
         new Sala("Pilates", "Sala com foco em melhorar a Flexibilidade!", 30),
         new Sala("Spinning", "Sala com foco em melhorar a Resistencia!", 25),
-        new Sala("Fit Dance", "Sala para exercitar com diversão!", 40)
+        new Sala("Fit Dance", "Sala para exercitar com diversao!", 40)
     };
     
     public AgendamentosController(Manipulator manipulador) throws IOException{
@@ -166,6 +168,48 @@ public class AgendamentosController implements ManipulatorController{
         return null;
     }
     
+    public void verificarVaga(){
+        String dataHorarioStr = telaAgenda.getDataHorarioAgendamento();
+        String sala = salas[telaAgenda.getSalaAgendamento() - 1].getNome();
+        Calendar dataHorario = formatarHorario(dataHorarioStr);
+        int numVagas = getVagasHorario(sala, dataHorario);
+        
+        telaAgenda.mostrarNumVagas(sala, numVagas);
+    }
+    
+    public int getVagasHorario(String salaAgendamento, Calendar dataHorarioAgendamento1){
+        List<Agendamento> agendamentosMesmaHora = new ArrayList<>();
+        
+        for (Agendamento agendamento2 : manipulador.getColecao()){
+            if (!agendamento2.getEstadoReserva().equals("CANCELADA")){
+                Calendar dataHorarioAgendamento2 = agendamento2.getDataHorario();
+            
+                int hora1 = dataHorarioAgendamento1.get(Calendar.HOUR_OF_DAY);
+                int hora2 = dataHorarioAgendamento2.get(Calendar.HOUR_OF_DAY);
+                int dia1 = dataHorarioAgendamento1.get(Calendar.DAY_OF_MONTH);
+                int dia2 = dataHorarioAgendamento2.get(Calendar.DAY_OF_MONTH);
+                int mes1 = dataHorarioAgendamento1.get(Calendar.MONTH);
+                int mes2 = dataHorarioAgendamento2.get(Calendar.MONTH);
+                int ano1 = dataHorarioAgendamento1.get(Calendar.YEAR);
+                int ano2 = dataHorarioAgendamento2.get(Calendar.YEAR);
+
+
+                if (hora1 == hora2 && dia1 == dia2 && mes1 == mes2 && ano1 == ano2){
+                   agendamentosMesmaHora.add(agendamento2);
+                }
+            }
+        }
+        
+        int salaIndice = 0;
+        for (int i = 0; i < salas.length; i++){
+            if (salas[i].getNome().equals(salaAgendamento)){
+                salaIndice = i; 
+            }
+        }
+        
+        return salas[salaIndice].getCapacidade() - agendamentosMesmaHora.size();
+    }
+    
     public static Calendar formatarHorario(String dataHorarioString){
         String[] dataHorarioStringSplitted = dataHorarioString.split(" ");
         int dia = Integer.parseInt(dataHorarioStringSplitted[0]);
@@ -188,7 +232,7 @@ public class AgendamentosController implements ManipulatorController{
     public void run(){
         int opcao = 0;
         
-        while(opcao != 5){
+        while(opcao != 6){
             opcao = telaAgenda.exibirMenu();
             
             switch (opcao){
@@ -203,6 +247,9 @@ public class AgendamentosController implements ManipulatorController{
                 }
                 case 4 -> {
                     editarAgendamento();
+                }
+                case 5 -> {
+                    verificarVaga();
                 }
             }
         }

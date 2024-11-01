@@ -19,7 +19,8 @@ public class TelaAgenda {
         System.out.println("2 - Confirmar Agendamento");
         System.out.println("3 - Cancelar Agendamento");
         System.out.println("4 - Editar Agendamento");
-        System.out.println("5 - Sair");
+        System.out.println("5 - Verificar Vaga");
+        System.out.println("6 - Sair");
         System.out.println("Digite a opcao: ");
         
         int opcao = scanner.nextInt();
@@ -97,6 +98,10 @@ public class TelaAgenda {
                 agendamento.getIdCliente(), agendamento.getSala(),
                 agendamento.getPrecoAula(), agendamento.getNomeInstrutor(),
                 agendamento.getDataHorario());
+    }
+    
+    public void mostrarNumVagas(String sala, int numVagas){
+        System.out.printf("Existem %s vagas na sala %s neste horario%n", numVagas, sala);
     }
     
     public void displayMsgNovaDiaria(){
