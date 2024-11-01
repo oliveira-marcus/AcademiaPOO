@@ -72,31 +72,55 @@ public class ContasController implements ManipulatorController{
                 novaVenda.getValoresUnit(), novaVenda.getValor());
     }
     
+    public Venda construirVenda(Calendar data, int id, int idCliente, int[] idProdutos, int[] quantidades){
+        // Obtendo os valores unitários de cada produto
+        double[] valoresUnit = new double[idProdutos.length];
+        ProdutoEstoqueController produtosController = Sistema.getManipuladorContrPorTipo(ProdutoEstoqueController.class);
+        
+        for (int i = 0; i < idProdutos.length; i++){
+            Produto produto = produtosController.buscarProduto(idProdutos[i]);
+            valoresUnit[i] = produto.getPreco();
+        }
+        
+        // Calculando o valor total da Venda
+        double valor = 0;
+        
+        for (int i = 0; i < valoresUnit.length; i++){
+            valor += valoresUnit[i] * quantidades[i];
+        }
+        
+        return new Venda(valor, data, id, idCliente, idProdutos, quantidades, valoresUnit);
+    }
     
     public void adicionarConta(){
+        // Pegando input do usuário
         String nome = telaFinanceira.getNomeConta();
         String tipo = telaFinanceira.getTipoConta();
         double valor = telaFinanceira.getValorConta();
         String dataStr = telaFinanceira.getDataConta();
         int id = telaFinanceira.getIdConta();
         
+        // Formatando a String para Calendar e adicionando nova Conta na coleção do Manipulador
         Calendar data = AgendamentosController.formatarHorario(dataStr);
         Conta novaConta = new Conta(nome, tipo, valor, data, id);
         manipulador.adicionar(novaConta);
     }
     
     public void removerConta(){
+        // Pedindo input do usuario, fazendo busca da conta, exibindo para o usuario e pedindo confimação do usuário
         int id = telaFinanceira.getIdConta();
         Conta conta = buscarConta(id);
         telaFinanceira.mostrarConta(conta);
         String opcaoConfirmacao = telaFinanceira.removeConfirmation();
         
+        // Se o usuario responder que sim, remover Conta do Manipulador
         if (opcaoConfirmacao.equals("S")){
             manipulador.remover(conta);
         }
     }
     
     public void editarConta(){
+        // Pedindo input do usuario, fazendo busca da conta, exibindo para o usuario e pedindo o tipo de edição
         int id = telaFinanceira.getIdConta();
         Conta conta = buscarConta(id);
         telaFinanceira.mostrarConta(conta);
@@ -104,19 +128,19 @@ public class ContasController implements ManipulatorController{
         int opcaoModificacao = telaFinanceira.modificarConta();
         
         switch(opcaoModificacao){
-            case 1 -> {
+            case 1 -> { // Editar Nome
                 String novoNome = telaFinanceira.getNomeConta();
                 editarNome(conta, novoNome);
             }
-            case 2 -> {
+            case 2 -> { // Editar Tipo
                 String novoTipo = telaFinanceira.getTipoConta();
                 editarTipo(conta, novoTipo);
             }
-            case 3 -> {
+            case 3 -> { // Editar Valor
                 double novoValor = telaFinanceira.getValorConta();
                 editarValor(conta, novoValor);
             }
-            case 4 -> {
+            case 4 -> { // Editar Data
                 String novaData = telaFinanceira.getDataConta();
                 editarData(conta, 
                         AgendamentosController.formatarHorario(novaData));
@@ -140,30 +164,46 @@ public class ContasController implements ManipulatorController{
         conta.setData(dataNova);
     }
     
-    public Venda construirVenda(Calendar data, int id, int idCliente, int[] idProdutos, int[] quantidades){
-        // Parte do código para obter os valores unitários de cada produto
-        double[] valoresUnit = new double[idProdutos.length];
-        ProdutoEstoqueController produtosController = Sistema.getManipuladorContrPorTipo(ProdutoEstoqueController.class);
+    public void cortarValorDiariaMetade(int idAgendamento){
+        ArrayList<Conta> contas = (ArrayList<Conta>)manipulador.getColecao();
         
-        for (int i = 0; i < idProdutos.length; i++){
-            Produto produto = produtosController.buscarProduto(idProdutos[i]);
-            valoresUnit[i] = produto.getPreco();
+        for (Conta conta : contas){
+            if (conta instanceof Diaria diaria){
+                if(diaria.getIdAgendamento() == idAgendamento){
+                    diaria.setValor(diaria.getValor()/2);
+                }
+            }
+        }
+    }
+    
+    public void emitirRelatorio(){
+        // Pedindo para o usuario se ele quer relatorio mensal ou diario
+        int opcaoPeriodo = telaFinanceira.getPeriodo();
+        List<Venda> vendas = new ArrayList<>();
+        
+        if (opcaoPeriodo == 1){ // Relatorio Diario
+            int dia = telaFinanceira.getDia();
+            int mes = telaFinanceira.getMes();
+            int ano = telaFinanceira.getAno();
+            
+            vendas = filtrarVendas(buscarContasDia(dia, mes, ano));
         }
         
-        // Parte do código para calcular o Valor total
-        double valor = 0;
-        
-        for (int i = 0; i < valoresUnit.length; i++){
-            valor += valoresUnit[i] * quantidades[i];
+        else if (opcaoPeriodo == 2){ // Relatorio Mensal
+            int mes = telaFinanceira.getMes();
+            int ano = telaFinanceira.getAno();
+            
+            vendas = filtrarVendas(buscarContasMes(mes, ano));
         }
         
-        return new Venda(valor, data, id, idCliente, idProdutos, quantidades, valoresUnit);
+        telaFinanceira.mostrarRelatorio(gerarDadosRelatorioVendas(vendas));
     }
     
     public void emitirBalanco(){
         int mes = telaFinanceira.getMes();
         int ano = telaFinanceira.getAno();
         
+        // Gerando dados do balanço, ordenando-os e Colocando em dois ArrayLists
         Map<String, Double> balanco = gerarDadosBalanco(buscarContasMes(mes, ano));
         List<String> chavesOrdenadas = new ArrayList<>(balanco.keySet());
         Collections.sort(chavesOrdenadas, new CompContaTipo());
@@ -176,56 +216,8 @@ public class ContasController implements ManipulatorController{
         telaFinanceira.mostrarBalanco(chavesOrdenadas, valoresOrdenados);
     }
     
-    public void emitirRelatorio(){
-        int opcaoPeriodo = telaFinanceira.getPeriodo();
-        List<Venda> vendas = new ArrayList<>();
-        
-        if (opcaoPeriodo == 1){
-            int dia = telaFinanceira.getDia();
-            int mes = telaFinanceira.getMes();
-            int ano = telaFinanceira.getAno();
-            
-            vendas = filtrarVendas(buscarContasDia(dia, mes, ano));
-        }
-        
-        else if (opcaoPeriodo == 2){
-            int mes = telaFinanceira.getMes();
-            int ano = telaFinanceira.getAno();
-            
-            vendas = filtrarVendas(buscarContasMes(mes, ano));
-        }
-        
-        telaFinanceira.mostrarRelatorio(gerarDadosRelatorioVendas(vendas));
-    }
-    
-    public Map<String, Double> gerarDadosBalanco(List<Conta> contasPeriodo){
-        Map<String, Double> contasBalanco = new HashMap<>();
-        Double saldoFinal = 0.0;
-        
-        for (Conta conta : contasPeriodo){
-            if (conta.getTipo().equals("Ganho")){
-                saldoFinal += conta.getValor();
-            }
-            
-            else{
-                saldoFinal -= conta.getValor();
-            }
-            
-            if (contasBalanco.containsKey(conta.getNome())){
-                Double quantidadeNova = contasBalanco.get(conta.getNome()) + conta.getValor();
-                contasBalanco.put(conta.getNome(), quantidadeNova);
-            }
-            else{
-                contasBalanco.put(conta.getNome(), conta.getValor());
-            }
-        }
-        
-        contasBalanco.put("Saldo Final", saldoFinal);
-        return contasBalanco;
-    }
-    
     public Map<String, double[]> gerarDadosRelatorioVendas(List<Venda> vendasPeriodo){
-        Map<String, double[]> vendas = new HashMap<>();
+        Map<String, double[]> vendas = new HashMap<>(); // O map vai ter o seguinte formato: {nomeProduto: [id, precoAtual, precoVenda, quantidade, valorTotal]}
         ProdutoEstoqueController produtosController = Sistema.getManipuladorContrPorTipo(ProdutoEstoqueController.class);
         
         for (Venda venda : vendasPeriodo){ // Iterando as vendas
@@ -249,7 +241,35 @@ public class ContasController implements ManipulatorController{
         return vendas;
     }
     
+    public Map<String, Double> gerarDadosBalanco(List<Conta> contasPeriodo){
+        Map<String, Double> contasBalanco = new HashMap<>(); // o map vai ter o seguinte formato: {nomeConta: valor}
+        Double saldoFinal = 0.0;
+        
+        for (Conta conta : contasPeriodo){
+            // Caso for um ganho, o saldo final vai ser acrescentado,
+            if (conta.getTipo().equals("Ganho")){
+                saldoFinal += conta.getValor();
+            }
+            
+            else{ // Caso contrário, o saldo final vai ser diminuído
+                saldoFinal -= conta.getValor();
+            }
+            
+            if (contasBalanco.containsKey(conta.getNome())){ // Caso a conta ja estiver no map, apenas atualizar o valor
+                Double quantidadeNova = contasBalanco.get(conta.getNome()) + conta.getValor();
+                contasBalanco.put(conta.getNome(), quantidadeNova);
+            }
+            else{ // Caso a conta não estiver no map, adicionar ela junto com seu valor
+                contasBalanco.put(conta.getNome(), conta.getValor());
+            }
+        }
+        
+        contasBalanco.put("Saldo Final", saldoFinal);
+        return contasBalanco;
+    }
+    
     public Conta buscarConta(int id){
+        // Busca Linear na coleção do manipulador
         for(Conta conta : this.manipulador.getColecao()){
             if (conta.getId() == id){
                 return conta;
@@ -260,13 +280,13 @@ public class ContasController implements ManipulatorController{
     
     public List<Conta> buscarContasMes(int mes, int ano){
         ArrayList<Conta> contas = (ArrayList<Conta>)manipulador.getColecao();
-        List<Conta> contasNoMes = new ArrayList<>();
+        List<Conta> contasNoMes = new ArrayList<>(); // Lista que vai ter as contas no mes e ano especificado
         
         for (Conta ganho : contas){
             int mesGanho = ganho.getData().get(Calendar.MONTH);
             int anoGanho = ganho.getData().get(Calendar.YEAR);
             
-            if (mesGanho + 1== mes && anoGanho == ano){
+            if (mesGanho + 1== mes && anoGanho == ano){ // Caso o mes e o ano forem iguais, acrescentar na lista
                 contasNoMes.add(ganho);
             } 
         }
@@ -276,14 +296,14 @@ public class ContasController implements ManipulatorController{
     
     public List<Conta> buscarContasDia(int dia, int mes, int ano){
         ArrayList<Conta> contas = (ArrayList<Conta>)manipulador.getColecao();
-        List<Conta> contasNoDia = new ArrayList<>();
+        List<Conta> contasNoDia = new ArrayList<>(); // Lista que vai ter as contas no dia especificado
         
         for (Conta gasto : contas){
             int diaGasto = gasto.getData().get(Calendar.DAY_OF_MONTH);
             int mesGasto = gasto.getData().get(Calendar.MONTH);
             int anoGasto = gasto.getData().get(Calendar.YEAR);
             
-            if (diaGasto == dia && mesGasto + 1 == mes && anoGasto == ano){
+            if (diaGasto == dia && mesGasto + 1 == mes && anoGasto == ano){ // Caso o dia for o mesmo, acrescentar na lista
                 contasNoDia.add(gasto);
             } 
         }
@@ -292,10 +312,10 @@ public class ContasController implements ManipulatorController{
     }
     
     public List<Venda> filtrarVendas(List<Conta> contas){
-        List<Venda> vendas = new ArrayList<>();
+        List<Venda> vendas = new ArrayList<>(); // Lista que vai armazenar as vendas
         
         for (Conta conta : contas){
-            if (conta instanceof Venda venda){
+            if (conta instanceof Venda venda){ // Caso a conta for instancia da classe venda, adicionar na lista
                 vendas.add(venda);
             }
         }
@@ -304,18 +324,6 @@ public class ContasController implements ManipulatorController{
     
     public void criarDiaria(double valor, Calendar data, int id, int idAgendamento){
         manipulador.adicionar(new Diaria(valor, data, id, idAgendamento));
-    }
-    
-    public void cortarValorDiariaMetade(int idAgendamento){
-        ArrayList<Conta> contas = (ArrayList<Conta>)manipulador.getColecao();
-        
-        for (Conta conta : contas){
-            if (conta instanceof Diaria diaria){
-                if(diaria.getIdAgendamento() == idAgendamento){
-                    diaria.setValor(diaria.getValor()/2);
-                }
-            }
-        }
     }
     
     @Override
