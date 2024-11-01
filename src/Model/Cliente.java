@@ -1,84 +1,73 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model;
 
 /**
- *
- * @author caio
+ * Representa um cliente, que é uma pessoa com informações adicionais específicas,
+ * como cartão de crédito e identificador único.
+ * Esta classe herda as propriedades básicas da classe Pessoa.
  */
 public class Cliente extends Pessoa {
     
-    /**
-     * O número do cartão de crédito do cliente.
-     */
     private String cartaoCredito;
-    
-    /**
-     * O identificador único (ID) do cliente.
-     */
     private int id;
     
     /**
      * Construtor da classe {@code Cliente}.
-     * Inicializa um novo cliente com os detalhes fornecidos, incluindo as informações
-     * pessoais e os detalhes específicos do cliente, como o cartão de crédito e o ID.
-     * 
-     * @param nome          O nome do cliente.
-     * @param endereco      O endereço do cliente.
-     * @param telefone      O telefone do cliente.
-     * @param email         O email do cliente.
-     * @param cpf           O CPF do cliente.
-     * @param cartaoCredito O número do cartão de crédito do cliente.
-     * @param id            O identificador único (ID) do cliente.
+     * Inicializa um novo cliente com as informações básicas de uma pessoa e os dados específicos do cliente.
+     *
+     * @param nome          Nome do cliente.
+     * @param endereco      Endereço do cliente.
+     * @param telefone      Telefone do cliente.
+     * @param email         Email do cliente.
+     * @param cpf           CPF do cliente.
+     * @param cartaoCredito Número do cartão de crédito do cliente.
+     * @param id            Identificador único do cliente.
      */
     public Cliente(String nome, String endereco, String telefone, String email, String cpf, String cartaoCredito, int id) {
         super(nome, endereco, telefone, email, cpf);
         this.cartaoCredito = cartaoCredito;
         this.id = id;
     }
-
+    
     /**
-     * Retorna o número do cartão de crédito do cliente.
+     * Obtém o número do cartão de crédito do cliente.
      * 
-     * @return O número do cartão de crédito do cliente.
+     * @return Número do cartão de crédito.
      */
     public String getCartaoCredito() {
         return cartaoCredito;
     }
-
+    
     /**
      * Define o número do cartão de crédito do cliente.
      * 
-     * @param cartaoCredito O novo número do cartão de crédito do cliente.
+     * @param cartaoCredito Novo número do cartão de crédito.
      */
     public void setCartaoCredito(String cartaoCredito) {
         this.cartaoCredito = cartaoCredito;
     }
-
+    
     /**
-     * Retorna o identificador único (ID) do cliente.
+     * Obtém o identificador único do cliente.
      * 
-     * @return O ID do cliente.
+     * @return ID do cliente.
      */
     public int getId() {
         return id;
     }
-
+    
     /**
-     * Define o identificador único (ID) do cliente.
+     * Define o identificador único do cliente.
      * 
-     * @param id O novo ID do cliente.
+     * @param id Novo ID do cliente.
      */
     public void setId(int id) {
         this.id = id;
     }
     
     /**
-     * Retorna a representação textual do objeto {@code Cliente}, que é o nome do cliente.
-     * 
-     * @return O nome do cliente como string.
+     * Sobrescreve o método toString para retornar o nome do cliente.
+     *
+     * @return Nome do cliente.
      */
     @Override
     public String toString() {
