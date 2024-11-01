@@ -6,6 +6,7 @@ package Controller;
 
 
 import Controller.Manipulator.Manipulator;
+import Model.Comparator.CompContaTipo;
 import Model.Conta;
 import Model.Diaria;
 import Model.Funcionario;
@@ -15,6 +16,7 @@ import View.TelaFinanceira;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -162,38 +164,53 @@ public class ContasController implements ManipulatorController{
         int mes = telaFinanceira.getMes();
         int ano = telaFinanceira.getAno();
         
-        Map<String, Double> balanco = gerarBalanco(buscarContasMes(mes, ano));
+        Map<String, Double> balanco = gerarDadosBalanco(buscarContasMes(mes, ano));
+        List<String> chavesOrdenadas = new ArrayList<>(balanco.keySet());
+        Collections.sort(chavesOrdenadas, new CompContaTipo());
+        List<Double> valoresOrdenados = new ArrayList<>();
         
-//        telaFinanceira.mostrarBalanco(balanco);
+        for(String chave : chavesOrdenadas){
+            valoresOrdenados.add(balanco.get(chave));
+        }
+        
+        telaFinanceira.mostrarBalanco(chavesOrdenadas, valoresOrdenados);
     }
     
     public void emitirRelatorio(){
         int opcaoPeriodo = telaFinanceira.getPeriodo();
+        List<Venda> vendas = new ArrayList<>();
         
         if (opcaoPeriodo == 1){
             int dia = telaFinanceira.getDia();
             int mes = telaFinanceira.getMes();
             int ano = telaFinanceira.getAno();
             
-            List<Venda> vendas = filtrarVendas(buscarContasDia(dia, mes, ano));
-            
-//            telaFinanceira.mostrarRelatorio(vendas);
+            vendas = filtrarVendas(buscarContasDia(dia, mes, ano));
         }
         
         else if (opcaoPeriodo == 2){
             int mes = telaFinanceira.getMes();
             int ano = telaFinanceira.getAno();
             
-            List<Venda> vendas = filtrarVendas(buscarContasMes(mes, ano));
-            
-//            telaFinanceira.mostrarRelatorio(vendas);
+            vendas = filtrarVendas(buscarContasMes(mes, ano));
         }
+        
+        telaFinanceira.mostrarRelatorio(gerarDadosRelatorioVendas(vendas));
     }
     
-    public Map<String, Double> gerarBalanco(List<Conta> contasPeriodo){
+    public Map<String, Double> gerarDadosBalanco(List<Conta> contasPeriodo){
         Map<String, Double> contasBalanco = new HashMap<>();
+        Double saldoFinal = 0.0;
         
         for (Conta conta : contasPeriodo){
+            if (conta.getTipo().equals("Ganho")){
+                saldoFinal += conta.getValor();
+            }
+            
+            else{
+                saldoFinal -= conta.getValor();
+            }
+            
             if (contasBalanco.containsKey(conta.getNome())){
                 Double quantidadeNova = contasBalanco.get(conta.getNome()) + conta.getValor();
                 contasBalanco.put(conta.getNome(), quantidadeNova);
@@ -203,10 +220,11 @@ public class ContasController implements ManipulatorController{
             }
         }
         
+        contasBalanco.put("Saldo Final", saldoFinal);
         return contasBalanco;
     }
     
-    public Map<String, double[]> gerarRelatorioVendas(List<Venda> vendasPeriodo){
+    public Map<String, double[]> gerarDadosRelatorioVendas(List<Venda> vendasPeriodo){
         Map<String, double[]> vendas = new HashMap<>();
         ProdutoEstoqueController produtosController = Sistema.getManipuladorContrPorTipo(ProdutoEstoqueController.class);
         
@@ -326,11 +344,11 @@ public class ContasController implements ManipulatorController{
                 }
                 
                 case 5 ->{
-                    emitirBalanco();
+                    emitirRelatorio();
                 }
                 
                 case 6 ->{
-                    emitirRelatorio();
+                    emitirBalanco();
                 }
             }
         }

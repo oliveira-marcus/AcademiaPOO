@@ -5,6 +5,9 @@
 package View;
 
 import Model.Conta;
+import Model.Venda;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -19,8 +22,8 @@ public class TelaFinanceira {
         System.out.println("2 - Adicionar Conta");
         System.out.println("3 - Remover Conta");
         System.out.println("4 - Editar Conta");
-        System.out.println("5 - Gerar Relatório Vendas");
-        System.out.println("6 - Gerar Balanço Mensal");
+        System.out.println("5 - Gerar Relatorio Vendas");
+        System.out.println("6 - Gerar Balanco Mensal");
         System.out.println("7 - Sair");
             
         System.out.println("Digite a opcao: ");
@@ -130,7 +133,7 @@ public class TelaFinanceira {
     }
     
     public int getPeriodo(){
-        System.out.println("1 - Diário");
+        System.out.println("1 - Diario");
         System.out.println("2 - Mensal");
         
         int opcao = scanner.nextInt();
@@ -172,7 +175,31 @@ public class TelaFinanceira {
                 conta.getId());
     }
     
-    public void mostrarBalanco(){
-        
+    public void mostrarBalanco(List<String> chavesOrdenadas, List<Double> valoresOrdenados){
+        System.out.println("BALANCO MENSAL");
+        for (int i = 0; i < chavesOrdenadas.size(); i++){
+            System.out.printf("%s: %s%n", chavesOrdenadas.get(i), valoresOrdenados.get(i));
+        }
+        System.out.println();
+    }
+    
+    public void mostrarRelatorio(Map<String, double[]> produtos){
+        System.out.println("RELATORIO DE VENDAS\n");
+        System.out.printf("%-25s %-10s %-15s %-15s %-15s %-15s%n", 
+                "Nome", "ID", "Preco Atual", "Preco Venda", "Quantidade", "Valor Total");
+
+        // Linha de separação
+        System.out.println("----------------------------------------------------------------------------------------------------");
+
+        // Impressão dos dados
+        for (Map.Entry<String, double[]> entry : produtos.entrySet()) {
+            String nome = entry.getKey();
+            double[] valores = entry.getValue();
+
+            // Imprime cada linha de forma formatada
+            System.out.printf("%-25s %-10.0f %-15.2f %-15.2f %-15.0f %-15.2f%n", 
+                    nome, valores[0], valores[1], valores[2], valores[3], valores[4]);
+        }
+        System.out.println();
     }
 }

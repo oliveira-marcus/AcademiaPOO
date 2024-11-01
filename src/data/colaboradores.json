@@ -119,5 +119,16 @@
     "telefone": "90591234",
     "email": "liborioestudo@gmail.com",
     "cpf": "123.654.765-92"
+  },
+  {
+    "salario": 7000.0,
+    "login": "marcusvinicius",
+    "senha": "senha777",
+    "cargo": "Administrador",
+    "nome": "Marcus Vinicius",
+    "endereco": "Rua I, 320",
+    "telefone": "12340987",
+    "email": "marcusvop@gmail.com",
+    "cpf": "123.321.456-65"
   }
 ]
