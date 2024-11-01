@@ -7,8 +7,8 @@ import java.util.Calendar;
  */
 public class Conta {
     
-    private String nome; // Ganho: Salarios, Fornecedores, Despesa Geral, Despesa Administrativa, Imposto; Ganho: Diaria, Mensalidade, Venda
-    private String tipo; // Ganho ou Gasto
+    private String nome;
+    private String tipo;
     private double valor;
     private Calendar data;
     private int id;
