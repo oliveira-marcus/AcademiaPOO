@@ -16,6 +16,7 @@ import Controller.Sistema;
 import Model.Agendamento;
 import Model.Cliente;
 import Model.Conta;
+import Model.Cpf;
 import Model.Diaria;
 import Model.Funcionario;
 import Model.Produto;
@@ -46,6 +47,8 @@ public class AcademiaPOO {
         deserializer.registerContaType("Diaria", Diaria.class);
         Sistema.adicionarManipuladorContr(new ContasController(new ListManipulator("src/data/contas.json", Conta.class, deserializer)));
         
-        sistema.run();
+        System.out.println(Cpf.isValid("111.444.777-35"));
+        
+//        sistema.run();
     }
 }
