@@ -93,8 +93,8 @@ public class TelaClientes {
     }
     
     public void mostrarCliente(Cliente cliente){
-        System.out.printf("Nome: %s%nEndereco: %s%nTelefone: %s%nEmail: %s%n", 
-                cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getEmail());
+        System.out.printf("Nome: %s%nEndereco: %s%nTelefone: %s%nEmail: %s%nCpf: %s%n", 
+                cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getEmail(), cliente.getCpf());
     }
     
     public void displayMsgClienteCriado(int id){

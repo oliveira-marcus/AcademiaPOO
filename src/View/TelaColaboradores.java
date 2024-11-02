@@ -104,10 +104,10 @@ public class TelaColaboradores {
     
     public void mostrarColaborador(Funcionario funcionario){
         System.out.printf("Nome: %s%nEndereco: %s%nTelefone: "
-                + "%s%nEmail: %s%nSalario: %s%nLogin: "
+                + "%s%nEmail: %s%nCpf: %s%nSalario: %s%nLogin: "
                 + "%s%nSenha: %s%nCargo: %s%n",
                 funcionario.getNome(), funcionario.getEndereco(), funcionario.getTelefone(),
-                funcionario.getEmail(), funcionario.getSalario(), funcionario.getLogin(),
+                funcionario.getEmail(), funcionario.getCpf(), funcionario.getSalario(), funcionario.getLogin(),
                 funcionario.getSenha(), funcionario.getCargo());
     }
 }

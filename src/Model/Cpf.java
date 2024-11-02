@@ -79,4 +79,11 @@ public class Cpf {
       
       return uf.split(",");
     }
+    
+    @Override
+    public String toString(){
+        String[] codigoSplitted = codigoCpf.split("[.-]");
+        
+        return "***." + codigoSplitted[1] + "." + codigoSplitted[2] + "-**";
+    }
 }

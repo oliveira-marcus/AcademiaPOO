@@ -22,7 +22,7 @@ public class Cliente extends Pessoa {
      * @param cartaoCredito Número do cartão de crédito do cliente.
      * @param id            Identificador único do cliente.
      */
-    public Cliente(String nome, String endereco, String telefone, String email, String cpf, String cartaoCredito, int id) {
+    public Cliente(String nome, String endereco, String telefone, String email, Cpf cpf, String cartaoCredito, int id) {
         super(nome, endereco, telefone, email, cpf);
         this.cartaoCredito = cartaoCredito;
         this.id = id;

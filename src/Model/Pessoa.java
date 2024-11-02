@@ -10,7 +10,7 @@ public abstract class Pessoa {
     private String endereco;
     private String telefone;
     private String email;
-    private String cpf;
+    private Cpf cpf;
     
     /**
      * Construtor da classe {@code Pessoa}.
@@ -22,7 +22,7 @@ public abstract class Pessoa {
      * @param email     Email da pessoa.
      * @param cpf       CPF da pessoa.
      */
-    public Pessoa(String nome, String endereco, String telefone, String email, String cpf){
+    public Pessoa(String nome, String endereco, String telefone, String email, Cpf cpf){
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
@@ -107,7 +107,7 @@ public abstract class Pessoa {
      * 
      * @return CPF da pessoa.
      */
-    public String getCpf() {
+    public Cpf getCpf() {
         return cpf;
     }
 
@@ -116,7 +116,7 @@ public abstract class Pessoa {
      * 
      * @param cpf Novo CPF da pessoa.
      */
-    public void setCpf(String cpf) {
+    public void setCpf(Cpf cpf) {
         this.cpf = cpf;
     }
     

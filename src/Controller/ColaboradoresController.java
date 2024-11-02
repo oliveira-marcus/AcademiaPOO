@@ -1,10 +1,10 @@
 package Controller;
 
 import Controller.Manipulator.Manipulator;
+import Model.Cpf;
 import Model.Funcionario;
 import View.TelaColaboradores;
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  *
@@ -29,7 +29,7 @@ public class ColaboradoresController implements ManipulatorController{
         String senha = telaColaboradores.getSenhaColaborador();
         String cargo = telaColaboradores.getCargoColaborador();
         
-        Funcionario novoFuncionario = new Funcionario(nome, endereco, telefone, email, cpf, salario, login, senha, cargo);
+        Funcionario novoFuncionario = new Funcionario(nome, endereco, telefone, email, new Cpf(cpf), salario, login, senha, cargo);
         manipulador.adicionar(novoFuncionario);
     }
     

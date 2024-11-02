@@ -2,6 +2,7 @@ package Controller;
 
 import Controller.Manipulator.Manipulator;
 import Model.Cliente;
+import Model.Cpf;
 import View.TelaClientes;
 import java.io.IOException;
 
@@ -28,7 +29,7 @@ public final class ClientesController implements ManipulatorController{
         String cartao = telaClientes.getCartaoCliente();
         int id = manipulador.getColecao().size() + 1;
         
-        Cliente novoCliente = new Cliente(nome, endereco, fone, email, cpf, cartao, id);
+        Cliente novoCliente = new Cliente(nome, endereco, fone, email, new Cpf(cpf), cartao, id);
         manipulador.adicionar(novoCliente);
         telaClientes.displayMsgClienteCriado(id);
         Sistema.setQuantClientesPriv(Sistema.getQuantClientesPriv() + 1);
