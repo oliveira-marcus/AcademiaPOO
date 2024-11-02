@@ -26,11 +26,11 @@ public final class ClientesController implements ManipulatorController{
         String email = telaClientes.getEmailCliente();
         String cpf = telaClientes.getCpfCliente();
         String cartao = telaClientes.getCartaoCliente();
-        int id = telaClientes.getIdCliente();
-        
+        int id = manipulador.getColecao().size() + 1;
         
         Cliente novoCliente = new Cliente(nome, endereco, fone, email, cpf, cartao, id);
         manipulador.adicionar(novoCliente);
+        telaClientes.displayMsgClienteCriado(id);
         Sistema.setQuantClientesPriv(Sistema.getQuantClientesPriv() + 1);
     }
     

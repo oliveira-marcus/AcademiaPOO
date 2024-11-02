@@ -28,13 +28,14 @@ public class ProdutoEstoqueController implements ManipulatorController{
     public void adicionarProduto(){
         String nome = telaEstoque.getNomeProduto();
         double preco = telaEstoque.getPrecoProduto();
-        int id = telaEstoque.getIdProduto();
+        int id = manipulador.getColecao().size() + 1;
         int quantidade = telaEstoque.getQuantidade();
         
         Produto novoProduto  = new Produto(nome, preco, id);
         
         manipulador.adicionar(novoProduto);
         manipuladorMap.colocar(novoProduto.getNome(), quantidade);
+        telaEstoque.displayMsgProdutoCriado(id);
         Sistema.setQuantProdutosCatalogo(Sistema.getQuantProdutosCatalogo() + 1);
     }
     

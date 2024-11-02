@@ -93,6 +93,10 @@ public class TelaEstoque {
         System.out.printf("Quantidade Disponivel de %s: %s%n", nome, quantidade);
     }
     
+    public void displayMsgProdutoCriado(int id){
+        System.out.printf("Novo produto criado com o ID %s%n", id);
+    }
+    
     public void displayMsgCancelRemoval(){
         System.out.println("Remocao cancelada");
     }

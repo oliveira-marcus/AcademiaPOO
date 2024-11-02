@@ -28,8 +28,8 @@ public class AgendamentosController implements ManipulatorController{
         this.manipulador = manipulador;
     }
     
-    public void adicionarAgendamento(){        
-        int id = telaAgenda.getIdAgendamento();
+    public void adicionarAgendamento(){
+        int idAgendamento = manipulador.getColecao().size() + 1;
         int idCliente = telaAgenda.getIdClienteAgendamento();
         String sala = salas[telaAgenda.getSalaAgendamento() - 1].getNome();
         double precoAula = telaAgenda.getPrecoAulaAgendamento();
@@ -45,13 +45,14 @@ public class AgendamentosController implements ManipulatorController{
         ColaboradoresController areaColaboradores = Sistema.getManipuladorContrPorTipo(ColaboradoresController.class);
         areaColaboradores.buscarColaborador(nomeInstrutor);
         
-        manipulador.adicionar(new Agendamento(id, "FEITA", idCliente, sala, 
+        manipulador.adicionar(new Agendamento(idAgendamento, "FEITA", idCliente, sala, 
                 precoAula, nomeInstrutor, dataHorario));
+        telaAgenda.displayMsgAgendamentoCriado(idAgendamento);
         
-        telaAgenda.displayMsgNovaDiaria();
-        int idDiaria = telaAgenda.getIdDiaria();
         ContasController contasController = Sistema.getManipuladorContrPorTipo(ContasController.class);
-        contasController.criarDiaria(precoAula, dataHorario, idDiaria, id);
+        int idDiaria = contasController.getManipulador().getColecao().size() + 1;
+        contasController.criarDiaria(precoAula, dataHorario, idDiaria, idAgendamento);
+        telaAgenda.displayMsgDiariaCriada(idDiaria);
     }
     
     public void confirmarAgendamento(){

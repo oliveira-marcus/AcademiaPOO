@@ -65,15 +65,15 @@ public class Cpf {
     public String[] getUF(){
       Map<Integer, String> ufs = Map.of(
               0, "Rio Grande do Sul",
-              1, "Distrito Federal, Goiás, Mato Grosso, Mato Grosso do Sul e Tocantins",
-              2, "Amazonas, Pará, Roraima, Amapá, Acre e Rondônia",
-              3, "Ceará, Maranhão e Piauí",
-              4, "Paraíba, Pernambuco, Alagoas e Rio Grande do Norte",
-              5, "Bahia e Sergipe",
+              1, "Distrito Federal, Goiás, Mato Grosso, Mato Grosso do Sul, Tocantins",
+              2, "Amazonas, Pará, Roraima, Amapá, Acre, Rondônia",
+              3, "Ceará, Maranhão, Piauí",
+              4, "Paraíba, Pernambuco, Alagoas, Rio Grande do Norte",
+              5, "Bahia, Sergipe",
               6, "Minas Gerais",
-              7, "Rio de Janeiro e Espírito Santo",
+              7, "Rio de Janeiro, Espírito Santo",
               8, "São Paulo",
-              9, "Paraná e Santa Catarina");
+              9, "Paraná, Santa Catarina");
       
       String uf = ufs.get(codigoCpf.charAt(11)-'0');
       

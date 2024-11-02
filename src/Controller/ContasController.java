@@ -40,7 +40,7 @@ public class ContasController implements ManipulatorController{
         List<String> nomesProduto = new ArrayList<>();
         ProdutoEstoqueController produtosController = Sistema.getManipuladorContrPorTipo(ProdutoEstoqueController.class);
         
-        int idVenda = telaFinanceira.getIdConta();
+        int idVenda = manipulador.getColecao().size() + 1;
         int idCliente = telaFinanceira.getIdClienteComprador();
         int idProduto = -1;
         
@@ -98,12 +98,13 @@ public class ContasController implements ManipulatorController{
         String tipo = telaFinanceira.getTipoConta();
         double valor = telaFinanceira.getValorConta();
         String dataStr = telaFinanceira.getDataConta();
-        int id = telaFinanceira.getIdConta();
+        int id = manipulador.getColecao().size() + 1;
         
         // Formatando a String para Calendar e adicionando nova Conta na coleção do Manipulador
         Calendar data = AgendamentosController.formatarHorario(dataStr);
         Conta novaConta = new Conta(nome, tipo, valor, data, id);
         manipulador.adicionar(novaConta);
+        telaFinanceira.displayContaCriada(id);
     }
     
     public void removerConta(){

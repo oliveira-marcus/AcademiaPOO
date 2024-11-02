@@ -104,8 +104,12 @@ public class TelaAgenda {
         System.out.printf("Existem %s vagas na sala %s neste horario%n", numVagas, sala);
     }
     
-    public void displayMsgNovaDiaria(){
-        System.out.println("Uma nova Conta DIARIA sera criada");
+    public void displayMsgAgendamentoCriado(int id){
+        System.out.printf("Novo produto criado com o ID %s%n", id);
+    }
+    
+    public void displayMsgDiariaCriada(int id){
+        System.out.printf("Uma nova Conta Diaria sera criada com o Id %s%n", id);
     }
     
     public void displayConfirmarCanceladaError(){

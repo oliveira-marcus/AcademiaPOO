@@ -97,6 +97,10 @@ public class TelaClientes {
                 cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(), cliente.getEmail());
     }
     
+    public void displayMsgClienteCriado(int id){
+        System.out.printf("Novo cliente criado com o ID %s%n", id);
+    }
+    
     public void displayNomeInvalido(){
         System.out.println("O nome que voce digitou e invalido! ");
     }

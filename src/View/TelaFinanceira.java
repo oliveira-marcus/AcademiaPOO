@@ -202,4 +202,12 @@ public class TelaFinanceira {
         }
         System.out.println();
     }
+    
+    public void displayMsgVendaCriada(int id){
+        System.out.printf("Nova Venda criada com o ID %s%n", id);
+    }
+    
+    public void displayContaCriada(int id){
+        System.out.printf("Nova Conta criada com o ID %s%n", id);
+    }
 }
