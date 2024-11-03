@@ -225,9 +225,27 @@ public class AgendamentosController implements ManipulatorController{
         return dataHorario;
     }
     
+    public static String converterCalendarString(Calendar dataHorario){
+        String dataHorarioStr = dataHorario.get(Calendar.DAY_OF_MONTH) +
+                "/" + (dataHorario.get(Calendar.MONTH) + 1) +
+                "/" + dataHorario.get(Calendar.YEAR) +
+                " " + dataHorario.get(Calendar.HOUR_OF_DAY) + 
+                ":" + dataHorario.get(Calendar.MINUTE);
+        
+        return dataHorarioStr;
+    }
+    
     @Override
     public void salvar() throws IOException{
         this.manipulador.salvar();
+    }
+    
+    public Manipulator<Agendamento> getManipulador() {
+        return manipulador;
+    }
+
+    public void setManipulador(Manipulator<Agendamento> manipulador) {
+        this.manipulador = manipulador;
     }
     
     public void run(){

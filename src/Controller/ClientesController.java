@@ -5,6 +5,8 @@ import Model.Cliente;
 import Model.Cpf;
 import View.TelaClientes;
 import java.io.IOException;
+import java.util.Comparator;
+import java.util.Iterator;
 
 /**
  *
@@ -97,6 +99,19 @@ public final class ClientesController implements ManipulatorController{
             }
         }
         return null;
+    }
+    
+    public Cliente find(Cliente alvo, Comparator<Cliente> comparator) {
+        Iterator<Cliente> iterator = this.manipulador.getColecao().iterator();
+        
+        while (iterator.hasNext()) {
+            Cliente elemento = iterator.next();
+            if (comparator.compare(elemento, alvo) == 0) {
+                return elemento; // Elemento encontrado
+            }
+        }
+
+        return null; // Element não encontrado
     }
     
     @Override

@@ -2,11 +2,13 @@
   {
     "cartaoCredito": "1234-5678-9012-3456",
     "id": 1,
-    "nome": "João Silva",
+    "nome": "Joao Silva",
     "endereco": "Rua A, 123",
     "telefone": "11987654321",
     "email": "joao@email.com",
-    "cpf": "111.222.333-44"
+    "cpf": {
+      "codigoCpf": "111.222.333-44"
+    }
   },
   {
     "cartaoCredito": "2345-6789-0123-4567",
@@ -15,7 +17,9 @@
     "endereco": "Rua B, 456",
     "telefone": "11987654322",
     "email": "maria@email.com",
-    "cpf": "222.333.444-55"
+    "cpf": {
+      "codigoCpf": "222.333.444-55"
+    }
   },
   {
     "cartaoCredito": "3456-7890-1234-5678",
@@ -24,7 +28,9 @@
     "endereco": "Rua C, 789",
     "telefone": "11987654323",
     "email": "carlos@email.com",
-    "cpf": "333.444.555-66"
+    "cpf": {
+      "codigoCpf": "333.444.555-66"
+    }
   },
   {
     "cartaoCredito": "4567-8901-2345-6789",
@@ -33,7 +39,9 @@
     "endereco": "Rua D, 321",
     "telefone": "11987654324",
     "email": "ana@email.com",
-    "cpf": "444.555.666-77"
+    "cpf": {
+      "codigoCpf": "444.555.666-77"
+    }
   },
   {
     "cartaoCredito": "5678-9012-3456-7890",
@@ -42,7 +50,9 @@
     "endereco": "Rua E, 654",
     "telefone": "11987654325",
     "email": "fernanda@email.com",
-    "cpf": "555.666.777-88"
+    "cpf": {
+      "codigoCpf": "555.666.777-88"
+    }
   },
   {
     "cartaoCredito": "6789-0123-4567-8901",
@@ -51,7 +61,9 @@
     "endereco": "Rua F, 987",
     "telefone": "11987654326",
     "email": "paulo@email.com",
-    "cpf": "666.777.888-99"
+    "cpf": {
+      "codigoCpf": "666.777.888-99"
+    }
   },
   {
     "cartaoCredito": "7890-1234-5678-9012",
@@ -60,7 +72,9 @@
     "endereco": "Rua G, 147",
     "telefone": "11987654327",
     "email": "gabriela@email.com",
-    "cpf": "777.888.999-00"
+    "cpf": {
+      "codigoCpf": "777.888.999-00"
+    }
   },
   {
     "cartaoCredito": "8901-2345-6789-0123",
@@ -69,7 +83,9 @@
     "endereco": "Rua H, 258",
     "telefone": "11987654328",
     "email": "ricardo@email.com",
-    "cpf": "888.999.000-11"
+    "cpf": {
+      "codigoCpf": "888.999.000-11"
+    }
   },
   {
     "cartaoCredito": "9012-3456-7890-1234",
@@ -78,7 +94,9 @@
     "endereco": "Rua I, 369",
     "telefone": "11987654329",
     "email": "beatriz@email.com",
-    "cpf": "999.000.111-22"
+    "cpf": {
+      "codigoCpf": "999.000.111-22"
+    }
   },
   {
     "cartaoCredito": "0123-4567-8901-2345",
@@ -87,7 +105,9 @@
     "endereco": "Rua J, 741",
     "telefone": "11987654330",
     "email": "felipe@email.com",
-    "cpf": "000.111.222-33"
+    "cpf": {
+      "codigoCpf": "000.111.222-33"
+    }
   },
   {
     "cartaoCredito": "1111 0000 3333 1444",
@@ -96,7 +116,9 @@
     "endereco": "Fenda do Biquini",
     "telefone": "00001111",
     "email": "patrickestrela@gmail.com",
-    "cpf": "111.222.111-31"
+    "cpf": {
+      "codigoCpf": "111.222.111-31"
+    }
   },
   {
     "cartaoCredito": "0000 0000 0000 0000",
@@ -105,7 +127,9 @@
     "endereco": "Rua dos bobo, 0",
     "telefone": "987654321",
     "email": "cainbgl@gmail.com",
-    "cpf": "123.456.789-10"
+    "cpf": {
+      "codigoCpf": "123.456.789-10"
+    }
   },
   {
     "cartaoCredito": "1111 2222 3333 4444",
@@ -114,6 +138,8 @@
     "endereco": "Fenda do Biquini",
     "telefone": "11110000",
     "email": "bobesponja@gmail.com",
-    "cpf": "111.222.333-22"
+    "cpf": {
+      "codigoCpf": "111.222.333-22"
+    }
   }
 ]

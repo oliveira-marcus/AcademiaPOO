@@ -8,7 +8,9 @@
     "endereco": "Rua A, 123",
     "telefone": "11987654321",
     "email": "joao@gmail.com",
-    "cpf": "123.456.789-00"
+    "cpf": {
+      "codigoCpf": "123.456.789-00"
+    }
   },
   {
     "salario": 3500.0,
@@ -19,7 +21,9 @@
     "endereco": "Rua B, 456",
     "telefone": "11987654322",
     "email": "maria@gmail.com",
-    "cpf": "234.567.890-01"
+    "cpf": {
+      "codigoCpf": "234.567.890-01"
+    }
   },
   {
     "salario": 2800.0,
@@ -30,7 +34,9 @@
     "endereco": "Rua C, 789",
     "telefone": "11987654323",
     "email": "pedro@gmail.com",
-    "cpf": "345.678.901-02"
+    "cpf": {
+      "codigoCpf": "345.678.901-02"
+    }
   },
   {
     "salario": 4000.0,
@@ -41,7 +47,9 @@
     "endereco": "Rua D, 101",
     "telefone": "11987654324",
     "email": "ana@gmail.com",
-    "cpf": "456.789.012-03"
+    "cpf": {
+      "codigoCpf": "456.789.012-03"
+    }
   },
   {
     "salario": 2500.0,
@@ -52,7 +60,9 @@
     "endereco": "Rua E, 202",
     "telefone": "11987654325",
     "email": "lucas@gmail.com",
-    "cpf": "567.890.123-04"
+    "cpf": {
+      "codigoCpf": "567.890.123-04"
+    }
   },
   {
     "salario": 3700.0,
@@ -63,7 +73,9 @@
     "endereco": "Rua F, 303",
     "telefone": "11987654326",
     "email": "fernanda@gmail.com",
-    "cpf": "678.901.234-05"
+    "cpf": {
+      "codigoCpf": "678.901.234-05"
+    }
   },
   {
     "salario": 3200.0,
@@ -74,7 +86,9 @@
     "endereco": "Rua G, 404",
     "telefone": "11987654327",
     "email": "carlos@gmail.com",
-    "cpf": "789.012.345-06"
+    "cpf": {
+      "codigoCpf": "789.012.345-06"
+    }
   },
   {
     "salario": 4100.0,
@@ -85,7 +99,9 @@
     "endereco": "Rua H, 505",
     "telefone": "11987654328",
     "email": "juliana@gmail.com",
-    "cpf": "890.123.456-07"
+    "cpf": {
+      "codigoCpf": "890.123.456-07"
+    }
   },
   {
     "salario": 2900.0,
@@ -96,7 +112,9 @@
     "endereco": "Rua I, 606",
     "telefone": "11987654329",
     "email": "felipe@gmail.com",
-    "cpf": "901.234.567-08"
+    "cpf": {
+      "codigoCpf": "901.234.567-08"
+    }
   },
   {
     "salario": 3300.0,
@@ -107,7 +125,9 @@
     "endereco": "Rua J, 707",
     "telefone": "11987654330",
     "email": "paula@gmail.com",
-    "cpf": "012.345.678-09"
+    "cpf": {
+      "codigoCpf": "012.345.678-09"
+    }
   },
   {
     "salario": 5000.0,
@@ -118,7 +138,9 @@
     "endereco": "Rua dos Bobo, 0",
     "telefone": "90591234",
     "email": "liborioestudo@gmail.com",
-    "cpf": "123.654.765-92"
+    "cpf": {
+      "codigoCpf": "123.654.765-92"
+    }
   },
   {
     "salario": 7000.0,
@@ -129,6 +151,8 @@
     "endereco": "Rua I, 320",
     "telefone": "12340987",
     "email": "marcusvop@gmail.com",
-    "cpf": "123.321.456-65"
+    "cpf": {
+      "codigoCpf": "123.321.456-65"
+    }
   }
 ]

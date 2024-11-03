@@ -80,6 +80,10 @@ public class Cpf {
       return uf.split(",");
     }
     
+    public void setCodigoCpf(String codigoCpf) {
+        this.codigoCpf = codigoCpf;
+    }
+    
     @Override
     public String toString(){
         String[] codigoSplitted = codigoCpf.split("[.-]");

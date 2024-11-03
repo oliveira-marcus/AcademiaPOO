@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.AgendamentosController;
 import java.util.Calendar;
 
 /**
@@ -172,6 +173,8 @@ public class Agendamento {
      */
     @Override
     public String toString() {
-        return this.estadoReserva;
+        String horario = AgendamentosController.converterCalendarString(dataHorario);
+        
+        return this.estadoReserva + " no horario " + horario + " na sala de " + sala;
     }
 }
