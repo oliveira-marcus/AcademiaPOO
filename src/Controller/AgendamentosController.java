@@ -10,10 +10,10 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- *
- * @author caio
+ * Controlador responsável pela gestão de agendamentos de salas e interação com a tela de agenda.
  */
-public class AgendamentosController implements ManipulatorController{   
+public class AgendamentosController implements ManipulatorController{
+    
     Manipulator<Agendamento> manipulador;
     TelaAgenda telaAgenda = new TelaAgenda();
     
@@ -24,10 +24,20 @@ public class AgendamentosController implements ManipulatorController{
         new Sala("Fit Dance", "Sala para exercitar com diversao!", 40)
     };
     
+    /**
+     * Construtor da classe {@code AgendamentosController}.
+     * Inicializa o controlador de agendamentos com um manipulador específico.
+     *
+     * @param manipulador Manipulador de agendamentos.
+     * @throws IOException Se ocorrer um erro durante a inicialização do manipulador.
+     */
     public AgendamentosController(Manipulator manipulador) throws IOException{
         this.manipulador = manipulador;
     }
     
+    /**
+     * Adiciona um novo agendamento baseado nas informações obtidas da interface de agenda.
+     */
     public void adicionarAgendamento(){
         int idAgendamento = manipulador.getColecao().size() + 1;
         int idCliente = telaAgenda.getIdClienteAgendamento();
@@ -55,6 +65,9 @@ public class AgendamentosController implements ManipulatorController{
         telaAgenda.displayMsgDiariaCriada(idDiaria);
     }
     
+    /**
+     * Confirma um agendamento específico, alterando seu estado para "CONFIRMADA", se aplicável.
+     */
     public void confirmarAgendamento(){
         int id = telaAgenda.getIdAgendamento();
         Agendamento agendamento = buscarAgendamento(id);
@@ -72,6 +85,9 @@ public class AgendamentosController implements ManipulatorController{
         }
     }
     
+    /**
+     * Cancela um agendamento específico, aplicando penalidades se necessário.
+     */
     public void cancelarAgendamento(){
         int id = telaAgenda.getIdAgendamento();
         Agendamento agendamento = buscarAgendamento(id);
@@ -100,10 +116,11 @@ public class AgendamentosController implements ManipulatorController{
                 }
             }
         }
-        
-        
-            }
+    }
     
+    /**
+     * Edita um agendamento existente, permitindo modificar a sala, o preço, o instrutor e o horário.
+     */
     public void editarAgendamento(){
         int id = telaAgenda.getIdAgendamento();
         Agendamento agendamento = buscarAgendamento(id);
@@ -139,27 +156,62 @@ public class AgendamentosController implements ManipulatorController{
             }
         }
     }
-
+    /**
+     * Altera o estado de reserva de um agendamento.
+     *
+     * @param agendamento Agendamento a ser modificado.
+     * @param estadoReserva Novo estado de reserva.
+     */
     public void editarEstadoReserva(Agendamento agendamento, String estadoReserva){
         agendamento.setEstadoReserva(estadoReserva);
     }
     
+    /**
+     * Altera a sala associada a um agendamento.
+     *
+     * @param agendamento Agendamento a ser modificado.
+     * @param sala Nova sala para o agendamento.
+     */
     public void editarSala(Agendamento agendamento, String sala){
         agendamento.setSala(sala);
     }
     
+    /**
+     * Modifica o preço da aula associada a um agendamento.
+     *
+     * @param agendamento Agendamento a ser modificado.
+     * @param precoAula Novo preço da aula.
+     */
     public void editarPrecoAula(Agendamento agendamento, double precoAula){
         agendamento.setPrecoAula(precoAula);
     }
     
+    /**
+     * Define um novo instrutor para o agendamento.
+     *
+     * @param agendamento Agendamento a ser modificado.
+     * @param nomeInstrutor Novo nome do instrutor.
+     */
     public void editarNomeInstrutor(Agendamento agendamento, String nomeInstrutor){
         agendamento.setNomeInstrutor(nomeInstrutor);    
     }
     
+    /**
+     * Modifica a data e horário de um agendamento.
+     *
+     * @param agendamento Agendamento a ser modificado.
+     * @param dataHorario Nova data e horário para o agendamento.
+     */
     public void editarDataHorario(Agendamento agendamento, Calendar dataHorario){
         agendamento.setDataHorario(dataHorario);
     }
     
+    /**
+     * Busca um agendamento pelo seu identificador.
+     *
+     * @param id Identificador do agendamento.
+     * @return Agendamento correspondente ou null se não encontrado.
+     */
     public Agendamento buscarAgendamento(Integer id){
         for (Agendamento agendamento : this.manipulador.getColecao()){
             if (agendamento.getId() == id){
@@ -169,6 +221,9 @@ public class AgendamentosController implements ManipulatorController{
         return null;
     }
     
+    /**
+     * Verifica a disponibilidade de vagas para uma sala e horário específicos.
+     */
     public void verificarVaga(){
         String dataHorarioStr = telaAgenda.getDataHorarioAgendamento();
         String sala = salas[telaAgenda.getSalaAgendamento() - 1].getNome();
@@ -178,6 +233,13 @@ public class AgendamentosController implements ManipulatorController{
         telaAgenda.mostrarNumVagas(sala, numVagas);
     }
     
+    /**
+     * Calcula o número de vagas disponíveis para uma sala em um determinado horário.
+     *
+     * @param salaAgendamento Nome da sala do agendamento.
+     * @param dataHorarioAgendamento1 Data e horário do agendamento.
+     * @return Número de vagas disponíveis.
+     */
     public int getVagasHorario(String salaAgendamento, Calendar dataHorarioAgendamento1){
         List<Agendamento> agendamentosMesmaHora = new ArrayList<>();
         
@@ -211,6 +273,12 @@ public class AgendamentosController implements ManipulatorController{
         return salas[salaIndice].getCapacidade() - agendamentosMesmaHora.size();
     }
     
+    /**
+     * Converte uma string de data e hora em um objeto {@code Calendar}.
+     *
+     * @param dataHorarioString String no formato "dd MM yyyy HH mm".
+     * @return Data e hora no formato {@code Calendar}.
+     */
     public static Calendar formatarHorario(String dataHorarioString){
         String[] dataHorarioStringSplitted = dataHorarioString.split(" ");
         int dia = Integer.parseInt(dataHorarioStringSplitted[0]);
@@ -225,6 +293,12 @@ public class AgendamentosController implements ManipulatorController{
         return dataHorario;
     }
     
+    /**
+     * Converte um objeto {@code Calendar} em uma string no formato "dd/MM/yyyy HH:mm".
+     *
+     * @param dataHorario Data e hora no formato {@code Calendar}.
+     * @return String formatada representando a data e hora.
+     */
     public static String converterCalendarString(Calendar dataHorario){
         String dataHorarioStr = dataHorario.get(Calendar.DAY_OF_MONTH) +
                 "/" + (dataHorario.get(Calendar.MONTH) + 1) +
@@ -235,19 +309,37 @@ public class AgendamentosController implements ManipulatorController{
         return dataHorarioStr;
     }
     
+    /**
+     * Salva o estado atual dos agendamentos.
+     *
+     * @throws IOException Se ocorrer um erro ao salvar os dados.
+     */
     @Override
     public void salvar() throws IOException{
         this.manipulador.salvar();
     }
     
+    /**
+     * Obtém o manipulador de agendamentos.
+     *
+     * @return Manipulador de agendamentos.
+     */
     public Manipulator<Agendamento> getManipulador() {
         return manipulador;
     }
 
+    /**
+     * Define o manipulador de agendamentos.
+     *
+     * @param manipulador Novo manipulador de agendamentos.
+     */
     public void setManipulador(Manipulator<Agendamento> manipulador) {
         this.manipulador = manipulador;
     }
     
+    /**
+     * Executa o loop principal para interação com a interface de agenda.
+     */
     public void run(){
         int opcao = 0;
         

@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
-
 
 import Controller.Manipulator.Manipulator;
 import Model.Comparator.CompContaTipo;
@@ -21,19 +16,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 /**
- *
- * @author caio
+ * Controlador responsável por gerenciar operações financeiras, como 
+ * vendas, contas, e relatórios financeiros no sistema.
  */
 public class ContasController implements ManipulatorController{
+    
     Manipulator<Conta> manipulador;
     TelaFinanceira telaFinanceira = new TelaFinanceira();
     
+    /**
+     * Construtor da classe {@code ContasController}.
+     * 
+     * @param manipulador Manipulador que gerencia as contas.
+     * @throws IOException Exceção gerada em caso de erro de entrada/saída.
+     */
     public ContasController(Manipulator<Conta> manipulador) throws IOException{
         this.manipulador = manipulador;
     }
     
+    /**
+     * Realiza a operação de venda, capturando os dados do produto e quantidade
+     * e exibindo o extrato da venda.
+     */
     public void vender(){
         List<Integer> idsProduto = new ArrayList<>();
         List<Integer> quantidadesProduto = new ArrayList<>();
@@ -72,6 +77,16 @@ public class ContasController implements ManipulatorController{
                 novaVenda.getValoresUnit(), novaVenda.getValor());
     }
     
+    /**
+     * Constrói uma nova venda com os dados especificados.
+     * 
+     * @param data Data da venda.
+     * @param id ID da venda.
+     * @param idCliente ID do cliente.
+     * @param idProdutos Array de IDs dos produtos.
+     * @param quantidades Array de quantidades dos produtos.
+     * @return Objeto Venda criado.
+     */
     public Venda construirVenda(Calendar data, int id, int idCliente, int[] idProdutos, int[] quantidades){
         // Obtendo os valores unitários de cada produto
         double[] valoresUnit = new double[idProdutos.length];
@@ -92,6 +107,9 @@ public class ContasController implements ManipulatorController{
         return new Venda(valor, data, id, idCliente, idProdutos, quantidades, valoresUnit);
     }
     
+    /**
+     * Adiciona uma nova conta ao sistema com os dados fornecidos pelo usuário.
+     */
     public void adicionarConta(){
         // Pegando input do usuário
         String nome = telaFinanceira.getNomeConta();
@@ -107,6 +125,9 @@ public class ContasController implements ManipulatorController{
         telaFinanceira.displayContaCriada(id);
     }
     
+    /**
+     * Remove uma conta do sistema com base no ID fornecido pelo usuário.
+     */
     public void removerConta(){
         // Pedindo input do usuario, fazendo busca da conta, exibindo para o usuario e pedindo confimação do usuário
         int id = telaFinanceira.getIdConta();
@@ -120,6 +141,9 @@ public class ContasController implements ManipulatorController{
         }
     }
     
+    /**
+     * Edita uma conta existente no sistema com base nas escolhas do usuário.
+     */
     public void editarConta(){
         // Pedindo input do usuario, fazendo busca da conta, exibindo para o usuario e pedindo o tipo de edição
         int id = telaFinanceira.getIdConta();
@@ -149,22 +173,51 @@ public class ContasController implements ManipulatorController{
         }
     }
     
+    /**
+     * Altera o nome da conta especificada.
+     * 
+     * @param conta Conta a ser editada.
+     * @param nomeNovo Novo nome para a conta.
+     */
     public void editarNome(Conta conta, String nomeNovo){
         conta.setNome(nomeNovo);
     }
     
+    /**
+     * Altera o tipo da conta especificada.
+     * 
+     * @param conta Conta a ser editada.
+     * @param tipoNovo Novo tipo para a conta.
+     */
     public void editarTipo(Conta conta, String tipoNovo){
         conta.setTipo(tipoNovo);
     }
     
+    /**
+     * Altera o valor da conta especificada.
+     * 
+     * @param conta Conta a ser editada.
+     * @param valorNovo Novo valor para a conta.
+     */
     public void editarValor(Conta conta, double valorNovo){
         conta.setValor(valorNovo);
     }
     
+    /**
+     * Altera a data da conta especificada.
+     * 
+     * @param conta Conta a ser editada.
+     * @param dataNova Nova data para a conta.
+     */
     public void editarData(Conta conta, Calendar dataNova){
         conta.setData(dataNova);
     }
     
+    /**
+     * Reduz o valor de uma diária pela metade com base no ID do agendamento.
+     * 
+     * @param idAgendamento ID do agendamento da diária.
+     */
     public void cortarValorDiariaMetade(int idAgendamento){
         ArrayList<Conta> contas = (ArrayList<Conta>)manipulador.getColecao();
         
@@ -177,6 +230,9 @@ public class ContasController implements ManipulatorController{
         }
     }
     
+    /**
+     * Emite um relatório financeiro baseado no período especificado pelo usuário.
+     */
     public void emitirRelatorio(){
         // Pedindo para o usuario se ele quer relatorio mensal ou diario
         int opcaoPeriodo = telaFinanceira.getPeriodo();
@@ -200,6 +256,9 @@ public class ContasController implements ManipulatorController{
         telaFinanceira.mostrarRelatorio(gerarDadosRelatorioVendas(vendas));
     }
     
+    /**
+     * Emite um balanço financeiro mensal para o mês e ano especificados.
+     */
     public void emitirBalanco(){
         int mes = telaFinanceira.getMes();
         int ano = telaFinanceira.getAno();
@@ -217,6 +276,12 @@ public class ContasController implements ManipulatorController{
         telaFinanceira.mostrarBalanco(chavesOrdenadas, valoresOrdenados);
     }
     
+    /**
+     * Gera dados de relatório de vendas com base nas vendas do período.
+     * 
+     * @param vendasPeriodo Lista de vendas no período.
+     * @return Map com os dados do relatório de vendas.
+     */
     public Map<String, double[]> gerarDadosRelatorioVendas(List<Venda> vendasPeriodo){
         Map<String, double[]> vendas = new HashMap<>(); // O map vai ter o seguinte formato: {nomeProduto: [id, precoAtual, precoVenda, quantidade, valorTotal]}
         ProdutoEstoqueController produtosController = Sistema.getManipuladorContrPorTipo(ProdutoEstoqueController.class);
@@ -242,6 +307,12 @@ public class ContasController implements ManipulatorController{
         return vendas;
     }
     
+    /**
+     * Gera dados de balanço financeiro com base nas contas do período.
+     * 
+     * @param contasPeriodo Lista de contas no período.
+     * @return Map com os dados do balanço financeiro.
+     */
     public Map<String, Double> gerarDadosBalanco(List<Conta> contasPeriodo){
         Map<String, Double> contasBalanco = new HashMap<>(); // o map vai ter o seguinte formato: {nomeConta: valor}
         Double saldoFinal = 0.0;
@@ -269,6 +340,12 @@ public class ContasController implements ManipulatorController{
         return contasBalanco;
     }
     
+    /**
+     * Busca uma conta no sistema pelo ID.
+     * 
+     * @param id ID da conta a ser buscada.
+     * @return Conta encontrada ou null caso não exista.
+     */
     public Conta buscarConta(int id){
         // Busca Linear na coleção do manipulador
         for(Conta conta : this.manipulador.getColecao()){
@@ -279,6 +356,13 @@ public class ContasController implements ManipulatorController{
         return null;
     }
     
+    /**
+     * Retorna uma lista de contas para um determinado mês e ano.
+     * 
+     * @param mes Mês para filtrar as contas.
+     * @param ano Ano para filtrar as contas.
+     * @return Lista de contas no mês e ano especificados.
+     */
     public List<Conta> buscarContasMes(int mes, int ano){
         ArrayList<Conta> contas = (ArrayList<Conta>)manipulador.getColecao();
         List<Conta> contasNoMes = new ArrayList<>(); // Lista que vai ter as contas no mes e ano especificado
@@ -295,6 +379,14 @@ public class ContasController implements ManipulatorController{
         return contasNoMes;
     }
     
+    /**
+     * Retorna uma lista de contas para um determinado dia, mês e ano.
+     * 
+     * @param dia Dia para filtrar as contas.
+     * @param mes Mês para filtrar as contas.
+     * @param ano Ano para filtrar as contas.
+     * @return Lista de contas no dia, mês e ano especificados.
+     */
     public List<Conta> buscarContasDia(int dia, int mes, int ano){
         ArrayList<Conta> contas = (ArrayList<Conta>)manipulador.getColecao();
         List<Conta> contasNoDia = new ArrayList<>(); // Lista que vai ter as contas no dia especificado
@@ -312,6 +404,12 @@ public class ContasController implements ManipulatorController{
         return contasNoDia;
     }
     
+    /**
+     * Filtra e retorna as contas que são vendas.
+     * 
+     * @param contas Lista de contas a serem filtradas.
+     * @return Lista de vendas filtradas.
+     */
     public List<Venda> filtrarVendas(List<Conta> contas){
         List<Venda> vendas = new ArrayList<>(); // Lista que vai armazenar as vendas
         
@@ -323,15 +421,31 @@ public class ContasController implements ManipulatorController{
         return vendas;
     }
     
+    /**
+     * Cria uma nova diária com os dados especificados.
+     * 
+     * @param valor Valor da diária.
+     * @param data Data da diária.
+     * @param id ID da diária.
+     * @param idAgendamento ID do agendamento associado.
+     */
     public void criarDiaria(double valor, Calendar data, int id, int idAgendamento){
         manipulador.adicionar(new Diaria(valor, data, id, idAgendamento));
     }
     
+    /**
+     * Salva os dados de contas.
+     * 
+     * @throws IOException Exceção gerada em caso de erro de entrada/saída.
+     */
     @Override
     public void salvar() throws IOException{
         manipulador.salvar();
     }
     
+    /**
+     * Executa o controlador com base no tipo de usuário logado.
+     */
     public void run(){
         Funcionario funcionarioLogado = Sistema.getLogin().getFuncLogado();
         
@@ -372,10 +486,20 @@ public class ContasController implements ManipulatorController{
         
     }
 
+    /**
+     * Retorna o manipulador de contas.
+     * 
+     * @return Manipulador de contas.
+     */
     public Manipulator<Conta> getManipulador() {
         return manipulador;
     }
 
+    /**
+     * Define o manipulador de contas.
+     * 
+     * @param manipulador Manipulador de contas.
+     */
     public void setManipulador(Manipulator<Conta> manipulador) {
         this.manipulador = manipulador;
     }

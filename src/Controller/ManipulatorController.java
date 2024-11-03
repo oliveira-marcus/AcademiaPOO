@@ -1,15 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package Controller;
 
 import java.io.IOException;
 
 /**
- *
- * @author caio
+ * Interface para controladores que manipulam dados e precisam realizar operações 
+ * de salvamento em um repositório persistente.
  */
 public interface ManipulatorController {
+    
+    /**
+     * Salva as informações manipuladas no repositório persistente.
+     * 
+     * @throws IOException Se ocorrer um erro de entrada/saída durante o salvamento.
+     */
     public void salvar() throws IOException;
 }

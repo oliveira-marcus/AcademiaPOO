@@ -12,7 +12,7 @@ public class Cpf {
     public String codigoCpf;
     
     /**
-     * Construtor da classe Cpf.
+     * Construtor da classe {@code Cpf}.
      * Inicializa o CPF com o código especificado.
      *
      * @param codigoCpf Código do CPF no formato "XXX.XXX.XXX-XX".

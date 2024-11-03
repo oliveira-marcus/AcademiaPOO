@@ -10,7 +10,7 @@ public class Produto {
     private int id;
     
     /**
-     * Construtor da classe {@code Produto{.
+     * Construtor da classe {@code Produto}.
      * Inicializa um novo produto com nome, preço e ID.
      *
      * @param nome  Nome do produto.

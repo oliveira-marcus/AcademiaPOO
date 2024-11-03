@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
 
 import Controller.Manipulator.Manipulator;
@@ -11,20 +7,31 @@ import View.TelaEstoque;
 import java.io.IOException;
 
 /**
- *
- * @author caio
+ * Classe responsável pelo gerenciamento do estoque de produtos, incluindo operações de
+ * adição, remoção, verificação, edição e controle de quantidade em estoque.
  */
 public class ProdutoEstoqueController implements ManipulatorController{
+    
     Manipulator<Produto> manipulador;
     MapManipulator<String, Integer> manipuladorMap;
     TelaEstoque telaEstoque = new TelaEstoque();
     
+    /**
+     * Construtor da classe {@code ProdutoEstoqueController}.
+     * 
+     * @param manipulador Manipulador responsável pela coleção de produtos.
+     * @param manipuladorMap Manipulador responsável pelo controle de quantidade de cada produto.
+     * @throws IOException Se ocorrer um erro de entrada/saída ao inicializar.
+     */
     public ProdutoEstoqueController(Manipulator<Produto> manipulador, MapManipulator manipuladorMap) throws IOException{
         this.manipulador = manipulador;
         this.manipuladorMap = manipuladorMap;
         Sistema.setQuantProdutosCatalogo(this.manipulador.getColecao().size());
     }
     
+    /**
+     * Adiciona um novo produto ao estoque com base nas informações fornecidas pela tela de estoque.
+     */
     public void adicionarProduto(){
         String nome = telaEstoque.getNomeProduto();
         double preco = telaEstoque.getPrecoProduto();
@@ -39,6 +46,9 @@ public class ProdutoEstoqueController implements ManipulatorController{
         Sistema.setQuantProdutosCatalogo(Sistema.getQuantProdutosCatalogo() + 1);
     }
     
+    /**
+     * Remove um produto do estoque, caso sua quantidade seja zero, após confirmação do usuário.
+     */
     public void removerProduto(){
         int id = telaEstoque.getIdProduto();
         Produto produto = buscarProduto(id);
@@ -59,6 +69,9 @@ public class ProdutoEstoqueController implements ManipulatorController{
         }
     }
     
+    /**
+     * Verifica as informações de um produto no estoque e exibe sua quantidade disponível.
+     */
     public void verificarProduto(){
         int id = telaEstoque.getIdProduto();
         Produto produto = buscarProduto(id);
@@ -68,6 +81,9 @@ public class ProdutoEstoqueController implements ManipulatorController{
         telaEstoque.mostrarQuantidadeEstoque(produto.getNome(), quantidade);
     }
     
+    /**
+     * Edita as informações de um produto no estoque, permitindo modificar seu nome ou preço.
+     */
     public void editarProduto(){
         int id = telaEstoque.getIdProduto();
         Produto produto = buscarProduto(id);
@@ -87,6 +103,12 @@ public class ProdutoEstoqueController implements ManipulatorController{
         }
     }
     
+    /**
+     * Edita o nome de um produto.
+     * 
+     * @param produto Produto cujo nome será alterado.
+     * @param nomeNovo Novo nome para o produto.
+     */
     public void editarNome(Produto produto, String nomeNovo){
         String nomeAntigo = produto.getNome();
         manipuladorMap.colocar(nomeNovo, manipuladorMap.getMap().get(nomeAntigo));
@@ -94,10 +116,19 @@ public class ProdutoEstoqueController implements ManipulatorController{
         produto.setNome(nomeNovo);
     }
     
+    /**
+     * Edita o preço de um produto.
+     * 
+     * @param produto Produto cujo preço será alterado.
+     * @param precoNovo Novo preço para o produto.
+     */
     public void editarPreco(Produto produto, double precoNovo){
         produto.setPreco(precoNovo);
     }
     
+    /**
+     * Altera a quantidade de um produto no estoque, podendo incrementar ou decrementar.
+     */
     public void alterarQuantidade(){
         int id = telaEstoque.getIdProduto();
         Produto produto = buscarProduto(id);
@@ -123,6 +154,12 @@ public class ProdutoEstoqueController implements ManipulatorController{
         
     }
     
+    /**
+     * Busca um produto pelo seu ID.
+     * 
+     * @param id ID do produto a ser buscado.
+     * @return O produto com o ID especificado ou null, caso não seja encontrado.
+     */
     public Produto buscarProduto(Integer id){
         for (Produto produto : this.manipulador.getColecao()){
             if (produto.getId() == id){
@@ -133,12 +170,20 @@ public class ProdutoEstoqueController implements ManipulatorController{
         return null;
     }
     
+    /**
+     * Salva o estado atual dos produtos e suas quantidades no repositório persistente.
+     * 
+     * @throws IOException Se ocorrer um erro de entrada/saída durante o salvamento.
+     */
     @Override
     public void salvar() throws IOException{
         manipulador.salvar();
         manipuladorMap.salvar();
     }
     
+    /**
+     * Executa o menu principal para gerenciamento de estoque de produtos.
+     */
     public void run(){
         int opcao = 0;
         
