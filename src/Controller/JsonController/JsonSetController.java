@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller.JsonController;
 
 import com.google.gson.Gson;
@@ -17,26 +13,45 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- *
- * @author caio
- * @param <T>
+ * Implementação do controlador JSON para coleções do tipo Set.
+ * 
+ * @param <T> Tipo dos elementos do Set.
  */
 public class JsonSetController<T> implements JsonCollectionController<T>{
+    
     private Class<T> tipoClasse;
     private Gson gson;
 
+    /**
+     * Inicializa o controlador com o tipo de classe dos elementos.
+     *
+     * @param tipoClasse Classe dos elementos do Set.
+     */
     @Override
     public void init(Class<T> tipoClasse) {
         this.tipoClasse = tipoClasse;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
     
+    /**
+     * Inicializa o controlador com o tipo de classe e um deserializador personalizado.
+     *
+     * @param tipoClasse Classe dos elementos do Set.
+     * @param deserializer Deserializador personalizado para os elementos.
+     */
     @Override
     public void init(Class<T> tipoClasse, JsonDeserializer deserializer){
         this.tipoClasse = tipoClasse;
         this.gson = new GsonBuilder().registerTypeAdapter(tipoClasse, deserializer).setPrettyPrinting().create();
     }
     
+    /**
+     * Lê um Set de elementos de um arquivo JSON.
+     *
+     * @param caminhoArquivo Caminho do arquivo JSON.
+     * @return Set de elementos lidos ou Set vazio se arquivo estiver vazio.
+     * @throws IOException Se ocorrer erro na leitura do arquivo.
+     */
     @Override
     public Set<T> read(String caminhoArquivo) throws IOException {
         String jsonString = Files.readString(Paths.get(caminhoArquivo));
@@ -53,6 +68,13 @@ public class JsonSetController<T> implements JsonCollectionController<T>{
         }
     }
     
+    /**
+     * Escreve um Set de elementos em um arquivo JSON.
+     *
+     * @param colecao Coleção a ser escrita.
+     * @param caminhoArquivo Caminho do arquivo JSON.
+     * @throws IOException Se ocorrer erro na escrita do arquivo.
+     */
     @Override
     public void write(Collection<T> colecao, String caminhoArquivo) throws IOException {
         String jsonString = gson.toJson((Set<T>)colecao);

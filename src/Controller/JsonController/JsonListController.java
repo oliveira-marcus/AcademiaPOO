@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller.JsonController;
 
 import com.google.gson.Gson;
@@ -17,26 +13,45 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- *
- * @author caio
- * @param <T>
+ * Implementação do controlador JSON para coleções do tipo List.
+ * 
+ * @param <T> Tipo dos elementos da lista.
  */
 public class JsonListController<T> implements JsonCollectionController<T>{
+    
     private Class<T> tipoClasse;
     private Gson gson;
 
+    /**
+     * Inicializa o controlador com o tipo de classe dos elementos.
+     *
+     * @param tipoClasse Classe dos elementos da lista.
+     */
     @Override
     public void init(Class<T> tipoClasse) {
         this.tipoClasse = tipoClasse;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
     
+    /**
+     * Inicializa o controlador com o tipo de classe e um deserializador personalizado.
+     *
+     * @param tipoClasse Classe dos elementos da lista.
+     * @param deserializer Deserializador personalizado para os elementos.
+     */
     @Override
     public void init(Class<T> tipoClasse, JsonDeserializer deserializer){
         this.tipoClasse = tipoClasse;
         this.gson = new GsonBuilder().registerTypeAdapter(tipoClasse, deserializer).setPrettyPrinting().create();
     }
     
+    /**
+     * Lê uma lista de elementos de um arquivo JSON.
+     *
+     * @param caminhoArquivo Caminho do arquivo JSON.
+     * @return Lista de elementos lidos ou lista vazia se arquivo estiver vazio.
+     * @throws IOException Se ocorrer erro na leitura do arquivo.
+     */
     @Override
     public List<T> read(String caminhoArquivo) throws IOException {
         String jsonString = Files.readString(Paths.get(caminhoArquivo));
@@ -53,6 +68,13 @@ public class JsonListController<T> implements JsonCollectionController<T>{
         }
     }
     
+    /**
+     * Escreve uma lista de elementos em um arquivo JSON.
+     *
+     * @param colecao Coleção a ser escrita.
+     * @param caminhoArquivo Caminho do arquivo JSON.
+     * @throws IOException Se ocorrer erro na escrita do arquivo.
+     */
     @Override
     public void write(Collection<T> colecao, String caminhoArquivo) throws IOException {
         String jsonString = gson.toJson((List<T>)colecao);
