@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller.Manipulator;
 
 import Controller.JsonController.JsonListController;
@@ -10,34 +6,73 @@ import java.io.IOException;
 import java.util.List;
 
 /**
+ * Manipulador especializado para coleções do tipo List.
+ * Estende a classe {@code Manipulator} para fornecer funcionalidades específicas para List.
  *
- * @author caio
- * @param <T>
+ * @param <T> Tipo dos elementos da lista.
  */
 public class ListManipulator<T> extends Manipulator<T> {
+    
+    /**
+     * Construtor que inicializa o manipulador com um caminho de arquivo e tipo de classe.
+     *
+     * @param caminho Caminho do arquivo JSON.
+     * @param classe Classe dos elementos da lista.
+     * @throws IOException Se ocorrer erro na leitura do arquivo.
+     */
     public ListManipulator(String caminho, Class<T> classe) throws IOException{
         super(new JsonListController(), caminho, classe);
     }
-    
+    /**
+     * Construtor que inicializa o manipulador com um caminho, tipo de classe e deserializador personalizado.
+     *
+     * @param caminho Caminho do arquivo JSON.
+     * @param classe Classe dos elementos da lista.
+     * @param deserializer Deserializador personalizado para os elementos.
+     * @throws IOException Se ocorrer erro na leitura do arquivo.
+     */
     public ListManipulator(String caminho, Class<T> classe, JsonDeserializer deserializer) throws IOException{
         super(new JsonListController(), caminho, classe, deserializer);
     }
     
+    /**
+     * Adiciona um elemento à lista.
+     * Sobrescreve o método da classe pai para manter compatibilidade com tipo List.
+     *
+     * @param elem Elemento a ser adicionado.
+     */
     @Override
     public void adicionar(T elem){
         super.adicionar(elem);
     }
     
+    /**
+     * Remove um elemento da lista.
+     * Sobrescreve o método da classe pai para manter compatibilidade com tipo List.
+     *
+     * @param elem Elemento a ser removido.
+     */
     @Override
     public void remover(T elem){
         super.remover(elem);
     }
     
+    /**
+     * Salva a lista atual no arquivo JSON especificado.
+     *
+     * @throws IOException Se ocorrer erro na escrita do arquivo.
+     */
     @Override
     public void salvar() throws IOException{
         this.getJsonController().write(this.getColecao(), this.getCaminho());
     };
     
+    /**
+     * Obtém a coleção como uma List.
+     * Realiza o cast da coleção genérica para List.
+     *
+     * @return Lista de elementos.
+     */
     @Override
     public List<T> getColecao(){
         return (List<T>)this.colecao;

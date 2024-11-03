@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller.Manipulator;
 
 import Controller.JsonController.JsonCollectionController;
@@ -9,14 +5,29 @@ import java.io.IOException;
 import java.util.Comparator;
 
 /**
+ * Classe abstrata que estende Manipulator para fornecer funcionalidades de ordenação.
+ * Permite ordenar os elementos da coleção usando um comparador.
  *
- * @author caio
- * @param <T>
+ * @param <T> Tipo dos elementos da coleção.
  */
 public abstract class SortManipulator<T> extends Manipulator<T>{
+    
+    /**
+     * Construtor que inicializa o manipulador de ordenação.
+     *
+     * @param jsonController Controlador JSON para operações de serialização.
+     * @param caminho Caminho do arquivo JSON.
+     * @param classe Classe dos elementos da coleção.
+     * @throws IOException Se ocorrer erro na leitura do arquivo.
+     */
     public SortManipulator(JsonCollectionController jsonController, String caminho, Class<T> classe) throws IOException {
         super(jsonController, caminho, classe);
     }
     
+    /**
+     * Método abstrato para ordenar os elementos da coleção.
+     *
+     * @param comparator Comparador que define a ordem dos elementos.
+     */
     public abstract void sort(Comparator<T> comparator);
 }
