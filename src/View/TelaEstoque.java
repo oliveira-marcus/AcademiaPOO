@@ -1,18 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package View;
 
 import Model.Produto;
 import java.util.Scanner;
 
-/**
- *
- * @author caio
- */
+
 public class TelaEstoque {
+    
     Scanner scanner = new Scanner(System.in);
+    
     public int exibirMenu(){        
         System.out.println("1 - Incluir Produto no Catalogo");
         System.out.println("2 - Editar Produto no Catalogo");

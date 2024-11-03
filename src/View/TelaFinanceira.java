@@ -1,20 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package View;
 
 import Model.Conta;
-import Model.Venda;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-/**
- *
- * @author caio
- */
 public class TelaFinanceira {
+    
     Scanner scanner = new Scanner(System.in);
     
     public int exibirMenuAdmin(){
@@ -30,8 +22,7 @@ public class TelaFinanceira {
         int opcao = scanner.nextInt();
         scanner.nextLine();
         
-        return opcao;
-            
+        return opcao; 
     }
     
     public int exibirMenuFunc(){
