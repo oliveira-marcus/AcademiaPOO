@@ -3,7 +3,7 @@ package Model;
 /**
  * Representa um cliente, que é uma pessoa com informações adicionais específicas,
  * como cartão de crédito e identificador único.
- * Esta classe herda as propriedades básicas da classe Pessoa.
+ * Esta classe herda as propriedades básicas da classe {@code Pessoa}.
  */
 public class Cliente extends Pessoa {
     

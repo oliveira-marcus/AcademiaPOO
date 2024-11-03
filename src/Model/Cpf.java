@@ -1,7 +1,3 @@
-/*
- * Click nbfs,//nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model;
 
 import java.util.ArrayList;
@@ -9,16 +5,29 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
- * @author caio
+ * Representa um CPF e fornece métodos para validação do código e identificação de estados (UF) a partir do CPF.
  */
 public class Cpf {
+    
     public String codigoCpf;
     
+    /**
+     * Construtor da classe Cpf.
+     * Inicializa o CPF com o código especificado.
+     *
+     * @param codigoCpf Código do CPF no formato "XXX.XXX.XXX-XX".
+     */
     public Cpf(String codigoCpf){
         this.codigoCpf = codigoCpf;
     }
     
+    /**
+     * Verifica se um código de CPF é válido.
+     * Utiliza o cálculo de dígitos verificadores para validar o CPF.
+     *
+     * @param codigo Código do CPF a ser validado.
+     * @return true se o CPF for válido, false caso contrário.
+     */
     public static boolean isValid(String codigo){
         List<Integer> digitos = new ArrayList<>();
         
@@ -62,6 +71,12 @@ public class Cpf {
         return true;
     }
     
+    /**
+     * Obtém os estados (UF) associados ao dígito de origem do CPF.
+     * Baseado no dígito de origem do CPF, que indica o estado de emissão.
+     *
+     * @return Array de strings contendo os estados associados ao CPF.
+     */
     public String[] getUF(){
       Map<Integer, String> ufs = Map.of(
               0, "Rio Grande do Sul",
@@ -80,10 +95,20 @@ public class Cpf {
       return uf.split(",");
     }
     
+    /**
+     * Define o código do CPF.
+     * 
+     * @param codigoCpf Novo código do CPF.
+     */
     public void setCodigoCpf(String codigoCpf) {
         this.codigoCpf = codigoCpf;
     }
     
+    /**
+     * Retorna uma representação mascarada do CPF no formato "***.XXX.XXX-**".
+     * 
+     * @return CPF com os primeiros e últimos dígitos ocultos.
+     */
     @Override
     public String toString(){
         String[] codigoSplitted = codigoCpf.split("[.-]");
