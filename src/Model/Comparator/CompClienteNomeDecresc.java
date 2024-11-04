@@ -14,7 +14,9 @@ import java.util.Comparator;
 public class CompClienteNomeDecresc implements Comparator<Cliente>{
     @Override
     public int compare(Cliente c1, Cliente c2){
-        return c2.getNome().compareTo(c1.getNome());
+        CompStringsCresc comparadorStrings = new CompStringsCresc();
+        
+        return comparadorStrings.compare(c2.getNome(), c1.getNome());
     }
 }
 
