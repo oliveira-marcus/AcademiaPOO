@@ -8,10 +8,10 @@ import java.util.Calendar;
  */
 public class Venda extends Conta{
     
-    public int idCliente;
-    int[] idProdutos;
-    int[] quantidades;
-    double[] valoresUnit;
+    private int idCliente;
+    private int[] idProdutos;
+    private int[] quantidades;
+    private double[] valoresUnit;
     
     /**
      * Construtor da classe Venda.

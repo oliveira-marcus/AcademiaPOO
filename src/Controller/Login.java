@@ -51,24 +51,6 @@ public class Login {
         }
         return null;
     }
-
-    /**
-     * Retorna o funcionário atualmente logado.
-     * 
-     * @return O funcionário logado, ou null se ninguém estiver logado.
-     */
-    public Funcionario getFuncLogado() {
-        return funcLogado;
-    }
-
-    /**
-     * Define o funcionário atualmente logado.
-     * 
-     * @param funcLogado Funcionário a ser definido como logado.
-     */
-    public void setFuncLogado(Funcionario funcLogado) {
-        this.funcLogado = funcLogado;
-    }
     
     /**
      * Executa o processo de login do funcionário.
@@ -92,4 +74,40 @@ public class Login {
             }
         }
     }
+    
+    /**
+     * Retorna o funcionário atualmente logado.
+     * 
+     * @return O funcionário logado, ou null se ninguém estiver logado.
+     */
+    public Funcionario getFuncLogado() {
+        return funcLogado;
+    }
+
+    /**
+     * Define o funcionário atualmente logado.
+     * 
+     * @param funcLogado Funcionário a ser definido como logado.
+     */
+    public void setFuncLogado(Funcionario funcLogado) {
+        this.funcLogado = funcLogado;
+    }
+
+    /**
+     * Retorna o jsonController de funcionários
+     * @return jsonController de funcionários
+     */
+    public JsonListController<Funcionario> getJsonController() {
+        return jsonController;
+    }
+
+    /**
+     * Retorna o jsonController de funcionários
+     * @param jsonController jsonController de funcionários
+     */
+    public void setJsonController(JsonListController<Funcionario> jsonController) {
+        this.jsonController = jsonController;
+    }
+    
+    
 }

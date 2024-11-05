@@ -66,4 +66,61 @@ public class JsonMapController <K,V> {
         String jsonString = gson.toJson(map);
         Files.writeString(Paths.get(caminhoArquivo), jsonString);
     }
+
+    
+    /**
+     * Retorna o tipo de Classe da chave do Map
+     * 
+     * @return Tipo da classe da chave
+     */
+    public Class<K> getTipoClasseChave() {
+        return tipoClasseChave;
+    }
+
+    /**
+     * Define o tipo de Classe da chave do Map
+     * 
+     * @param tipoClasseChave Tipo da classe da chave
+     */
+    public void setTipoClasseChave(Class<K> tipoClasseChave) {
+        this.tipoClasseChave = tipoClasseChave;
+    }
+
+    /**
+     * Retorna o tipo de Classe do valor do Map
+     * 
+     * @return Tipo da classe do valor
+     */
+    public Class<V> getTipoClasseValor() {
+        return tipoClasseValor;
+    }
+
+    /**
+     * Define o tipo de Classe do valor do Map
+     * 
+     * @param tipoClasseValor Tipo da classe do valor
+     */
+    public void setTipoClasseValor(Class<V> tipoClasseValor) {
+        this.tipoClasseValor = tipoClasseValor;
+    }
+
+    /**
+     * Obtem a instancia Gson usada para manipular arquivos Json
+     * 
+     * @return instancia Gson
+     */
+    public Gson getGson() {
+        return gson;
+    }
+
+    /**
+     * Define a instancia Gson usada para manipular arquivos Json
+     * 
+     * @param gson Instancia Gson
+     */
+    public void setGson(Gson gson) {
+        this.gson = gson;
+    }
+    
+    
 }

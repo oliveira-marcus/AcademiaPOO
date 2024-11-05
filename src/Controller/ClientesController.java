@@ -5,16 +5,20 @@ import Model.Cliente;
 import Model.Cpf;
 import View.TelaClientes;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Controlador responsável pelo gerenciamento de clientes, incluindo operações de adição, remoção, edição e busca de clientes.
  */
 public final class ClientesController implements ManipulatorController{
     
-    Manipulator<Cliente> manipulador;
-    TelaClientes telaClientes = new TelaClientes();
+    private Manipulator<Cliente> manipulador;
+    private TelaClientes telaClientes = new TelaClientes();
+    private int idMaximo;
     
     /**
      * Construtor da classe {@code ClientesController}.
@@ -26,6 +30,9 @@ public final class ClientesController implements ManipulatorController{
     public ClientesController(Manipulator<Cliente> manipulador) throws IOException{
         this.manipulador = manipulador;
         Sistema.setQuantClientesPriv(this.manipulador.getColecao().size());
+        
+        List<Integer> ids = this.manipulador.getColecao().stream().map(cliente -> cliente.getId()).collect(Collectors.toList());
+        this.idMaximo = Collections.max(ids);
     }
     
     /**
@@ -39,7 +46,8 @@ public final class ClientesController implements ManipulatorController{
         String email = telaClientes.getEmailCliente();
         String cpf = telaClientes.getCpfCliente();
         String cartao = telaClientes.getCartaoCliente();
-        int id = manipulador.getColecao().size() + 1;
+        idMaximo++;
+        int id = idMaximo;
         
         Cliente novoCliente = new Cliente(nome, endereco, fone, email, new Cpf(cpf), cartao, id);
         manipulador.adicionar(novoCliente);
@@ -189,24 +197,6 @@ public final class ClientesController implements ManipulatorController{
     }
     
     /**
-     * Obtém o manipulador de clientes.
-     *
-     * @return Objeto {@code Manipulator} de clientes.
-     */
-    public Manipulator<Cliente> getManipulador() {
-        return manipulador;
-    }
-
-    /**
-     * Define o manipulador de clientes.
-     *
-     * @param manipulador Novo manipulador de clientes.
-     */
-    public void setManipulador(Manipulator<Cliente> manipulador) {
-        this.manipulador = manipulador;
-    }
-    
-    /**
      * Executa o menu principal de operações do controlador de clientes.
      * As opções incluem adicionar, editar, remover e mostrar clientes.
      */
@@ -231,5 +221,57 @@ public final class ClientesController implements ManipulatorController{
                 }
             }
         }
+    }
+    
+    /**
+     * Obtém o manipulador de clientes.
+     *
+     * @return Objeto {@code Manipulator} de clientes.
+     */
+    public Manipulator<Cliente> getManipulador() {
+        return manipulador;
+    }
+
+    /**
+     * Define o manipulador de clientes.
+     *
+     * @param manipulador Novo manipulador de clientes.
+     */
+    public void setManipulador(Manipulator<Cliente> manipulador) {
+        this.manipulador = manipulador;
+    }
+
+    /**
+     * Retorna a tela da seção Clientes.
+     * 
+     * @return tela da seção Clientes.
+     */
+    public TelaClientes getTelaClientes() {
+        return telaClientes;
+    }
+
+    /**
+     * Define a tela da seção Clientes.
+     * 
+     * @param telaClientes tela da seção Clientes
+     */
+    public void setTelaClientes(TelaClientes telaClientes) {
+        this.telaClientes = telaClientes;
+    }
+    
+    /**
+     * Retorna o maior Id dos clientes
+     * @return Maior id dos clientes
+     */
+    public int getIdMaximo() {
+        return idMaximo;
+    }
+    
+    /**
+     * Define o id máximo dos clientes
+     * @param idMaximo id máximo dos clientes
+     */
+    public void setIdMaximo(int idMaximo) {
+        this.idMaximo = idMaximo;
     }
 }

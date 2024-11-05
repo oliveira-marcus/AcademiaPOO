@@ -18,7 +18,7 @@ public class Sistema {
     private static int quantProdutosCatalogo = 0;
     private static Catraca catraca = new Catraca();
     private static Login login;
-    private static final TelaInicial telaInicial = new TelaInicial();
+    private static TelaInicial telaInicial = new TelaInicial();
     
     /**
      * Construtor da classe {@code Sistema}.
@@ -65,78 +65,6 @@ public class Sistema {
             manipuladorController.salvar();
         }
     }
-
-    /**
-     * Obtém a quantidade de clientes no sistema.
-     * 
-     * @return Quantidade de clientes privados.
-     */
-    public static int getQuantClientesPriv() {
-        return quantClientesPriv;
-    }
-
-    /**
-     * Define a quantidade de clientes no sistema.
-     * 
-     * @param quantClientesPriv Nova quantidade de clientes.
-     */
-    public static void setQuantClientesPriv(int quantClientesPriv) {
-        Sistema.quantClientesPriv = quantClientesPriv;
-    }
-    
-    /**
-     * Obtém a quantidade de clientes no sistema.
-     * 
-     * @return Quantidade de clientes privados.
-     */
-    public static int getQuantClientesProtec() {
-        return quantClientesProtec;
-    }
-
-    /**
-     * Define a quantidade de clientes no sistema.
-     * 
-     * @param quantClientesPriv Nova quantidade de clientes.
-     */
-    public static void setQuantClientesProtec(int quantClientesProtec) {
-        Sistema.quantClientesProtec = quantClientesProtec;
-    }
-    
-    /**
-     * Obtém a quantidade de produtos no catálogo.
-     * 
-     * @return Quantidade de produtos no catálogo.
-     */
-    public static int getQuantProdutosCatalogo() {
-        return quantProdutosCatalogo;
-    }
-
-    /**
-     * Define a quantidade de produtos no catálogo.
-     * 
-     * @param quantProdutosCatalogo Nova quantidade de produtos no catálogo.
-     */
-    public static void setQuantProdutosCatalogo(int quantProdutosCatalogo) {
-        Sistema.quantProdutosCatalogo = quantProdutosCatalogo;
-    }
-    
-    /**
-     * Obtém a instância de controle de acesso do sistema.
-     * 
-     * @return A instância de Catraca.
-     */
-    public Catraca getCatraca() {
-        return catraca;
-    }
-
-    /**
-     * Obtém a instância de login do sistema.
-     * 
-     * @return A instância de Login.
-     */
-    public static Login getLogin() {
-        return login;
-    }
     
     /**
      * Executa o sistema, exibindo o menu principal e gerenciando as opções selecionadas pelo usuário.
@@ -176,5 +104,122 @@ public class Sistema {
             }
         }
         Sistema.salvarDados();
+    }
+
+    /**
+     * Obtem a lista com os Controllers que tem manipuladores 
+     * 
+     * @return lista com os Controllers que tem manipuladores 
+     */
+    public static List<ManipulatorController> getManipuladoresController() {
+        return manipuladoresController;
+    }
+    
+    /**
+     * Obtém a quantidade de clientes no sistema.
+     * 
+     * @return Quantidade de clientes privados.
+     */
+    public static int getQuantClientesPriv() {
+        return quantClientesPriv;
+    }
+
+    /**
+     * Define a quantidade de clientes no sistema.
+     * 
+     * @param quantClientesPriv Nova quantidade de clientes.
+     */
+    public static void setQuantClientesPriv(int quantClientesPriv) {
+        Sistema.quantClientesPriv = quantClientesPriv;
+    }
+    
+    /**
+     * Obtém a quantidade de clientes no sistema.
+     * 
+     * @return Quantidade de clientes privados.
+     */
+    public static int getQuantClientesProtec() {
+        return quantClientesProtec;
+    }
+
+    /**
+     * Define a quantidade de clientes no sistema.
+     * 
+     * @param quantClientesProtec
+     */
+    public static void setQuantClientesProtec(int quantClientesProtec) {
+        Sistema.quantClientesProtec = quantClientesProtec;
+    }
+    
+    /**
+     * Obtém a quantidade de produtos no catálogo.
+     * 
+     * @return Quantidade de produtos no catálogo.
+     */
+    public static int getQuantProdutosCatalogo() {
+        return quantProdutosCatalogo;
+    }
+
+    /**
+     * Define a quantidade de produtos no catálogo.
+     * 
+     * @param quantProdutosCatalogo Nova quantidade de produtos no catálogo.
+     */
+    public static void setQuantProdutosCatalogo(int quantProdutosCatalogo) {
+        Sistema.quantProdutosCatalogo = quantProdutosCatalogo;
+    }
+    
+    /**
+     * Obtém a instância de controle de acesso do sistema.
+     * 
+     * @return A instância de Catraca.
+     */
+    public Catraca getCatraca() {
+        return catraca;
+    }
+
+    /**
+     * Define a instancia de controle de acesso do sistema
+     * 
+     * @param catraca Instancia de Catraca
+     */
+    public static void setCatraca(Catraca catraca) {
+        Sistema.catraca = catraca;
+    }
+    
+    /**
+     * Obtém a instância de login do sistema.
+     * 
+     * @return A instância de Login.
+     */
+    public static Login getLogin() {
+        return login;
+    }
+
+    /**
+     * Define a instancia login do sistema
+     * 
+     * @param login login do sistema
+     */
+    public static void setLogin(Login login) {
+        Sistema.login = login;
+    }
+
+    /**
+     * Retorna a tela inicial.
+     * 
+     * @return tela inicial.
+     */
+    public static TelaInicial getTelaInicial() {
+        return telaInicial;
+    }
+    
+    /**
+     * Define a tela inicial
+     * 
+     * @param telaInicial 
+     */
+    public static void setTelaInicial(TelaInicial telaInicial) {
+        Sistema.telaInicial = telaInicial;
     }
 }

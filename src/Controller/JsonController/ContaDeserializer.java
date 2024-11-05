@@ -57,4 +57,31 @@ public class ContaDeserializer implements JsonDeserializer<Conta>{
         Class<? extends Conta> contaType = contaTypeRegistry.get(contaTypeElement.getAsString());
         return gson.fromJson(contaObject, contaType);
     }
+
+    /**
+     * Obtem o nome do atributo usado para diferenciar contas
+     * 
+     * @return nome do atributo
+     */
+    public String getContaTypeElementName() {
+        return contaTypeElementName;
+    }
+
+    /**
+     * Obtem a instancia Gson usada para manipular arquivos Json
+     * 
+     * @return instancia Gson
+     */
+    public Gson getGson() {
+        return gson;
+    }
+
+    /**
+     * Obtem um dicionário com os possíveis tipos de Conta
+     * 
+     * @return Dicionário com os possíveis tipos de Conta
+     */
+    public Map<String, Class<? extends Conta>> getContaTypeRegistry() {
+        return contaTypeRegistry;
+    }   
 }

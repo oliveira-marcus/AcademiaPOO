@@ -5,6 +5,9 @@ import Controller.Manipulator.MapManipulator;
 import Model.Produto;
 import View.TelaEstoque;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Classe responsável pelo gerenciamento do estoque de produtos, incluindo operações de
@@ -12,9 +15,10 @@ import java.io.IOException;
  */
 public class ProdutoEstoqueController implements ManipulatorController{
     
-    Manipulator<Produto> manipulador;
-    MapManipulator<String, Integer> manipuladorMap;
-    TelaEstoque telaEstoque = new TelaEstoque();
+    private Manipulator<Produto> manipulador;
+    private MapManipulator<String, Integer> manipuladorMap;
+    private TelaEstoque telaEstoque = new TelaEstoque();
+    private int idMaximo;
     
     /**
      * Construtor da classe {@code ProdutoEstoqueController}.
@@ -27,6 +31,9 @@ public class ProdutoEstoqueController implements ManipulatorController{
         this.manipulador = manipulador;
         this.manipuladorMap = manipuladorMap;
         Sistema.setQuantProdutosCatalogo(this.manipulador.getColecao().size());
+        
+        List<Integer> ids = this.manipulador.getColecao().stream().map(produto -> produto.getId()).collect(Collectors.toList());
+        this.idMaximo = Collections.max(ids);
     }
     
     /**
@@ -35,7 +42,8 @@ public class ProdutoEstoqueController implements ManipulatorController{
     public void adicionarProduto(){
         String nome = telaEstoque.getNomeProduto();
         double preco = telaEstoque.getPrecoProduto();
-        int id = manipulador.getColecao().size() + 1;
+        idMaximo++;
+        int id = idMaximo;
         int quantidade = telaEstoque.getQuantidade();
         
         Produto novoProduto  = new Produto(nome, preco, id);
@@ -209,7 +217,6 @@ public class ProdutoEstoqueController implements ManipulatorController{
             }
         }
     }
-
     
     /**
      * Retorna o manipulador de Produtos.
@@ -219,7 +226,6 @@ public class ProdutoEstoqueController implements ManipulatorController{
     public Manipulator<Produto> getManipulador() {
         return manipulador;
     }
-
     
     /**
      * Define o manipulador de Produtos.
@@ -229,7 +235,6 @@ public class ProdutoEstoqueController implements ManipulatorController{
     public void setManipulador(Manipulator<Produto> manipulador) {
         this.manipulador = manipulador;
     }
-
     
     /**
      * Retorna o manipulador do Estoque.
@@ -239,7 +244,6 @@ public class ProdutoEstoqueController implements ManipulatorController{
     public MapManipulator<String, Integer> getManipuladorMap() {
         return manipuladorMap;
     }
-
     
     /**
      * Define o manipulador do Estoque.
@@ -248,6 +252,40 @@ public class ProdutoEstoqueController implements ManipulatorController{
      */
     public void setManipuladorMap(MapManipulator<String, Integer> manipuladorMap) {
         this.manipuladorMap = manipuladorMap;
+    }
+
+    /**
+     * Retorna a tela da seção Produtos/Estoque.
+     * 
+     * @return tela da seção Produtos/Estoque.
+     */
+    public TelaEstoque getTelaEstoque() {
+        return telaEstoque;
+    }
+
+    /**
+     * Define a tela da seção Produtos/Estoque.
+     * 
+     * @param telaEstoque tela da seção Produtos/Estoque
+     */
+    public void setTelaEstoque(TelaEstoque telaEstoque) {
+        this.telaEstoque = telaEstoque;
+    }
+    
+    /**
+     * Retorna o maior Id dos produtos
+     * @return Maior id dos produtos
+     */
+    public int getIdMaximo() {
+        return idMaximo;
+    }
+
+    /**
+     * Define o id máximo dos produtos
+     * @param idMaximo id máximo dos produtos
+     */
+    public void setIdMaximo(int idMaximo) {
+        this.idMaximo = idMaximo;
     }
 }
 

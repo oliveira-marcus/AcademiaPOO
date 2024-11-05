@@ -7,15 +7,18 @@ import View.TelaAgenda;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Controlador responsável pela gestão de agendamentos de salas e interação com a tela de agenda.
  */
 public class AgendamentosController implements ManipulatorController{
     
-    Manipulator<Agendamento> manipulador;
-    TelaAgenda telaAgenda = new TelaAgenda();
+    private Manipulator<Agendamento> manipulador;
+    private TelaAgenda telaAgenda = new TelaAgenda();
+    private int idMaximo;
     
     Sala[] salas = new Sala[]{
         new Sala("Musculacao", "Sala com foco em Hipertrofia!", 60),
@@ -33,13 +36,17 @@ public class AgendamentosController implements ManipulatorController{
      */
     public AgendamentosController(Manipulator manipulador) throws IOException{
         this.manipulador = manipulador;
+        
+        List<Integer> ids = this.manipulador.getColecao().stream().map(agendamento -> agendamento.getId()).collect(Collectors.toList());
+        this.idMaximo = Collections.max(ids);
     }
     
     /**
      * Adiciona um novo agendamento baseado nas informações obtidas da interface de agenda.
      */
     public void adicionarAgendamento(){
-        int idAgendamento = manipulador.getColecao().size() + 1;
+        idMaximo++;
+        int idAgendamento = idMaximo;
         int idCliente = telaAgenda.getIdClienteAgendamento();
         String sala = salas[telaAgenda.getSalaAgendamento() - 1].getNome();
         double precoAula = telaAgenda.getPrecoAulaAgendamento();
@@ -60,7 +67,8 @@ public class AgendamentosController implements ManipulatorController{
         telaAgenda.displayMsgAgendamentoCriado(idAgendamento);
         
         ContasController contasController = Sistema.getManipuladorContrPorTipo(ContasController.class);
-        int idDiaria = contasController.getManipulador().getColecao().size() + 1;
+        contasController.setIdMaximo(contasController.getIdMaximo() + 1);
+        int idDiaria = contasController.getIdMaximo();
         contasController.criarDiaria(precoAula, dataHorario, idDiaria, idAgendamento);
         telaAgenda.displayMsgDiariaCriada(idDiaria);
     }
@@ -320,24 +328,6 @@ public class AgendamentosController implements ManipulatorController{
     }
     
     /**
-     * Obtém o manipulador de agendamentos.
-     *
-     * @return Manipulador de agendamentos.
-     */
-    public Manipulator<Agendamento> getManipulador() {
-        return manipulador;
-    }
-
-    /**
-     * Define o manipulador de agendamentos.
-     *
-     * @param manipulador Novo manipulador de agendamentos.
-     */
-    public void setManipulador(Manipulator<Agendamento> manipulador) {
-        this.manipulador = manipulador;
-    }
-    
-    /**
      * Executa o loop principal para interação com a interface de agenda.
      */
     public void run(){
@@ -364,5 +354,73 @@ public class AgendamentosController implements ManipulatorController{
                 }
             }
         }
+    }
+    
+    /**
+     * Obtém o manipulador de agendamentos.
+     *
+     * @return Manipulador de agendamentos.
+     */
+    public Manipulator<Agendamento> getManipulador() {
+        return manipulador;
+    }
+
+    /**
+     * Define o manipulador de agendamentos.
+     *
+     * @param manipulador Novo manipulador de agendamentos.
+     */
+    public void setManipulador(Manipulator<Agendamento> manipulador) {
+        this.manipulador = manipulador;
+    }
+
+    /**
+     * Retorna a tela da Agenda.
+     * 
+     * @return tela da Agenda.
+     */
+    public TelaAgenda getTelaAgenda() {
+        return telaAgenda;
+    }
+
+    /**
+     * Define a tela do Agenda.
+     * 
+     * @param telaAgenda tela do Agenda
+     */
+    public void setTelaAgenda(TelaAgenda telaAgenda) {
+        this.telaAgenda = telaAgenda;
+    }
+
+    /**
+     * Retorna o maior Id dos agendamentos
+     * @return Maior id das agendamnetos
+     */
+    public int getIdMaximo() {
+        return idMaximo;
+    }
+    
+    /**
+     * Define o id máximo dos agendamentos
+     * @param idMaximo id máximo dos agendamentos
+     */
+    public void setIdMaximo(int idMaximo) {
+        this.idMaximo = idMaximo;
+    }
+
+    /**
+     * Retorna o array com as salas da academia
+     * @return Salas da Academia
+     */
+    public Sala[] getSalas() {
+        return salas;
+    }
+
+    /**
+     * Define as salas da Academia
+     * @param salas Array com as Salas da Academia
+     */
+    public void setSalas(Sala[] salas) {
+        this.salas = salas;
     }
 }

@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public class Cpf {
     
-    public String codigoCpf;
+    private String codigoCpf;
     
     /**
      * Construtor da classe {@code Cpf}.

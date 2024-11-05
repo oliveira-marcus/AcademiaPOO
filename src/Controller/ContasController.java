@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Controlador responsável por gerenciar operações financeiras, como 
@@ -22,8 +23,9 @@ import java.util.Map;
  */
 public class ContasController implements ManipulatorController{
     
-    Manipulator<Conta> manipulador;
-    TelaFinanceira telaFinanceira = new TelaFinanceira();
+    private Manipulator<Conta> manipulador;
+    private TelaFinanceira telaFinanceira = new TelaFinanceira();
+    private int idMaximo;
     
     /**
      * Construtor da classe {@code ContasController}.
@@ -33,6 +35,9 @@ public class ContasController implements ManipulatorController{
      */
     public ContasController(Manipulator<Conta> manipulador) throws IOException{
         this.manipulador = manipulador;
+        
+        List<Integer> ids = this.manipulador.getColecao().stream().map(cliente -> cliente.getId()).collect(Collectors.toList());
+        this.idMaximo = Collections.max(ids);
     }
     
     /**
@@ -45,7 +50,8 @@ public class ContasController implements ManipulatorController{
         List<String> nomesProduto = new ArrayList<>();
         ProdutoEstoqueController produtosController = Sistema.getManipuladorContrPorTipo(ProdutoEstoqueController.class);
         
-        int idVenda = manipulador.getColecao().size() + 1;
+        idMaximo++;
+        int idVenda = idMaximo;
         int idCliente = telaFinanceira.getIdClienteComprador();
         int idProduto = -1;
         
@@ -119,7 +125,8 @@ public class ContasController implements ManipulatorController{
         String tipo = telaFinanceira.getTipoConta();
         double valor = telaFinanceira.getValorConta();
         String dataStr = telaFinanceira.getDataConta();
-        int id = manipulador.getColecao().size() + 1;
+        idMaximo++;
+        int id = idMaximo;
         
         // Formatando a String para Calendar e adicionando nova Conta na coleção do Manipulador
         Calendar data = AgendamentosController.formatarHorario(dataStr);
@@ -519,5 +526,39 @@ public class ContasController implements ManipulatorController{
      */
     public void setManipulador(Manipulator<Conta> manipulador) {
         this.manipulador = manipulador;
+    }
+
+    /**
+     * Retorna a tela da seção Financeira.
+     * 
+     * @return tela da seção Financeira.
+     */
+    public TelaFinanceira getTelaFinanceira() {
+        return telaFinanceira;
+    }
+
+    /**
+     * Define a tela da seção Financeira.
+     * 
+     * @param telaFinanceira tela da seção Financeira
+     */
+    public void setTelaFinanceira(TelaFinanceira telaFinanceira) {
+        this.telaFinanceira = telaFinanceira;
+    }
+    
+    /**
+     * Retorna o maior Id das contas
+     * @return Maior id das contas
+     */
+    public int getIdMaximo() {
+        return idMaximo;
+    }
+
+    /**
+     * Define o id máximo das contas
+     * @param idMaximo id máximo das contas
+     */
+    public void setIdMaximo(int idMaximo) {
+        this.idMaximo = idMaximo;
     }
 }

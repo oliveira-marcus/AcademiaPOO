@@ -11,8 +11,8 @@ import java.io.IOException;
  */
 public class ColaboradoresController implements ManipulatorController{
     
-    Manipulator<Funcionario> manipulador;
-    TelaColaboradores telaColaboradores = new TelaColaboradores();
+    private Manipulator<Funcionario> manipulador;
+    private TelaColaboradores telaColaboradores = new TelaColaboradores();
     
     /**
      * Construtor da classe {@code ColaboradoresController}.
@@ -192,5 +192,41 @@ public class ColaboradoresController implements ManipulatorController{
                 }
             }
         }
+    }
+
+    /**
+     * Obtém o manipulador de colaboradores.
+     *
+     * @return Objeto {@code Manipulator} de colaboradores.
+     */
+    public Manipulator<Funcionario> getManipulador() {
+        return manipulador;
+    }
+
+    /**
+     * Define o manipulador de colaboradores.
+     *
+     * @param manipulador Novo manipulador de colaboradores.
+     */
+    public void setManipulador(Manipulator<Funcionario> manipulador) {
+        this.manipulador = manipulador;
+    }
+
+    /**
+     * Retorna a tela da seção Colaboradores.
+     * 
+     * @return tela da seção Colaboradores.
+     */
+    public TelaColaboradores getTelaColaboradores() {
+        return telaColaboradores;
+    }
+
+    /**
+     * Define a tela da seção Colaboradores.
+     * 
+     * @param telaColaboradores tela da seção Colaboradores
+     */
+    public void setTelaColaboradores(TelaColaboradores telaColaboradores) {
+        this.telaColaboradores = telaColaboradores;
     }
 }

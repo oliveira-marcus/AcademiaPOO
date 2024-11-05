@@ -8,7 +8,7 @@ import java.util.Calendar;
  */
 public class Diaria extends Conta{
     
-    int idAgendamento;
+    private int idAgendamento;
     
     /**
      * Construtor da classe {@code Diaria}.

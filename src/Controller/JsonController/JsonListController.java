@@ -80,4 +80,40 @@ public class JsonListController<T> implements JsonCollectionController<T>{
         String jsonString = gson.toJson((List<T>)colecao);
         Files.writeString(Paths.get(caminhoArquivo), jsonString);
     }
+
+    /**
+     * Retorna o tipo de Classe que o Gson está lidando 
+     * 
+     * @return Tipo da classe
+     */
+    public Class<T> getTipoClasse() {
+        return tipoClasse;
+    }
+
+    /**
+     * Define o tipo de Classe que o Gson está lidando 
+     * 
+     * @param tipoClasse Tipo da classe
+     */
+    public void setTipoClasse(Class<T> tipoClasse) {
+        this.tipoClasse = tipoClasse;
+    }
+
+    /**
+     * Obtem a instancia Gson usada para manipular arquivos Json
+     * 
+     * @return instancia Gson
+     */
+    public Gson getGson() {
+        return gson;
+    }
+
+    /**
+     * Define a instancia Gson usada para manipular arquivos Json
+     * 
+     * @param gson Instancia Gson
+     */
+    public void setGson(Gson gson) {
+        this.gson = gson;
+    }
 }
