@@ -216,6 +216,16 @@ public class ContasController implements ManipulatorController{
         conta.setData(dataNova);
     }
     
+    
+    /**
+     * Mostra os dados de uma conta
+     */
+    public void mostrarDadosConta(){
+        int id = telaFinanceira.getIdConta();
+        Conta conta = buscarConta(id);
+        telaFinanceira.mostrarConta(conta);
+    }
+    
     /**
      * Reduz o valor de uma diária pela metade com base no ID do agendamento.
      * 
@@ -470,10 +480,14 @@ public class ContasController implements ManipulatorController{
                 }
                 
                 case 5 ->{
+                    mostrarDadosConta();
+                }
+                  
+                case 6 ->{
                     emitirRelatorio();
                 }
                 
-                case 6 ->{
+                case 7 ->{
                     emitirBalanco();
                 }
             }

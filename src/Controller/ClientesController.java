@@ -135,6 +135,15 @@ public final class ClientesController implements ManipulatorController{
     }
     
     /**
+     * Mostra as informações de um cliente, com CPF anonimizado
+     */
+    public void mostrarDadosCliente(){
+        int id = telaClientes.getIdCliente();
+        Cliente cliente = buscarCliente(id);
+        telaClientes.mostrarCliente(cliente);
+    }
+    
+    /**
      * Busca um cliente pelo seu ID.
      *
      * @param id ID do cliente a ser buscado.
@@ -199,7 +208,7 @@ public final class ClientesController implements ManipulatorController{
     
     /**
      * Executa o menu principal de operações do controlador de clientes.
-     * As opções incluem adicionar, editar e remover clientes.
+     * As opções incluem adicionar, editar, remover e mostrar clientes.
      */
     public void run(){
         int opcao = 0; 
@@ -216,6 +225,9 @@ public final class ClientesController implements ManipulatorController{
                 }
                 case 3 -> {
                     removerCliente();
+                }
+                case 4 -> {
+                    mostrarDadosCliente();
                 }
             }
         }

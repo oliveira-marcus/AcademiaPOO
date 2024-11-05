@@ -1,5 +1,6 @@
 package View;
 
+import Controller.AgendamentosController;
 import Model.Conta;
 import java.util.List;
 import java.util.Map;
@@ -25,9 +26,10 @@ public class TelaFinanceira {
         System.out.println("2 - Adicionar Conta");
         System.out.println("3 - Remover Conta");
         System.out.println("4 - Editar Conta");
-        System.out.println("5 - Gerar Relatorio Vendas");
-        System.out.println("6 - Gerar Balanco Mensal");
-        System.out.println("7 - Sair");
+        System.out.println("5 - Mostar dados de uma Conta");
+        System.out.println("6 - Gerar Relatorio Vendas");
+        System.out.println("7 - Gerar Balanco Mensal");
+        System.out.println("8 - Sair");
             
         System.out.println("Digite a opcao: ");
         int opcao = scanner.nextInt();
@@ -260,8 +262,8 @@ public class TelaFinanceira {
      * @param conta Objeto Conta cujas informações serão exibidas
      */
     public void mostrarConta(Conta conta){
-        System.out.printf("Nome: %s%nTipo: %s%n, Valor: %s%n, Data: %s%n, Id: %s%n",
-                conta.getNome(), conta.getTipo(), conta.getValor(), conta.getData(),
+        System.out.printf("Nome: %s%nTipo: %s%nValor: %s%nData: %s%nId: %s%n",
+                conta.getNome(), conta.getTipo(), conta.getValor(), AgendamentosController.converterCalendarString(conta.getData()),
                 conta.getId());
     }
     

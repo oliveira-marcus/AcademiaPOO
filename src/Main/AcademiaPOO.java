@@ -43,52 +43,59 @@ public class AcademiaPOO {
         
         // Questão 1
         {
-        
+            // Feito
         }
         
         // Questão 2
         {
-        
+            // Feito, a interface para o Funcionário e Administrador é diferente na área financeira
         }
         
         // Questão 3
         {
-        
+            // Ainda não feito 
         }
         
         // Questão 4
         {
-        
+            // Feito, foi usada herança para as seguintes classes:
+            // Para os Manipuladores
+            // Para as classes Funcionario e Cliente com Pessoa
+            // Para as classes Venda e Daria com Conta
         }
         
         // Questão 5
         {
-        
+            // Feito, a array está na classe AgendamentosController
         }
         
         // Questão 6
         {
-        
+            // Feito, tais funcionalidades estão presentes na classe ColaboradoresController
         }
         
         // Questão 7
         {
-        
+            // Feito, tais funcioalidades estão presentes na classe ClientesController
         }
         
         // Questão 8
         {
-        
+            // Feito
+            // Para mostrar dados de uma mensalidade ou diária, foi implementado o método mostrarDadosConta em ContasController
+            // Para mostrar dados de um cliente, foi implementado o método mostrarDadosCliente em ClientesController
         }
         
         // Questão 9
         {
-        
+            // Feito
+            // As reservas são armazenadas na Coleção do Manipulador de AgendamentosController
+            // As ações da catraca são armazenadas na Lista da classe Catraca
         }
         
         // Questão 10
         {
-        
+            // Feito, depois que toda venda é executada, um extrato é gerado com informações da Venda
         }
         
         // Questão 11
@@ -104,20 +111,27 @@ public class AcademiaPOO {
         
         // Questão 12
         {
-        
+            // Feito, método getQuantClientesPriv e getQuantClientesProtec na classe Sistema
         }
         
         // Questão 13
         {
-        
+            // Feito, classes que implementam de comparator estão no pacote Model.Comparator
         }
         
         // Questão 14
         {
-        
+            // Feito, todos os manipuladores dos controladores que salvam seus dados tem um método salvar
+            // Tal método salvar escreve a coleção do Manipulador para um arquivo json
+            // Os arquivos json com os dados estão no pacote data
         }
         
-        // Questão 15
+        // Questão 15A
+        {
+            // JavaDoc gerado
+        }
+        
+        // Questão 15B
         {
             ClientesController clientesController = Sistema.getManipuladorContrPorTipo(ClientesController.class);
             List<Cliente> clientes = (ArrayList)clientesController.getManipulador().getColecao();

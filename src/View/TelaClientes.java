@@ -15,7 +15,7 @@ public class TelaClientes {
     /**
      * Exibe o menu principal de gestão de clientes.
      *
-     * @return Opção selecionada pelo usuário (1-4).
+     * @return Opção selecionada pelo usuário (1-5).
      */
     public int exibirMenu(){
         int opcao = 0;
@@ -24,7 +24,8 @@ public class TelaClientes {
             System.out.println("1 - Incluir Cliente (Fazer Reserva)");
             System.out.println("2 - Editar Cliente");
             System.out.println("3 - Remover Cliente");
-            System.out.println("4 - Sair");
+            System.out.println("4 - Mostrar dados de um Cliente");
+            System.out.println("5 - Sair");
             System.out.println();
             
             System.out.println("Digite a opcao: ");

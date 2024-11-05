@@ -67,7 +67,7 @@ public class Sistema {
     }
 
     /**
-     * Obtém a quantidade de clientes privados no sistema.
+     * Obtém a quantidade de clientes no sistema.
      * 
      * @return Quantidade de clientes privados.
      */
@@ -76,14 +76,32 @@ public class Sistema {
     }
 
     /**
-     * Define a quantidade de clientes privados no sistema.
+     * Define a quantidade de clientes no sistema.
      * 
-     * @param quantClientesPriv Nova quantidade de clientes privados.
+     * @param quantClientesPriv Nova quantidade de clientes.
      */
     public static void setQuantClientesPriv(int quantClientesPriv) {
         Sistema.quantClientesPriv = quantClientesPriv;
     }
+    
+    /**
+     * Obtém a quantidade de clientes no sistema.
+     * 
+     * @return Quantidade de clientes privados.
+     */
+    public static int getQuantClientesProtec() {
+        return quantClientesProtec;
+    }
 
+    /**
+     * Define a quantidade de clientes no sistema.
+     * 
+     * @param quantClientesPriv Nova quantidade de clientes.
+     */
+    public static void setQuantClientesProtec(int quantClientesProtec) {
+        Sistema.quantClientesProtec = quantClientesProtec;
+    }
+    
     /**
      * Obtém a quantidade de produtos no catálogo.
      * 
