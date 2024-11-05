@@ -1,4 +1,4 @@
-package academiapoo;
+package Main;
 
 import Controller.AgendamentosController;
 import Controller.ClientesController;

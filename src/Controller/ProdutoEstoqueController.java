@@ -209,5 +209,45 @@ public class ProdutoEstoqueController implements ManipulatorController{
             }
         }
     }
+
+    
+    /**
+     * Retorna o manipulador de Produtos.
+     * 
+     * @return Manipulador de Produtos.
+     */
+    public Manipulator<Produto> getManipulador() {
+        return manipulador;
+    }
+
+    
+    /**
+     * Define o manipulador de Produtos.
+     * 
+     * @param manipulador Manipulador de Produtos.
+     */
+    public void setManipulador(Manipulator<Produto> manipulador) {
+        this.manipulador = manipulador;
+    }
+
+    
+    /**
+     * Retorna o manipulador do Estoque.
+     * 
+     * @return Manipulador do Estoque.
+     */
+    public MapManipulator<String, Integer> getManipuladorMap() {
+        return manipuladorMap;
+    }
+
+    
+    /**
+     * Define o manipulador do Estoque.
+     * 
+     * @param manipuladorMap Manipulador do Estoque
+     */
+    public void setManipuladorMap(MapManipulator<String, Integer> manipuladorMap) {
+        this.manipuladorMap = manipuladorMap;
+    }
 }
 

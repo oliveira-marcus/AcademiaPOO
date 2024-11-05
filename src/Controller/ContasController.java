@@ -59,6 +59,9 @@ public class ContasController implements ManipulatorController{
                 
                 int quantidadeProduto = telaFinanceira.getQuantidadeProdutoVendido();
                 quantidadesProduto.add(quantidadeProduto);
+                
+                int quantidadeNova = produtosController.getManipuladorMap().getMap().get(nomeProduto) - quantidadeProduto;
+                produtosController.getManipuladorMap().colocar(nomeProduto, quantidadeNova);
             }
         }
         
