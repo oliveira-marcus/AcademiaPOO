@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model.Comparator;
 
 import java.util.Comparator;
 
-/**
- *
- * @author caio
- */
 public class CompStringsCresc implements Comparator<String>{
+    
     @Override
     public int compare(String s1, String s2) {
         if (s1 == null && s2 == null) {

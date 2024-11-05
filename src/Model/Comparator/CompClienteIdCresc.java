@@ -1,17 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model.Comparator;
 
 import Model.Cliente;
 import java.util.Comparator;
 
 /**
- *
- * @author caio
+ * Classe que implementa um comparador para ordenar clientes em ordem crescente
+ * com base em seus IDs.
  */
 public class CompClienteIdCresc implements Comparator<Cliente> {
+    
+    /**
+     * Compara dois clientes com base em seus IDs.
+     * 
+     * @param c1 Primeiro cliente a ser comparado
+     * @param c2 Segundo cliente a ser comparado
+     * @return Um valor negativo se o ID de c1 é menor que o ID de c2,
+     *         um valor positivo se o ID de c1 é maior que o ID de c2,
+     *         ou zero se ambos têm o mesmo ID
+     */
     @Override
     public int compare(Cliente c1, Cliente c2){
         return c1.getId() - c2.getId();

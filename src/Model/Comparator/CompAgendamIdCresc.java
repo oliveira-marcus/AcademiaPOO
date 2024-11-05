@@ -1,18 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model.Comparator;
 
 import Model.Agendamento;
 import java.util.Comparator;
 
 /**
- *
- * @author caio
+ * Classe que implementa um comparador para ordenar agendamentos em ordem crescente
+ * com base em seus IDs.
  */
 public class CompAgendamIdCresc implements Comparator<Agendamento> {
     
+    /**
+     * Compara dois agendamentos com base em seus IDs.
+     * 
+     * @param a1 Primeiro agendamento a ser comparado
+     * @param a2 Segundo agendamento a ser comparado
+     * @return Um valor negativo se o ID de a1 é menor que o ID de a2,
+     *         um valor positivo se o ID de a1 é maior que o ID de a2,
+     *         ou zero se ambos têm o mesmo ID
+     */
     @Override
     public int compare(Agendamento a1, Agendamento a2){
         return a1.getId() - a2.getId();

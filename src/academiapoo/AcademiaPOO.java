@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package academiapoo;
 
 import Controller.AgendamentosController;
@@ -28,17 +24,10 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- *
- * @author caio
- */
 public class AcademiaPOO {
 
-    /**
-     * @param args the command line arguments
-     * @throws java.io.IOException
-     */
     public static void main(String[] args) throws IOException {
+        
         Sistema sistema = new Sistema("src/data/colaboradores.json");
         Sistema.adicionarManipuladorContr(new ClientesController(new ListManipulator("src/data/clientes.json", Cliente.class)));
         Sistema.adicionarManipuladorContr(new ColaboradoresController(new ListManipulator("src/data/colaboradores.json", Funcionario.class)));
@@ -52,6 +41,56 @@ public class AcademiaPOO {
         deserializer.registerContaType("Diaria", Diaria.class);
         Sistema.adicionarManipuladorContr(new ContasController(new ListManipulator("src/data/contas.json", Conta.class, deserializer)));
         
+        // Questão 1
+        {
+        
+        }
+        
+        // Questão 2
+        {
+        
+        }
+        
+        // Questão 3
+        {
+        
+        }
+        
+        // Questão 4
+        {
+        
+        }
+        
+        // Questão 5
+        {
+        
+        }
+        
+        // Questão 6
+        {
+        
+        }
+        
+        // Questão 7
+        {
+        
+        }
+        
+        // Questão 8
+        {
+        
+        }
+        
+        // Questão 9
+        {
+        
+        }
+        
+        // Questão 10
+        {
+        
+        }
+        
         // Questão 11
         {
             // A abordagem com variáveis private é mais segura porem sacrifica o desempenho, 
@@ -63,6 +102,20 @@ public class AcademiaPOO {
             // É melhor para o desempenho pois menos ciclos de processador são necessários para obter as variáveis.
         }
         
+        // Questão 12
+        {
+        
+        }
+        
+        // Questão 13
+        {
+        
+        }
+        
+        // Questão 14
+        {
+        
+        }
         
         // Questão 15
         {
