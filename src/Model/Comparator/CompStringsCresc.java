@@ -2,8 +2,21 @@ package Model.Comparator;
 
 import java.util.Comparator;
 
+/**
+ * Classe que implementa um comparador para ordenar strings em ordem alfabética crescente.
+ * O comparador lida corretamente com strings nulas e compara caractere por caractere.
+ */
 public class CompStringsCresc implements Comparator<String>{
     
+    /**
+     * Compara duas strings em ordem alfabética crescente.
+     * 
+     * @param s1 Primeira string a ser comparada
+     * @param s2 Segunda string a ser comparada
+     * @return Um valor negativo se s1 vem antes de s2 alfabeticamente,
+     *         um valor positivo se s1 vem depois de s2 alfabeticamente,
+     *         ou zero se as strings são iguais
+     */
     @Override
     public int compare(String s1, String s2) {
         if (s1 == null && s2 == null) {
