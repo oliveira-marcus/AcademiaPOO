@@ -173,4 +173,14 @@ public class TelaEstoque {
     public void displayQuantidadeDoProdutoMenorDiminuicaoError(){
         System.out.println("A quantidade do Produto e menor do que o que se deseja diminuir");
     }
+    
+    /**
+     * Sobrescreve o toString para retornar informações sobre a classe
+     * 
+     * @return informações sobre a tela
+     */
+    @Override
+    public String toString(){
+        return "Tela com metodos de interface para a secao de Produtos/Estoque";
+    }
 }

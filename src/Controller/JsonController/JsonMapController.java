@@ -122,5 +122,12 @@ public class JsonMapController <K,V> {
         this.gson = gson;
     }
     
-    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o JsonController
+     * @return Informações sobre o JsonController
+     */
+    @Override 
+    public String toString(){
+        return "JsonController que le e escreve dados de um Map para um arquivo json";
+    }
 }

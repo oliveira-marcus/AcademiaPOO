@@ -222,4 +222,14 @@ public class Sistema {
     public static void setTelaInicial(TelaInicial telaInicial) {
         Sistema.telaInicial = telaInicial;
     }
+    
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Sistema
+     * @return Informações sobre a academia
+     */
+    @Override
+    public String toString(){
+        return "Sistema para a academia";
+    }
 }

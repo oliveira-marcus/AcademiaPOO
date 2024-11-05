@@ -83,5 +83,14 @@ public class ContaDeserializer implements JsonDeserializer<Conta>{
      */
     public Map<String, Class<? extends Conta>> getContaTypeRegistry() {
         return contaTypeRegistry;
-    }   
+    }
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Deserializer
+     * @return Informações sobre o Deserializer
+     */
+    @Override 
+    public String toString(){
+        return "Classe que serve para deserializar objetos da classe Conta de maneira polimorfica no formato json";
+    }
 }

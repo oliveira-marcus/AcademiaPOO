@@ -218,4 +218,14 @@ public class TelaAgenda {
     public void displayEditarAtrasadoError(){
         System.out.println("Não é possível alterar o dia de um Agendamento menos de 72 horas antes da data prevista");
     }
+    
+    /**
+     * Sobrescreve o toString para retornar informações sobre a classe
+     * 
+     * @return informações sobre a tela
+     */
+    @Override
+    public String toString(){
+        return "Tela com metodos de interface para a Agenda";
+    }
 }

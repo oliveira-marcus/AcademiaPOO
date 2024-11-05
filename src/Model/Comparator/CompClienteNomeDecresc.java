@@ -27,5 +27,15 @@ public class CompClienteNomeDecresc implements Comparator<Cliente>{
         
         return comparadorStrings.compare(c2.getNome(), c1.getNome());
     }
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Comparator
+     * 
+     * @return informações sobre o Comparator
+     */
+    @Override
+    public String toString(){
+        return "Comparator que organiza os clientes pelo nome de forma decrescente";
+    }
 }
 

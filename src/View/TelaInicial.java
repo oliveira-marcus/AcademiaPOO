@@ -39,4 +39,14 @@ public class TelaInicial {
     public void displayMsgDadosSalvos(){
         System.out.println("Os dados foram Salvos");
     }
+    
+    /**
+     * Sobrescreve o toString para retornar informações sobre a classe
+     * 
+     * @return informações sobre a tela
+     */
+    @Override
+    public String toString(){
+        return "Tela com métodos de interface para a Tela Inicial do programa";
+    }
 }

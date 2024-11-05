@@ -68,4 +68,14 @@ public class CompAgendamDataHorarioCresc implements Comparator<Agendamento>{
         
         return 0;
     }
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Comparator
+     * 
+     * @return informações sobre o Comparator
+     */
+    @Override
+    public String toString(){
+        return "Comparator que organiza os agendamentos pelo horario de forma crescente";
+    }
 }

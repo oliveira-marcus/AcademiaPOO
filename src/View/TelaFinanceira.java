@@ -323,4 +323,14 @@ public class TelaFinanceira {
     public void displayContaCriada(int id){
         System.out.printf("Nova Conta criada com o ID %s%n", id);
     }
+    
+    /**
+     * Sobrescreve o toString para retornar informações sobre a classe
+     * 
+     * @return informações sobre a tela
+     */
+    @Override
+    public String toString(){
+        return "Tela com metodos de interface para a secao Financeira";
+    }
 }

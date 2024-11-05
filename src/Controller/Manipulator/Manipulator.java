@@ -128,4 +128,13 @@ public abstract class Manipulator<T> {
     public void setJsonController(JsonCollectionController jsonController) {
         this.jsonController = jsonController;
     }
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Manipulator
+     * @return Informações sobre o Manipulator
+     */
+    @Override
+    public String toString(){
+        return "Manipulator que faz a manipulação de uma Collection";
+    }
 }

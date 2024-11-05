@@ -113,4 +113,13 @@ public class MapManipulator<K, V> {
     public void setJsonController(JsonMapController jsonController) {
         this.jsonController = jsonController;
     }
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Manipulator
+     * @return Informações sobre o Manipulator
+     */
+    @Override
+    public String toString(){
+        return "Manipulator Map, ou seja, que manipula um Map";
+    }
 }

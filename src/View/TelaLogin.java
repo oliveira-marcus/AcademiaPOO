@@ -45,4 +45,14 @@ public class TelaLogin {
     public void displayLoginSuccess(){
         System.out.println("LOGIN CONCLUIDO!");
     }
+    
+    /**
+     * Sobrescreve o toString para retornar informações sobre a classe
+     * 
+     * @return informações sobre a tela
+     */
+    @Override
+    public String toString(){
+        return "Tela com metodos de interface para a Agenda";
+    }
 }

@@ -30,4 +30,13 @@ public abstract class SortManipulator<T> extends Manipulator<T>{
      * @param comparator Comparador que define a ordem dos elementos.
      */
     public abstract void sort(Comparator<T> comparator);
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Manipulator
+     * @return Informações sobre o Manipulator
+     */
+    @Override
+    public String toString(){
+        return "Manipulator que tem método sort, que faz o ordenamento dos dados";
+    }
 }

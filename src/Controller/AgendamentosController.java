@@ -423,4 +423,13 @@ public class AgendamentosController implements ManipulatorController{
     public void setSalas(Sala[] salas) {
         this.salas = salas;
     }
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Controller
+     * @return Informações sobre o Controller
+     */
+    @Override
+    public String toString(){
+        return "Controller referente a área de Agendamentos da Academia";
+    }
 }

@@ -229,4 +229,13 @@ public class ColaboradoresController implements ManipulatorController{
     public void setTelaColaboradores(TelaColaboradores telaColaboradores) {
         this.telaColaboradores = telaColaboradores;
     }
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Controller
+     * @return Informações sobre o Controller
+     */
+    @Override
+    public String toString(){
+        return "Controller referente a área de funcionários da Academia";
+    }
 }

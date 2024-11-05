@@ -42,4 +42,13 @@ public abstract class SynchronizedManipulator<T> extends Manipulator<T> {
     public synchronized void remover(T elem){
         super.remover(elem);
     }
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Manipulator
+     * @return Informações sobre o Manipulator
+     */
+    @Override
+    public String toString(){
+        return "Manipulator que faz operações de adicionar e remover de maneira sincronizada (isto é, segura para threads)";
+    }
 }

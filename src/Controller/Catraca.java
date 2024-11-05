@@ -50,7 +50,28 @@ public class Catraca{
         
         return LocalTime.now();
     }
-
+    
+    /**
+     * Executa a interação com a interface da catraca, exibindo o número de entradas, saídas e as pessoas atualmente presentes.
+     */
+    public void run(){
+        telaCatraca.exibirPessoasEntrantes(numeroPessoasEntrantes);
+        telaCatraca.exibirPessoasSaintes(numeroPessoasSaintes);
+        
+        String pessoasAtuaisStr = "";
+        
+        for (Pessoa pessoa : pessoasAtuais){
+            pessoasAtuaisStr = pessoasAtuais + pessoa.toString() + "\n";
+        }
+        
+        if (pessoasAtuaisStr.equals("")){
+            telaCatraca.displayMsgAcademiaVazia();
+        }
+        else{
+            telaCatraca.mostrarPessoasAtuais(pessoasAtuaisStr);
+        }
+    }
+    
     /**
      * Obtém o número atual de pessoas presentes na academia.
      *
@@ -113,7 +134,7 @@ public class Catraca{
     public void setPessoasAtuais(List<Pessoa> pessoasAtuais){
         this.pessoasAtuais = pessoasAtuais;
     }
-    
+
     /**
      * Retorna uma representação em string do estado atual da catraca.
      *
@@ -122,26 +143,5 @@ public class Catraca{
     @Override
     public String toString(){
         return "[" + this.getNumeroPessoasAtuais() + ", " + this.numeroPessoasEntrantes + ", " + this.numeroPessoasSaintes + "]";
-    }
-    
-    /**
-     * Executa a interação com a interface da catraca, exibindo o número de entradas, saídas e as pessoas atualmente presentes.
-     */
-    public void run(){
-        telaCatraca.exibirPessoasEntrantes(numeroPessoasEntrantes);
-        telaCatraca.exibirPessoasSaintes(numeroPessoasSaintes);
-        
-        String pessoasAtuaisStr = "";
-        
-        for (Pessoa pessoa : pessoasAtuais){
-            pessoasAtuaisStr = pessoasAtuais + pessoa.toString() + "\n";
-        }
-        
-        if (pessoasAtuaisStr.equals("")){
-            telaCatraca.displayMsgAcademiaVazia();
-        }
-        else{
-            telaCatraca.mostrarPessoasAtuais(pessoasAtuaisStr);
-        }
     }
 }

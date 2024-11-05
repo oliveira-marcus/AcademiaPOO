@@ -40,4 +40,14 @@ public class TelaCatraca {
     public void displayMsgAcademiaVazia(){
         System.out.println("Atualmente a academia esta vazia");
     }
+    
+    /**
+     * Sobrescreve o toString para retornar informações sobre a classe
+     * 
+     * @return informações sobre a tela
+     */
+    @Override
+    public String toString(){
+        return "Tela com metodos de interface para a Catraca";
+    }
 }

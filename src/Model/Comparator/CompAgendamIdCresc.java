@@ -22,4 +22,14 @@ public class CompAgendamIdCresc implements Comparator<Agendamento> {
     public int compare(Agendamento a1, Agendamento a2){
         return a1.getId() - a2.getId();
     }
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Comparator
+     * 
+     * @return informações sobre o Comparator
+     */
+    @Override
+    public String toString(){
+        return "Comparator que organiza os agendamentos pelo id de forma crescente";
+    }
 }

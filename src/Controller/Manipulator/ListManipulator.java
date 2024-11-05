@@ -77,4 +77,13 @@ public class ListManipulator<T> extends Manipulator<T> {
     public List<T> getColecao(){
         return (List<T>)this.colecao;
     }
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Manipulator
+     * @return Informações sobre o Manipulator
+     */
+    @Override
+    public String toString(){
+        return "Manipulator que manipula especificamente uma ArrayList";
+    }
 }

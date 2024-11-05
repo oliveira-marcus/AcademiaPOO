@@ -171,4 +171,14 @@ public class TelaColaboradores {
                 funcionario.getEmail(), funcionario.getCpf(), funcionario.getSalario(), funcionario.getLogin(),
                 funcionario.getSenha(), funcionario.getCargo());
     }
+    
+    /**
+     * Sobrescreve o toString para retornar informações sobre a classe
+     * 
+     * @return informações sobre a tela
+     */
+    @Override
+    public String toString(){
+        return "Tela com métodos de interface para secao de Colaboradores";
+    }
 }

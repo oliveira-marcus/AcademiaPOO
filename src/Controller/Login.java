@@ -109,5 +109,12 @@ public class Login {
         this.jsonController = jsonController;
     }
     
-    
+    /**
+     * Método para sobrescrever o toString que exibe informações da classe e o funcionário logado atualmente;
+     * @return informações sobre o Login e funcionário logado
+     */
+    @Override 
+    public String toString(){
+        return "Classe usada para fazer a lógica de Login do Sistema\nO usuário logado atualmente é " + funcLogado; 
+    }
 }

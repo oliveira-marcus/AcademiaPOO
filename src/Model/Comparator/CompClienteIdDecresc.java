@@ -22,4 +22,14 @@ public class CompClienteIdDecresc implements Comparator<Cliente> {
     public int compare(Cliente c1, Cliente c2){
         return c2.getId() - c1.getId();
     }
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Comparator
+     * 
+     * @return informações sobre o Comparator
+     */
+    @Override
+    public String toString(){
+        return "Comparator que organiza os clientes pelo id de forma decrescente";
+    }
 }

@@ -30,4 +30,14 @@ public class CompStringsCresc implements Comparator<String>{
         // Se todas as letras até o tamanho mínimo forem iguais, a string mais longa é maior
         return s1.length() - s2.length();
     }   
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Comparator
+     * 
+     * @return informações sobre o Comparator
+     */
+    @Override
+    public String toString(){
+        return "Comparator que organiza strings alfabeticamente de forma crescente";
+    }
 }

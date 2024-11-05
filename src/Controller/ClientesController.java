@@ -274,4 +274,13 @@ public final class ClientesController implements ManipulatorController{
     public void setIdMaximo(int idMaximo) {
         this.idMaximo = idMaximo;
     }
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Controller
+     * @return Informações sobre o Controller
+     */
+    @Override
+    public String toString(){
+        return "Controller referente a área de Clientes da Academia";
+    }
 }

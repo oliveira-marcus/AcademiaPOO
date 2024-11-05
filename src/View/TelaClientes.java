@@ -161,4 +161,14 @@ public class TelaClientes {
     public void displayNomeInvalido(){
         System.out.println("O nome que voce digitou e invalido! ");
     }
+    
+    /**
+     * Sobrescreve o toString para retornar informações sobre a classe
+     * 
+     * @return informações sobre a tela
+     */
+    @Override
+    public String toString(){
+        return "Tela com metodos de interface para a secao de Clientes";
+    }
 }

@@ -49,4 +49,15 @@ public class CompContaTipo implements Comparator<String>{
         }
         return 10000;
     }
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Comparator
+     * 
+     * @return informações sobre o Comparator
+     */
+    @Override
+    public String toString(){
+        return "Comparator que organiza as contas de uma forma especifica, segundo a ordem: "
+                + "Diaria, Mensalidade, Venda, Salarios, Fornecedores, Despesa Geral, Despesa Administrativa,Imposto, Saldo Final";
+    }
 }

@@ -59,4 +59,13 @@ public abstract class LoggingManipulator<T> extends Manipulator<T>{
     public void salvar() throws IOException{
         System.out.println("[LOG]: DADOS SALVOS");
     }
+    
+    /**
+     * Método que sobrescreve o toString para exibir informações sobre o Manipulator
+     * @return Informações sobre o Manipulator
+     */
+    @Override
+    public String toString(){
+        return "Manipulator que faz o log, ou seja, registra tudo o que faz";
+    }
 }
