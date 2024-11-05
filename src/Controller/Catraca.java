@@ -61,7 +61,7 @@ public class Catraca{
         String pessoasAtuaisStr = "";
         
         for (Pessoa pessoa : pessoasAtuais){
-            pessoasAtuaisStr = pessoasAtuais + pessoa.toString() + "\n";
+            pessoasAtuaisStr = pessoasAtuaisStr + pessoa.toString() + "\n";
         }
         
         if (pessoasAtuaisStr.equals("")){

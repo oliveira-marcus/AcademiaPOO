@@ -30,6 +30,7 @@ public final class ClientesController implements ManipulatorController{
     public ClientesController(Manipulator<Cliente> manipulador) throws IOException{
         this.manipulador = manipulador;
         Sistema.setQuantClientesPriv(this.manipulador.getColecao().size());
+        Sistema.quantClientesProtec = this.manipulador.getColecao().size();
         
         List<Integer> ids = this.manipulador.getColecao().stream().map(cliente -> cliente.getId()).collect(Collectors.toList());
         this.idMaximo = Collections.max(ids);
@@ -53,6 +54,7 @@ public final class ClientesController implements ManipulatorController{
         manipulador.adicionar(novoCliente);
         telaClientes.displayMsgClienteCriado(id);
         Sistema.setQuantClientesPriv(Sistema.getQuantClientesPriv() + 1);
+        Sistema.quantClientesProtec++;
     }
     
     /**
@@ -203,7 +205,7 @@ public final class ClientesController implements ManipulatorController{
     public void run(){
         int opcao = 0; 
         
-        while(opcao != 4){
+        while(opcao != 5){
             opcao = telaClientes.exibirMenu();
             
             switch (opcao){

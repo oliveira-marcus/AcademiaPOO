@@ -174,7 +174,7 @@ public class Sistema {
      * 
      * @return A instância de Catraca.
      */
-    public Catraca getCatraca() {
+    public static Catraca getCatraca() {
         return catraca;
     }
 

@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "estadoReserva": "FEITA",
+    "estadoReserva": "CANCELADA",
     "idCliente": 1,
     "sala": "Musculação",
     "precoAula": 50.0,

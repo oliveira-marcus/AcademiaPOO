@@ -41,6 +41,24 @@ public class AcademiaPOO {
         deserializer.registerContaType("Diaria", Diaria.class);
         Sistema.adicionarManipuladorContr(new ContasController(new ListManipulator("src/data/contas.json", Conta.class, deserializer)));
         
+        // Testando Catraca
+        {
+            ClientesController clientesController = Sistema.getManipuladorContrPorTipo(ClientesController.class);
+            ColaboradoresController colaboradoresController = Sistema.getManipuladorContrPorTipo(ColaboradoresController.class);
+            
+            
+            Sistema.getCatraca().entrar(clientesController.buscarCliente(1));
+            Sistema.getCatraca().entrar(clientesController.buscarCliente(2));
+            Sistema.getCatraca().entrar(clientesController.buscarCliente(3));
+            Sistema.getCatraca().entrar(clientesController.buscarCliente(4));
+            
+            Sistema.getCatraca().entrar(colaboradoresController.buscarColaborador("Lucas Santos"));
+            Sistema.getCatraca().entrar(colaboradoresController.buscarColaborador("Ana Oliveira"));
+            
+            Sistema.getCatraca().sair(clientesController.buscarCliente(2));
+            Sistema.getCatraca().sair(clientesController.buscarCliente(3)); 
+        }
+        
         // Questão 1
         {
             // Feito
@@ -53,7 +71,7 @@ public class AcademiaPOO {
         
         // Questão 3
         {
-            // Ainda não feito 
+            // Feito
         }
         
         // Questão 4

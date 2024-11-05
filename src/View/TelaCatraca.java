@@ -21,7 +21,7 @@ public class TelaCatraca {
      * @param pessoasSaintes Número de pessoas que saíram.
      */
     public void exibirPessoasSaintes(int pessoasSaintes){
-        System.out.printf("%s pessoas entraram no estabelecimento%n", pessoasSaintes);
+        System.out.printf("%s pessoas sairam no estabelecimento%n", pessoasSaintes);
     }
     
     /**

@@ -36,9 +36,25 @@ public class AgendamentosController implements ManipulatorController{
      */
     public AgendamentosController(Manipulator manipulador) throws IOException{
         this.manipulador = manipulador;
+        cancelarAgendamentosFeitos();
         
         List<Integer> ids = this.manipulador.getColecao().stream().map(agendamento -> agendamento.getId()).collect(Collectors.toList());
         this.idMaximo = Collections.max(ids);
+    }
+    
+    /**
+     * Cancela os agendamentos feitos que já passaram da data limite (5 dias) para confirmar
+     */
+    public final void cancelarAgendamentosFeitos(){
+        for (Agendamento agendamento : this.manipulador.getColecao()){
+            Calendar agora = Calendar.getInstance();
+            Calendar dataLimite = (Calendar) agendamento.getDataHorario().clone();
+            dataLimite.add(Calendar.HOUR_OF_DAY, -120); 
+            
+            if (agendamento.getEstadoReserva().equals("FEITA") && !agora.before(dataLimite)){
+                agendamento.setEstadoReserva("CANCELADA");
+            }
+        }
     }
     
     /**
@@ -151,7 +167,7 @@ public class AgendamentosController implements ManipulatorController{
             case 3 -> {
                 Calendar agora = Calendar.getInstance();
                 Calendar dataLimite = (Calendar) agendamento.getDataHorario().clone();
-                dataLimite.add(Calendar.HOUR_OF_DAY, -72);
+                dataLimite.add(Calendar.HOUR_OF_DAY, -120); 
                 
                 if(agora.before(dataLimite)){
                     String novaDataHorario = telaAgenda.getDataHorarioAgendamento();
